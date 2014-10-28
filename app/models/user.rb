@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :questions, inverse_of: :user
   has_many :answers, inverse_of: :user
   has_many :received_answers, through: :questions, source: :answers
+  has_many :favorite_taggings, as: :tagging
+  has_many :favorite_tags, through: :favorite_taggings, source: :tagging
+
 
   attr_reader :password
 
