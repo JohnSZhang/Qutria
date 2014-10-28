@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
       through: :favorite_taggables,
       source: :taggings,
       source_type: "Question"
+  has_many :comments
 
   attr_reader :password
 

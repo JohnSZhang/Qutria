@@ -2,6 +2,22 @@
 <p>
   <%=h @question.body %>
 </p>
+  <% if @question.comments.length > 0 %>
+    <strong>comments: </strong>
+  <% end %>
+  <% @question.comments.each do |comment| %>
+    <p>
+      <%= comment.body %>
+      <span>by <%= comment.user.username %></span>
+      <a href="<%= edit_comment_url(comment) %>">edit comment</a>
+      <form action="<%= comment_url(comment) %>" method="post">
+        <%= autho_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete comment">
+      </form>
+    </p>
+  <% end %>
+  <%= render "comments/form", object: @question %>
 <p>
   by: <a href="<%= user_url(@question.user) %>"><%=h @question.user.username %></a>
 </p>
@@ -31,6 +47,23 @@
   <p>
     Answer:
     <%= answer.body %>
+    <%= render "comments/form", object: answer %>
+    <% if answer.comments.length > 0 %>
+      <strong>comments: </strong>
+    <% end %>
+    <% answer.comments.each do |comment| %>
+      <p>
+        <%= comment.body %>
+        <span>by <%= comment.user.username %></span>
+        <a href="<%= edit_comment_url(comment) %>">edit comment</a>
+        <form action="<%= comment_url(comment) %>" method="post">
+          <%= autho_token %>
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete comment">
+        </form>
+      </p>
+      <%= render "comments/form", object: comment %>
+    <% end %>
 
     <span>by <a href="<%= user_url(answer.user) %>"><%=h answer.user.username %></a></span>
     <a href="<%= edit_answer_url(answer) %>"> Edit Answer</a>

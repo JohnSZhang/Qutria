@@ -17,3 +17,14 @@
 
 <a href="<%= edit_tag_url(@tag) %>">edit tag</a>
 <a href="<%= tags_url %>">see all tags</a>
+
+<h2>Questions for <%=h @tag.name %></h2>
+
+<% @tag.questions.each do |question| %>
+<p>
+  <strong>
+    <a href="<%= question_url(question) %>"><%= question.title %></a>
+  </strong>
+  <%= question.body %>
+</p>
+<% end %>

@@ -1,0 +1,13 @@
+<% type = object.class %>
+<% id = object.id %>
+<% if current_user %>
+  <form action="<%= comments_url %>" method="post">
+    <%= autho_token %>
+    <input type="hidden" name="_method" value="POST">
+    <input type="hidden" name="comment[commentable_type]" value="<%= type %>">
+    <input type="hidden" name="comment[commentable_id]" value="<%= id %>">
+    <label for="comment">Add Comment</label>
+    <textarea id="comment" name="comment[body]"></textarea>
+    <input type="submit" value="Add Comment">
+  </form>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>Edit Comment</h1>
+<% if current_user %>
+  <form action="<%= comments_url %>" method="post">
+    <%= autho_token %>
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="comment">Body</label>
+    <textarea id="comment" name="comment[body]"><%= @comment.body %></textarea>
+    <input type="submit" value="Edit Comment">
+  </form>
+<% end %>
