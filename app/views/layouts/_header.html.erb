@@ -1,0 +1,16 @@
+<nav>
+  <div id="nav">
+    <% if is_logged_in? %>
+      <span> Hello <a href="<%= user_url(current_user) %>">
+                  <%= current_user.username %></a> ! </span>
+      <form id="log_out" action="<%= session_url %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= autho_token %>
+        <input type="submit" name="delete" value="logout">
+      </form>
+    <% else %>
+      <span>Hi There! </span> <a href="<%= new_user_url %>">Sign Up</a>
+      <span> Or </span> <a href="<%= new_session_url %>">Log In</a>
+    <% end %>
+  </div>
+</nav>

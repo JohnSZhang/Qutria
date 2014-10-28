@@ -1,0 +1,9 @@
+<h1>Login</h1>
+<form action="<%= new_session_url %>" method="post">
+  <%= autho_token %>
+  <label for="username">Username</label>
+  <input type="text" id="username" name="session[username]" value="<%= username %>">
+  <label for="password">password</label>
+  <input type="password" id="password" name="session[password]" value="">
+  <input type="submit" name="submit" value="Login">
+</form>
