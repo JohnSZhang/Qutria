@@ -76,28 +76,37 @@ Taggable.create(
 )
 
 Taggable.create(
+  taggings: sulla,
+  tag: army
+)
+
+Taggable.create(
+  taggings: crassus,
+  tag: poetry
+)
+
+Taggable.create(
   taggings: march,
   tag: army
 )
 
-Taggable.create(
-  taggings: julius,
+Favorite.create(
+  user: julius,
   tag: republic
 )
 
-Taggable.create(
-  taggings: julius,
+Favorite.create(
+  user: julius,
   tag: army
 )
 
-
-Taggable.create(
-  taggings: cato,
+Favorite.create(
+  user: cato,
   tag: republic
 )
 
 
-Taggable.create(
-  taggings: cato,
+Favorite.create(
+  user: cato,
   tag: army
 )

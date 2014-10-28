@@ -1,4 +1,16 @@
 <h1>Tag: <%=h @tag.name %></h1>
+<% if is_logged_in? && !current_user.favorite_tags.include?(@tag) %>
+  <form action="<%= tag_favorite_url(@tag) %>" method="post">
+    <%= autho_token %>
+    <input type="submit" value="add favoite">
+  </form>
+<% elsif is_logged_in? %>
+  <form action="<%= tag_favorite_url(@tag) %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <%= autho_token %>
+    <input type="submit" value="remove favorite">
+  </form>
+<% end %>
 <p>
   <%=h @tag.description %>
 </p>

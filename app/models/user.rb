@@ -8,9 +8,14 @@ class User < ActiveRecord::Base
   has_many :questions, inverse_of: :user
   has_many :answers, inverse_of: :user
   has_many :received_answers, through: :questions, source: :answers
-  has_many :favorite_taggings, as: :taggings, class_name: "Taggable"
-  has_many :favorite_tags, through: :favorite_taggings, source: :tag
-
+  has_many :favorites, inverse_of: :user
+  has_many :favorite_tags, through: :favorites, source: :tag
+  has_many :favorite_taggables, through: :favorite_tags, source: :taggables
+  has_many :favorite_tag_questions,
+      -> { uniq },
+      through: :favorite_taggables,
+      source: :taggings,
+      source_type: "Question"
 
   attr_reader :password
 

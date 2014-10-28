@@ -3,5 +3,6 @@ class Tag < ActiveRecord::Base
 
   has_many :taggables
   has_many :questions, through: :taggables, source: :tagging
-  has_many :favorited_users, through: :taggables, source: :tagging
+  has_many :favorites, inverse_of: :tag
+
 end

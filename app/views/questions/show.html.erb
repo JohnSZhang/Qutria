@@ -6,7 +6,8 @@
   by: <a href="<%= user_url(@question.user) %>"><%=h @question.user.username %></a>
 </p>
 <p>
-  Tags:
+  <span>Tags:</span>
+  <br>
   <% @question.tags.each do |tag| %>
     <a href="<%= tag_url(tag) %>"><%= tag.name %></a>
     <form action="<%= tag_url(tag) %>" method="post">
