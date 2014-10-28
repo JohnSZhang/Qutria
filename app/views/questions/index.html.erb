@@ -1,7 +1,7 @@
 <h1>All Question</h1>
 <ul>
 <% @questions.each do |question| %>
-  <li><a href="<%= question_url(question) %>"><%= question.title %></a></li>
+  <li><a href="<%= question_url(question) %>"><%=h question.title %></a></li>
   <form action="<%= question_url(question) %>" method="post">
     <%= autho_token %>
     <input type="hidden" name="_method" value="delete">

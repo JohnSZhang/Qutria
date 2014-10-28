@@ -1,0 +1,8 @@
+<h1>Edit Answer</h1>
+<form action="<%= answer_url(@answer) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= autho_token %>
+  <label for="body">body</label>
+  <textarea name="answer[body]" id="body"><%= @answer.body %></textarea>
+  <input type="submit" name="submit" value="Update Answer">
+</form>

@@ -1,7 +1,7 @@
 <h1>All Users</h1>
 <ul>
 <% @users.each do |user| %>
-  <li><a href="<%= user_url(user) %>"><%= user.username %></a></li>
+  <li><a href="<%= user_url(user) %>"><%=h user.username %></a></li>
   <form action="<%= user_url(user) %>" method="post">
     <%= autho_token %>
     <input type="hidden" name="_method" value="delete">

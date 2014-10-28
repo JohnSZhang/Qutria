@@ -31,7 +31,8 @@ julius.questions.create(
 julius.questions.create(
   title: "What happened to Crassus?",
   body: "One day he was busy running his fire trucks and blackmailing people,
-    next day hes gone away marching into the dessert thinking hes a real general."
+    next day hes gone away marching into the dessert thinking hes a real general.
+    Hope he's okay though!"
 )
 
 julius.questions.create(

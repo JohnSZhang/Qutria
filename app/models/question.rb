@@ -3,5 +3,6 @@ class Question < ActiveRecord::Base
   validates :title, uniqueness: true
 
   belongs_to :user, inverse_of: :questions
+  has_many :answers, inverse_of: :question
 
 end
