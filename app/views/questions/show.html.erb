@@ -1,0 +1,9 @@
+<h1><%= @question.title %></h1>
+<p>
+  <%= @question.body %>
+</p>
+<p>
+  by: <a href="<%= user_url(@question.user) %>"><%= @question.user.username %></a>
+</p>
+<a href="<%= edit_question_url(@question) %>">edit question</a>
+<a href="<%= questions_url %>">see all question</a>

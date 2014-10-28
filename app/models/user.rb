@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   before_save :ensure_session_token
 
+  has_many :questions, inverse_of: :user
+
   attr_reader :password
 
   def self.generate_new_token

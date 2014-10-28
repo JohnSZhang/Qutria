@@ -1,0 +1,12 @@
+<% button_text = question.persisted? ? "Update Question" : "Ask Question"  %>
+<% action = question.persisted? ? question_url(question) : questions_url   %>
+<% method = question.persisted? ?  "PATCH" : "POST" %>
+<form action="<%= action %>" method="post">
+  <%= autho_token %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <label for="title">title</label>
+  <input type="text" id="title" name="question[title]" value="<%= question.title %>">
+  <label for="question"></label>
+  <textarea id="question" name="question[body]"><%= question.body %></textarea>
+  <input type="submit" name="submit" value="<%= button_text %>">
+</form>
