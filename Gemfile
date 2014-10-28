@@ -41,6 +41,9 @@ gem 'bcrypt', '~> 3.1.7'
 #User PG for develpoment
 gem 'pg'
 
+#For Deployment On Heroku
+gem 'newrelic_rpm'
+
 #Use better debug tools for development
 group :development do
   gem 'better_errors'
