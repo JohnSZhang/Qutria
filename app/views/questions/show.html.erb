@@ -1,6 +1,20 @@
 <h1>Question: <%=h @question.title %></h1>
 <p>
+  <strong>votes: <%= @question.votes.count %></strong>
   <%=h @question.body %>
+  <form action="<%= votes_url %>" method="post">
+    <%= autho_token %>
+    <input type="hidden" name="vote[id]" value="<%= @question.id %>">
+    <input type="hidden" name="vote[type]" value="Question">
+    <input type="submit" value="upvote!">
+  </form>
+  <form action="<%= votes_url %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <%= autho_token %>
+    <input type="hidden" name="vote[id]" value="<%= @question.id %>">
+    <input type="hidden" name="vote[type]" value="Question">
+    <input type="submit" value="down vote!">
+  </form>
 </p>
   <% if @question.comments.length > 0 %>
     <strong>comments: </strong>
@@ -46,7 +60,21 @@
 <% @question.answers.each do |answer| %>
   <p>
     Answer:
+    <strong>votes: <%= answer.votes.count %></strong>
     <%= answer.body %>
+    <form action="<%= votes_url %>" method="post">
+      <%= autho_token %>
+      <input type="hidden" name="vote[id]" value="<%= answer.id %>">
+      <input type="hidden" name="vote[type]" value="Answer">
+      <input type="submit" value="upvote!">
+    </form>
+    <form action="<%= votes_url %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <%= autho_token %>
+      <input type="hidden" name="vote[id]" value="<%= answer.id %>">
+      <input type="hidden" name="vote[type]" value="Question">
+      <input type="submit" value="down vote!">
+    </form>
     <%= render "comments/form", object: answer %>
     <% if answer.comments.length > 0 %>
       <strong>comments: </strong>

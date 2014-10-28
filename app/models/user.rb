@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
       source: :taggings,
       source_type: "Question"
   has_many :comments
+  has_many :votes
 
   attr_reader :password
 

@@ -5,5 +5,6 @@ class Answer < ActiveRecord::Base
   belongs_to :question, inverse_of: :answers
   has_one :questioner, through: :question, source: :user
   has_many :comments, as: :commentable
+  has_many :votes, as: :votable
 
 end

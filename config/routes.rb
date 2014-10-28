@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resource :favorite, only: [:show]
 
   resources :comments, only: [:create, :edit, :update, :delete]
+  resources :votes, only: [:create]
+  delete "votes", to: "votes#destroy"
 
   root to: "questions#index"
 end

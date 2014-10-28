@@ -7,5 +7,6 @@ class Question < ActiveRecord::Base
   has_many :taggables, as: :taggings
   has_many :tags, through: :taggables, source: :tag
   has_many :comments, as: :commentable
+  has_many :votes, as: :votable
 
 end
