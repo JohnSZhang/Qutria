@@ -9,8 +9,23 @@
   Tags:
   <% @question.tags.each do |tag| %>
     <a href="<%= tag_url(tag) %>"><%= tag.name %></a>
+    <form action="<%= tag_url(tag) %>" method="post">
+      <%= autho_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="untag">
+    </form>
   <% end %>
 </p>
+
+<form action="<%= taggables_url %>" method="post">
+  <%= autho_token %>
+  <input type="hidden" name="_method" value="post">
+  <label for="tag">Add Tag To Question: </label>
+  <input type="text" name="taggable[name]">
+  <input type="hidden" name="taggable[taggingstype]" value="Question">
+  <input type="hidden" name="taggable[taggingsid]" value="<%= @question.id %>">
+  <input type="submit" value="tag it!">
+</form>
 <% @question.answers.each do |answer| %>
   <p>
     Answer:

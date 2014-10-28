@@ -45,6 +45,9 @@ gem 'figaro'
 #For Deployment On Heroku
 gem 'newrelic_rpm'
 
+#For Assets
+gem 'rails_12factor', group: :production
+
 #Use better debug tools for development
 group :development do
   gem 'better_errors'

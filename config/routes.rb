@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   resources :questions
   resources :answers, only: [:destroy, :edit, :update, :create]
   resources :tags, only: [:destroy, :edit, :update, :create, :index, :show]
+  resources :taggables, only: [:create, :destroy]
   root to: "questions#index"
 end
