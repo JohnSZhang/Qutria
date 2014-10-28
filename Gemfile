@@ -39,6 +39,9 @@ gem 'bcrypt', '~> 3.1.7'
 #User PG for develpoment
 gem 'pg'
 
+# To management secret keys
+gem 'figaro'
+
 #For Deployment On Heroku
 gem 'newrelic_rpm'
 
