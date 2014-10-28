@@ -7,7 +7,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     @question = @answer.question
-    if @answer.update(params[:answer[:question_id]])
+    if @answer.update(answer_params)
       redirect_to question_url(@question)
     else
       flash[:msg] = @answer.errors_full_message
@@ -16,12 +16,10 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(params[:answer[:body]])
-    @question = Question.get(params[:answer[:question_id]])
-    @answer.question = @question
+    @answer = Answer.new(answer_params)
     @answer.user = current_user
     if @answer.save
-      redirect_to question_url(@question)
+      redirect_to question_url(@answer.question)
     else
       flash[:msg] = @answer.errors.full_message
       render 'questions/show'
@@ -31,11 +29,16 @@ class AnswersController < ApplicationController
   def destroy
     @answer = Answer.find(params[:id])
     if @answer.destroy
-      redirect_to root_url
+      redirect_to question_url(@answer.question)
     else
       flash[:msg] = @answer.errors_full_message
       redirect_to question_url(@answer.question)
     end
   end
 
+  private
+
+  def answer_params
+    params.require(:answer).permit(:body, :question_id)
+  end
 end

@@ -1,9 +1,34 @@
-<h1><%=h @question.title %></h1>
+<h1>Question: <%=h @question.title %></h1>
 <p>
   <%=h @question.body %>
 </p>
 <p>
   by: <a href="<%= user_url(@question.user) %>"><%=h @question.user.username %></a>
 </p>
+
+<% @question.answers.each do |answer| %>
+  <p>
+    Answer:
+    <%= answer.body %>
+
+    <span>by <a href="<%= user_url(answer.user) %>"><%=h answer.user.username %></a></span>
+    <a href="<%= edit_answer_url(answer) %>"> Edit Answer</a>
+    <form action="<%= answer_url(answer) %>" method="post">
+      <%= autho_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete answer">
+    </form>
+  </p>
+<% end %>
+
 <a href="<%= edit_question_url(@question) %>">edit question</a>
 <a href="<%= questions_url %>">see all question</a>
+<h3>Answer It!</h1>
+<form action="<%= answers_url %>" method="post">
+  <input type="hidden" name="_method" value="post">
+  <%= autho_token %>
+  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+  <label for="body">body</label>
+  <textarea name="answer[body]" id="body"></textarea>
+  <input type="submit" name="submit" value="Answer">
+</form>
