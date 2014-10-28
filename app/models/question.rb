@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :questions
   has_many :answers, inverse_of: :question
-  has_many :taggables, as: :tagging
+  has_many :taggables, as: :taggings
   has_many :tags, through: :taggables, source: :tag
 
 end

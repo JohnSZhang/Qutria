@@ -69,3 +69,35 @@ poetry = Tag.create(
   name: "poetry",
   description: "For the Ovid lovers"
 )
+
+Taggable.create(
+  taggings: march,
+  tag: republic
+)
+
+Taggable.create(
+  taggings: march,
+  tag: army
+)
+
+Taggable.create(
+  taggings: julius,
+  tag: republic
+)
+
+Taggable.create(
+  taggings: julius,
+  tag: army
+)
+
+
+Taggable.create(
+  taggings: cato,
+  tag: republic
+)
+
+
+Taggable.create(
+  taggings: cato,
+  tag: army
+)

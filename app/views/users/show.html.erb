@@ -5,5 +5,11 @@
 <p>
   <%=h @user.created_at %>
 </p>
+<p>
+  Favorite Tags:
+  <% @user.favorite_tags.each do |tag| %>
+    <a href="<%= tag_url(tag) %>"><%= tag.name %></a>
+  <% end %>
+</p>
 <a href="<%= edit_user_url(@user) %>">edit user info</a>
 <a href="<%= users_url %>">see all users</a>

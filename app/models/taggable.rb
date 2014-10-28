@@ -1,6 +1,6 @@
 class Taggable < ActiveRecord::Base
-  validates :taggings_id, :tagging_type, :tag_id, presence: true
+  validates :taggings_id, :taggings_type, :tag_id, presence: true
 
   belongs_to :tag
-  belongs_to :tagging, polymorphic: true
+  belongs_to :taggings, polymorphic: true
 end
