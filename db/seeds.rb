@@ -43,7 +43,7 @@ march = julius.questions.create(
 
 march.answers.create(
   user: cato,
-  body: "I dont know Julius, why dont you find out for yourself? " 
+  body: "I dont know Julius, why dont you find out for yourself? "
 )
 march.answers.create(
   user: julius,
@@ -53,4 +53,19 @@ march.answers.create(
 march.answers.create(
   user: augustus,
   body: "Dont forget to save some providence for me after you take over uncle! "
+)
+
+republic = Tag.create(
+  name: "Republic",
+  description: "All the republic lovers come here"
+)
+
+army = Tag.create(
+  name: "Legions",
+  description: "The foundation of our republic"
+)
+
+poetry = Tag.create(
+  name: "poetry",
+  description: "For the Ovid lovers"
 )

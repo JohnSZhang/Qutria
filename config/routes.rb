@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :new, :destroy]
   resources :questions
   resources :answers, only: [:destroy, :edit, :update, :create]
+  resources :tags, only: [:destroy, :edit, :update, :create, :index, :show]
   root to: "questions#index"
 end

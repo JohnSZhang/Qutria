@@ -1,0 +1,13 @@
+<h1>Tag All The Things!</h1>
+<ul>
+<% @tags.each do |tag| %>
+  <li><a href="<%= tag_url(tag) %>"><%=h tag.name %></a></li>
+  <form action="<%= tag_url(tag) %>" method="post">
+    <%= autho_token %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete tag">
+
+  </form>
+<% end %>
+
+</ul>

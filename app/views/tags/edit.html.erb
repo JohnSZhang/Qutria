@@ -1,0 +1,10 @@
+<h1>Edit Tag</h1>
+<form action="<%= tag_url(@tag) %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <%= autho_token %>
+  <label for="name">Name</label>
+  <input type="text" name="tag[name]" value="<%= @tag.name %>">
+  <label for="description">description</label>
+  <textarea name="tag[description]" id="description"><%= @tag.description %></textarea>
+  <input type="submit" name="submit" value="Update Tag">
+</form>
