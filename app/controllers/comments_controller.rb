@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to request.referrer
     else
-      flash[:msg] = @comment.errors.full_message
+      flash[:msg] = @comment.errors.full_messages
       redirect_to request.referrer
     end
   end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to root_url
     else
-      flash[:msg] = @comment.errors.full_message
+      flash[:msg] = @comment.errors.full_messages
       redirect_to root_url
     end
   end
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       redirect_to root_url
     else
-      flash[:msg] = @comment.errors.full_message
+      flash[:msg] = @comment.errors.full_messages
       redirect_to root_url
     end
   end

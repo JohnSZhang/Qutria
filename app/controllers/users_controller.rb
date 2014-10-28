@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to user_url(@user)
     else
-      flash[:msg] = @user.errors.full_message
+      flash[:msg] = @user.errors.full_messages
       render :new
     end
   end
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_url(@user)
     else
-      flash[:msg] = @user.errors_full_message
+      flash[:msg] = @user.errors_full_messages
       redirect_to user_url(@user)
     end
   end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to users_url
     else
-      flash[:msg] = @user.errors_full_message
+      flash[:msg] = @user.errors_full_messages
       redirect_to user_url(@user)
     end
   end

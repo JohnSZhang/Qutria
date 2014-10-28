@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
     if @favorite.save
       redirect_to tag_url(tag)
     else
-      flash[:msg] = @favorite.errors.full_message
+      flash[:msg] = @favorite.errors.full_messages
       redirect_to tag_url(tag)
     end
   end
@@ -25,7 +25,7 @@ class FavoritesController < ApplicationController
     if @favorite && @favorite.destroy
         redirect_to tag_url(tag)
     else
-        flash[:msg] = @favorite.errors.full_message
+        flash[:msg] = @favorite.errors.full_messages
         redirect_to tag_url(tag)
     end
   end

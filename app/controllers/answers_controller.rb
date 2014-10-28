@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
     if @answer.update(answer_params)
       redirect_to question_url(@question)
     else
-      flash[:msg] = @answer.errors_full_message
+      flash[:msg] = @answer.errors_full_messages
       render :edit
     end
   end
@@ -21,8 +21,8 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to question_url(@answer.question)
     else
-      flash[:msg] = @answer.errors.full_message
-      render 'questions/show'
+      flash[:msg] = @answer.errors.full_messages
+      redirect_to question_url(@answer.question)
     end
   end
 
@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
     if @answer.destroy
       redirect_to question_url(@answer.question)
     else
-      flash[:msg] = @answer.errors_full_message
+      flash[:msg] = @answer.errors_full_messages
       redirect_to question_url(@answer.question)
     end
   end

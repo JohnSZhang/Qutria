@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to tag_url(@tag)
     else
-      flash[:msg] = @tag.errors.full_message
+      flash[:msg] = @tag.errors.full_messages
       render :new
     end
   end
@@ -30,7 +30,7 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to tag_url(@tag)
     else
-      flash[:msg] = @tag.errors_full_message
+      flash[:msg] = @tag.errors_full_messages
       redirect_to tag_url(@tag)
     end
   end
@@ -40,7 +40,7 @@ class TagsController < ApplicationController
     if @quesiton.destroy
       redirect_to tags_url
     else
-      flash[:msg] = @tag.errors_full_message
+      flash[:msg] = @tag.errors_full_messages
       redirect_to tag_url(@tag)
     end
   end

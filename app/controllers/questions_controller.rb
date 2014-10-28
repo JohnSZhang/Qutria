@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to question_url(@question)
     else
-      flash[:msg] = @question.errors.full_message
+      flash[:msg] = @question.errors.full_messages
       render :new
     end
   end
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
     if @question.update(question_params)
       redirect_to question_url(@question)
     else
-      flash[:msg] = @question.errors_full_message
+      flash[:msg] = @question.errors_full_messages
       redirect_to question_url(@question)
     end
   end
@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
     if @quesiton.destroy
       redirect_to questions_url
     else
-      flash[:msg] = @question.errors_full_message
+      flash[:msg] = @question.errors_full_messages
       redirect_to question_url(@question)
     end
   end

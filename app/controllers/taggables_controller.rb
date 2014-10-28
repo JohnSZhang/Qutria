@@ -16,7 +16,7 @@ class TaggablesController < ApplicationController
     if @taggable.save
       redirect_to request.referer
     else
-      flash[:msg] = @taggable.errors.full_message
+      flash[:msg] = @taggable.errors.full_messages
       redirect_to request.referer
     end
   end
@@ -26,7 +26,7 @@ class TaggablesController < ApplicationController
     if @taggable.destroy
       redirect_to request.referer
     else
-      flash[:msg] = @taggable.errors_full_message
+      flash[:msg] = @taggable.errors_full_messages
       redirect_to request.referer
     end
   end
