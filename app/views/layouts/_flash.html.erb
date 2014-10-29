@@ -1,8 +1,14 @@
 <% if flash[:msg] %>
   <div id="flash">
-    <% flash[:msg].each do |msg| %>
+    <% if flash[:msg].is_a?(Array) %>
+      <% flash[:msg].each do |msg| %>
+        <p>
+          <%= msg %>
+        </p>
+      <% end %>
+    <% else %>
       <p>
-        <%= msg %>
+        <%= flash[:msg] %>
       </p>
     <% end %>
   </div>
