@@ -6,14 +6,23 @@ class Api::SessionsController < ApplicationController
       login(@user)
       render template: "api/user"
     else
-      render json: { error: "no such user found!"}
+      render json: '{ "error": "cannot login!"}', status: :unprocessable_entity
     end
   end
 
   def destroy
     self.current_user.reset_session_token
     session[:token] = ''
-    redirect_to root_url
+    render json: '{ "msg": "logged out!"}'
+  end
+
+  def current
+    if is_logged_in?
+      @user = current_user
+      render template: "api/user"
+    else
+      render json: '{ "msg": "not signed in"}'
+    end
   end
 
   private

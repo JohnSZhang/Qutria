@@ -11,7 +11,6 @@ Qutria.Routers.router = Backbone.Router.extend({
     "" : "index"
     , "sign-in" : "signIn"
   }
-
   , index: function () {
     var headerView = new Qutria.Views.Header();
     var footerView = new Qutria.Views.Footer();

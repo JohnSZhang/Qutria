@@ -5,17 +5,17 @@ Qutria.Views.SignIn = Qutria.Views.Composite.extend({
   }
   , signIn: function (event) {
     event.preventDefault()
-    var user = $("#sign-in-form").serializeJSON()
-    var session = new Qutria.Models.Session(user);
-    session.save( {}, {
-      success: function (obj) {
-        console.log(obj.toJSON())
-        Qutria.currentUser = new Qutria.Models.User(obj)
-        console.log(Qutria.currentUser.toJSON())
-      }
-      , error: function (msg) {
-        console.log(msg)
-      }
-    })
+    var user = $("#sign-in-form").serializeJSON();
+    $.ajax({
+        url: "/api/session/"
+        , type: "POST"
+        , data: user
+        , success: function (resp) {
+          Qutria.currentUser.set(resp);
+          Backbone.history.navigate("", { trigger: true})
+        }
+        , error: function (resp) {
+        }
+    });
   }
 })

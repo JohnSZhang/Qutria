@@ -9,6 +9,11 @@
     <li><a href="#">Unanswered</a></li>
     <li><a href="#">User</a></li>
     <li><a href="#">Search</a></li>
-    <li><a href="#/sign-in">Sign-In</a></li>
+    <% if (!!Qutria.currentUser.has("id")) { %>
+      <li><a id="sign-out" href="#">Sign-Out</a></li>
+    <% } else { %>
+      <li><a href="#/sign-in">Sign-In</a></li>
+      <li><a href="#/sign-up">Sign-Up</a></li>
+    <% } %>
   </ul>
 </nav>
