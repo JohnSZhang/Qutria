@@ -42,13 +42,13 @@ class Api::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user != current_user
-      flash[:msg] = ["Thats not you!"]
-      redirect_to root_url
+        render json: "{ 'error': '#{@user.errors.full_messages}'}",
+        status: :unprocessable_entity
     elsif @user.destroy
-      redirect_to users_url
+      render template: "api/user"
     else
-      flash[:msg] = @user.errors.full_messages
-      redirect_to user_url(@user)
+      render json: "{ 'error': '#{@user.errors.full_messages}'}",
+      status: :unprocessable_entity
     end
   end
 

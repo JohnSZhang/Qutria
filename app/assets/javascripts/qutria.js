@@ -18,7 +18,7 @@ window.Qutria = {
           console.log('something went wrong')
         }
     });
-    new this.Routers.router({$rootEl: $rootEl});
+    self.router = new this.Routers.router({$rootEl: $rootEl});
     Backbone.history.start();
   }
 };

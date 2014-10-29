@@ -6,10 +6,12 @@ Qutria.Routers.router = Backbone.Router.extend({
     this.$main = this.$rootEl.find('main');
     this.index();
   }
-
   , routes: {
     "" : "index"
+    , "users" : "users"
     , "sign-in" : "signIn"
+    , "sign-up" : "signUp"
+    , "users/:id" : "userShow"
   }
   , index: function () {
     var headerView = new Qutria.Views.Header();
@@ -21,25 +23,44 @@ Qutria.Routers.router = Backbone.Router.extend({
       , "$main" : mainView
       });
   }
-
   , signIn: function () {
     var view = new Qutria.Views.SignIn();
     this._swapView({
       "$main": view
     });
   }
-
+  , signUp: function () {
+    var view = new Qutria.Views.SignUp();
+    this._swapView({
+      "$main": view
+    });
+  }
+  , userShow: function (id) {
+    var user = new Qutria.Models.User({ id: id });
+    var view = new Qutria.Views.UserShow({ model : user});
+    this._swapView({
+      "$main": view
+    });
+  }
+  , users: function () {
+    var users = new Qutria.Collections.Users();
+    users.fetch();
+    var view = new Qutria.Views.Users({
+      collection: users
+    });
+    this._swapView({
+      "$main": view
+    });
+  }
   , _swapView: function (options) {
     for (var view in options) {
       this._swapSingleView(options[view], view)
     }
   }
-
   , _swapSingleView: function (singleView, element) {
       // Define or add a hidden view for this section, then render
       this["_" + element] && this["_" + element].remove();
       this["_" + element] = singleView;
       this[element].html(singleView.render().$el);
   }
-
 })
