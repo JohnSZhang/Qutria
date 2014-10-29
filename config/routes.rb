@@ -15,5 +15,11 @@ Rails.application.routes.draw do
   resources :votes, only: [:create]
   delete "votes", to: "votes#destroy"
 
-  root to: "questions#index"
+# Backbone App
+  namespace :api do
+    resources :users
+  end
+
+# Switch between rails and backbone here
+  root to: "apps#index"
 end

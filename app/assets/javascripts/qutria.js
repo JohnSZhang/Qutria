@@ -4,7 +4,9 @@ window.Qutria = {
   Views: {},
   Routers: {},
   initialize: function() {
-    
+    var $rootEl = $('body')
+    new this.Routers.router({$rootEl: $rootEl});
+    Backbone.history.start();
   }
 };
 
