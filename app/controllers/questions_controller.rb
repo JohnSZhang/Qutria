@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :require_login, only: [:create, :new, :edit, :update, :destroy]
 
   def index
     @questions = Question.all
@@ -7,12 +8,12 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.includes(:user,
-        :tags,
-        :comments,
-        answers: :user,
-        comments: :user,
-        answers: :comments,
-        answers: { comments: :user }).find(params[:id])
+    :tags,
+    :comments,
+    answers: :user,
+    comments: :user,
+    answers: :comments,
+    answers: { comments: :user }).find(params[:id])
     render :show
   end
 
@@ -34,12 +35,17 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
-    render :edit
+    if check_owner(@question)
+    else
+      render :edit
+    end
   end
 
   def update
     @question = Question.find(params[:id])
-    if @question.update(question_params)
+    if check_owner(@question)
+    elsif
+      @question.update(question_params)
       redirect_to question_url(@question)
     else
       flash[:msg] = @question.errors_full_messages
@@ -49,7 +55,9 @@ class QuestionsController < ApplicationController
 
   def destroy
     @quesiton = Question.find(params[:id])
-    if @quesiton.destroy
+    if check_owner(@question)
+    elsif
+      @quesiton.destroy
       redirect_to questions_url
     else
       flash[:msg] = @question.errors_full_messages

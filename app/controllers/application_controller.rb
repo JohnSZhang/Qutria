@@ -16,6 +16,21 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  helper_method :current_user, :is_logged_in?
+  def require_login
+    redirect_to new_session_url unless is_logged_in?
+  end
+
+  def check_owner(obj)
+    if obj.user != current_user
+      flash[:msg] = [ "You Do Not Own This #{ obj.class.to_s }" ]
+      redirect_to root_url
+    end
+  end
+
+  def is_owner?(obj)
+    obj.user != current_user
+  end
+
+  helper_method :current_user, :is_logged_in?, :is_owner?
 
 end

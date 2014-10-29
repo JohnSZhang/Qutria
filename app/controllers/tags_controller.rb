@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  before_action :require_login, only: [:create, :edit, :update, :destroy]
+
   def index
     @tags = Tag.all
     render :index

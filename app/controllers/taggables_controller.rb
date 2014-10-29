@@ -1,4 +1,5 @@
 class TaggablesController < ApplicationController
+  before_action :require_login
 
   def create
     tag = Taggable.CreateAndTag(taggable_params[:name])

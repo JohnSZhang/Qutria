@@ -1,13 +1,20 @@
 class AnswersController < ApplicationController
+  before_action :require_login
+
   def edit
     @answer = Answer.find(params[:id])
-    render :edit
+    if check_owner(@answer)
+    else
+      render :edit
+    end
   end
 
   def update
     @answer = Answer.find(params[:id])
     @question = @answer.question
-    if @answer.update(answer_params)
+    if check_owner(@answer)
+    elsif
+      @answer.update(answer_params)
       redirect_to question_url(@question)
     else
       flash[:msg] = @answer.errors_full_messages
@@ -28,7 +35,9 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer = Answer.find(params[:id])
-    if @answer.destroy
+    if check_owner(@answer)
+    elsif
+      @answer.destroy
       redirect_to question_url(@answer.question)
     else
       flash[:msg] = @answer.errors_full_messages

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login
 
   def create
     @comment = Comment.new(comment_params)
@@ -13,12 +14,17 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
-    render :edit
+    if check_owner(@comment)
+    else
+      render :edit
+    end
   end
 
   def update
     @comment = Comment.find(params[:id])
-    if @comment.update(comment_params)
+    if check_owner(@comment)
+    elsif
+      @comment.update(comment_params)
       redirect_to root_url
     else
       flash[:msg] = @comment.errors.full_messages
@@ -28,7 +34,8 @@ class CommentsController < ApplicationController
 
   def delete
     @comment = Comment.find(params[:id])
-    if @comment.destroy
+    if check_owner(@comment)
+    elsif @comment.destroy
       redirect_to root_url
     else
       flash[:msg] = @comment.errors.full_messages
