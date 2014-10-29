@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :taggables, only: [:create, :destroy]
   resource :favorite, only: [:show]
 
-  resources :comments, only: [:create, :edit, :update, :delete]
+  resources :comments, only: [:create, :edit, :update, :destroy]
   resources :votes, only: [:create]
   delete "votes", to: "votes#destroy"
 

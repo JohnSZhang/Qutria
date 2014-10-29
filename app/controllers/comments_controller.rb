@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @comment = Comment.find(params[:id])
     if check_owner(@comment)
     elsif @comment.destroy

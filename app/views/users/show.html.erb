@@ -11,6 +11,8 @@
     <a href="<%= tag_url(tag) %>"><%= tag.name %></a>
   <% end %>
 </p>
-<a href="<%= favorite_url %>">checkout questions about your favorite tags</a>
-<a href="<%= edit_user_url(@user) %>">edit user info</a>
+<% if is_logged_in? && current_user == @user %>
+  <a href="<%= favorite_url %>">checkout favorite tag questions</a>
+  <a href="<%= edit_user_url(@user) %>">edit user info</a>
+<% end %>
 <a href="<%= users_url %>">see all users</a>

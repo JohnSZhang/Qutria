@@ -2,19 +2,21 @@
 <p>
   <strong>votes: <%= @question.votes.count %></strong>
   <%=h @question.body %>
-  <form action="<%= votes_url %>" method="post">
-    <%= autho_token %>
-    <input type="hidden" name="vote[id]" value="<%= @question.id %>">
-    <input type="hidden" name="vote[type]" value="Question">
-    <input type="submit" value="upvote!">
-  </form>
-  <form action="<%= votes_url %>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <%= autho_token %>
-    <input type="hidden" name="vote[id]" value="<%= @question.id %>">
-    <input type="hidden" name="vote[type]" value="Question">
-    <input type="submit" value="down vote!">
-  </form>
+  <% if is_logged_in? %>
+    <form action="<%= votes_url %>" method="post">
+      <%= autho_token %>
+      <input type="hidden" name="vote[id]" value="<%= @question.id %>">
+      <input type="hidden" name="vote[type]" value="Question">
+      <input type="submit" value="upvote!">
+    </form>
+    <form action="<%= votes_url %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <%= autho_token %>
+      <input type="hidden" name="vote[id]" value="<%= @question.id %>">
+      <input type="hidden" name="vote[type]" value="Question">
+      <input type="submit" value="down vote!">
+    </form>
+  <% end %>
 </p>
   <% if @question.comments.length > 0 %>
     <strong>comments: </strong>
@@ -23,15 +25,20 @@
     <p>
       <%= comment.body %>
       <span>by <%= comment.user.username %></span>
-      <a href="<%= edit_comment_url(comment) %>">edit comment</a>
-      <form action="<%= comment_url(comment) %>" method="post">
-        <%= autho_token %>
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="delete comment">
-      </form>
+
+      <% if is_logged_in? && current_user == @question.user%>
+        <a href="<%= edit_comment_url(comment) %>">edit comment</a>
+        <form action="<%= comment_url(comment) %>" method="post">
+          <%= autho_token %>
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="delete comment">
+        </form>
+      <% end %>
     </p>
   <% end %>
-  <%= render "comments/form", object: @question %>
+  <% if is_logged_in? %>
+    <%= render "comments/form", object: @question %>
+  <% end %>
 <p>
   by: <a href="<%= user_url(@question.user) %>"><%=h @question.user.username %></a>
 </p>
@@ -40,41 +47,46 @@
   <br>
   <% @question.tags.each do |tag| %>
     <a href="<%= tag_url(tag) %>"><%= tag.name %></a>
-    <form action="<%= tag_url(tag) %>" method="post">
-      <%= autho_token %>
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="untag">
-    </form>
+    <% if is_logged_in? %>
+      <form action="<%= tag_url(tag) %>" method="post">
+        <%= autho_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="untag">
+      </form>
+    <% end %>
   <% end %>
 </p>
-
-<form action="<%= taggables_url %>" method="post">
-  <%= autho_token %>
-  <input type="hidden" name="_method" value="post">
-  <label for="tag">Add Tag To Question: </label>
-  <input type="text" name="taggable[name]">
-  <input type="hidden" name="taggable[taggingstype]" value="Question">
-  <input type="hidden" name="taggable[taggingsid]" value="<%= @question.id %>">
-  <input type="submit" value="tag it!">
-</form>
+<% if is_logged_in? %>
+  <form action="<%= taggables_url %>" method="post">
+    <%= autho_token %>
+    <input type="hidden" name="_method" value="post">
+    <label for="tag">Add Tag To Question: </label>
+    <input type="text" name="taggable[name]">
+    <input type="hidden" name="taggable[taggingstype]" value="Question">
+    <input type="hidden" name="taggable[taggingsid]" value="<%= @question.id %>">
+    <input type="submit" value="tag it!">
+  </form>
+<% end %>
 <% @question.answers.each do |answer| %>
   <p>
     Answer:
     <strong>votes: <%= answer.votes.count %></strong>
     <%= answer.body %>
-    <form action="<%= votes_url %>" method="post">
-      <%= autho_token %>
-      <input type="hidden" name="vote[id]" value="<%= answer.id %>">
-      <input type="hidden" name="vote[type]" value="Answer">
-      <input type="submit" value="upvote!">
-    </form>
-    <form action="<%= votes_url %>" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <%= autho_token %>
-      <input type="hidden" name="vote[id]" value="<%= answer.id %>">
-      <input type="hidden" name="vote[type]" value="Question">
-      <input type="submit" value="down vote!">
-    </form>
+    <% if is_logged_in? %>
+      <form action="<%= votes_url %>" method="post">
+        <%= autho_token %>
+        <input type="hidden" name="vote[id]" value="<%= answer.id %>">
+        <input type="hidden" name="vote[type]" value="Answer">
+        <input type="submit" value="upvote!">
+      </form>
+      <form action="<%= votes_url %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <%= autho_token %>
+        <input type="hidden" name="vote[id]" value="<%= answer.id %>">
+        <input type="hidden" name="vote[type]" value="Question">
+        <input type="submit" value="down vote!">
+      </form>
+    <% end %>
     <%= render "comments/form", object: answer %>
     <% if answer.comments.length > 0 %>
       <strong>comments: </strong>
@@ -83,34 +95,42 @@
       <p>
         <%= comment.body %>
         <span>by <%= comment.user.username %></span>
-        <a href="<%= edit_comment_url(comment) %>">edit comment</a>
-        <form action="<%= comment_url(comment) %>" method="post">
-          <%= autho_token %>
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="delete comment">
-        </form>
+        <% if is_logged_in? && current_user = comment.user %>
+          <a href="<%= edit_comment_url(comment) %>">edit comment</a>
+          <form action="<%= comment_url(comment) %>" method="post">
+            <%= autho_token %>
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete comment">
+          </form>
+        <% end %>
       </p>
       <%= render "comments/form", object: comment %>
     <% end %>
 
     <span>by <a href="<%= user_url(answer.user) %>"><%=h answer.user.username %></a></span>
-    <a href="<%= edit_answer_url(answer) %>"> Edit Answer</a>
-    <form action="<%= answer_url(answer) %>" method="post">
-      <%= autho_token %>
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="delete answer">
-    </form>
+    <% if is_logged_in? && current_user == answer.user %>
+      <a href="<%= edit_answer_url(answer) %>"> Edit Answer</a>
+      <form action="<%= answer_url(answer) %>" method="post">
+        <%= autho_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete answer">
+      </form>
+    <% end %>
   </p>
 <% end %>
+<% if is_logged_in? && current_user == @question.user %>
+  <a href="<%= edit_question_url(@question) %>">edit question</a>
+<% end %>
 
-<a href="<%= edit_question_url(@question) %>">edit question</a>
 <a href="<%= questions_url %>">see all question</a>
-<h3>Answer It!</h1>
-<form action="<%= answers_url %>" method="post">
-  <input type="hidden" name="_method" value="post">
-  <%= autho_token %>
-  <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
-  <label for="body">body</label>
-  <textarea name="answer[body]" id="body"></textarea>
-  <input type="submit" name="submit" value="Answer">
-</form>
+<% if is_logged_in? %>
+  <h3>Answer It!</h1>
+  <form action="<%= answers_url %>" method="post">
+    <input type="hidden" name="_method" value="post">
+    <%= autho_token %>
+    <input type="hidden" name="answer[question_id]" value="<%= @question.id %>">
+    <label for="body">body</label>
+    <textarea name="answer[body]" id="body"></textarea>
+    <input type="submit" name="submit" value="Answer">
+  </form>
+<% end %>

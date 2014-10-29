@@ -14,9 +14,10 @@
 <p>
   <%=h @tag.description %>
 </p>
-
-<a href="<%= edit_tag_url(@tag) %>">edit tag</a>
-<a href="<%= tags_url %>">see all tags</a>
+<% if is_logged_in? %>
+  <a href="<%= edit_tag_url(@tag) %>">edit tag</a>
+  <a href="<%= tags_url %>">see all tags</a>
+<% end %>
 
 <h2>Questions for <%=h @tag.name %></h2>
 

@@ -2,12 +2,13 @@
 <ul>
 <% @users.each do |user| %>
   <li><a href="<%= user_url(user) %>"><%=h user.username %></a></li>
-  <form action="<%= user_url(user) %>" method="post">
-    <%= autho_token %>
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="delete user">
-
-  </form>
+  <% if is_logged_in? && current_user == user %>
+    <form action="<%= user_url(user) %>" method="post">
+      <%= autho_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="delete user">
+    </form>
+  <% end %>
 <% end %>
 
 </ul>
