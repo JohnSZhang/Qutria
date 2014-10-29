@@ -13,8 +13,8 @@ Qutria.Routers.router = Backbone.Router.extend({
   }
 
   , index: function () {
-    var headerView = new Qutria.Views.StaticHeader();
-    var footerView = new Qutria.Views.StaticFooter();
+    var headerView = new Qutria.Views.Header();
+    var footerView = new Qutria.Views.Footer();
     var mainView = new Qutria.Views.StaticBody();
     this._swapView({
       "$header": headerView
