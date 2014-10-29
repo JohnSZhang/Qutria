@@ -4,12 +4,12 @@ Qutria.Routers.router = Backbone.Router.extend({
     this.$header = this.$rootEl.find('header');
     this.$footer = this.$rootEl.find('footer');
     this.$main = this.$rootEl.find('main');
+    this.index();
   }
 
   , routes: {
     "" : "index"
-    , "users": "users"
-    , "signup" : "signup"
+    , "sign-in" : "signIn"
   }
 
   , index: function () {
@@ -23,9 +23,11 @@ Qutria.Routers.router = Backbone.Router.extend({
       });
   }
 
-  , users: function () {
-    var view = new Qutria.Views.User();
-    this._swapView(view);
+  , signIn: function () {
+    var view = new Qutria.Views.SignIn();
+    this._swapView({
+      "$main": view
+    });
   }
 
   , _swapView: function (options) {

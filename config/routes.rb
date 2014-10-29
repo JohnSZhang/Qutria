@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
 # Backbone App
   namespace :api do
-    resources :users
+    resource :session, only: [:create, :destroy]
   end
 
 # Switch between rails and backbone here
