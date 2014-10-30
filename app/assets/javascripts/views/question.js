@@ -39,7 +39,8 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     var newAnswer = new Qutria.Models.Answer(data);
     newAnswer.save({}, {
       success: function (obj) {
-        self.model.answers.add(newAnswer)
+        self.model.answers.add(newAnswer);
+        self.render();
       }
     });
   }

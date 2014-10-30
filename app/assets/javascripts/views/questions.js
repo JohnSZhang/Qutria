@@ -17,10 +17,8 @@ Qutria.Views.Questions = Backbone.View.extend({
     newQuestion.save({}, {
       success: function () {
         self.collection.add(newQuestion)
-        Backbone.history.navigate("questions", { trigger :true })
       }
       , error: function () {
-
       }
     })
   }

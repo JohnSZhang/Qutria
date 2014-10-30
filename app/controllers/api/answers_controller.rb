@@ -22,8 +22,8 @@ class Api::AnswersController < Api::ApplicationController
       @answer.update(answer_params)
       render template: "api/answer"
     else
-      flash[:msg] = @answer.errors_full_messages
-      render :edit
+      render json: "{ 'error': '#{@answer.errors.full_messages}'}",
+      status: :unprocessable_entity
     end
   end
 
@@ -36,8 +36,8 @@ class Api::AnswersController < Api::ApplicationController
       @answer.destroy
       render template: "api/answer"
     else
-      flash[:msg] = @answer.errors_full_messages
-      redirect_to question_url(@answer.question)
+      render json: "{ 'error': '#{@answer.errors.full_messages}'}",
+      status: :unprocessable_entity
     end
   end
 

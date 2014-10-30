@@ -5,8 +5,9 @@
 </p>
 <% if (Qutria.currentUser &&
   Qutria.currentUser.get('id') == answer.get('user_id')) { %>
-    <form class="edit-answer" data-id='<%= answer.get('id') %>' >
+    <form class="edit-answer" >
       <textarea name="answer[body]"><%= answer.get('body') %></textarea>
       <button class="edit-answer"> Edit Your Answer </button>
     </form>
+    <a class="delete-answer" href="#">Delete Your Answer</a>
 <% } %>
