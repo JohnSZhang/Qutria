@@ -15,6 +15,9 @@ class Api::QuestionsController < Api::ApplicationController
     answers: :comments,
     answers: { comments: :user }).find(params[:id])
     render template: "api/question"
+    # render json: @question.to_json(
+    #   include: [:answers, :comments, :tags]
+    # )
   end
 
   def create

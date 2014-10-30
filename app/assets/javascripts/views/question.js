@@ -44,6 +44,7 @@ Qutria.Views.Question = Backbone.View.extend({
     });
   }
   , render: function () {
+    console.log(this.model)
     this.$el.html(this.template({ question: this.model }));
     return this;
   }
