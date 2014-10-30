@@ -4,10 +4,13 @@
 <nav>
   <ul>
     <li><a href="#/questions">Questions</a></li>
-    <li><a href="#/tags">Tags</a></li>
+    <li><a href="#/tags">All Tags</a></li>
     <li><a href="#/users">Users</a></li>
     <li><a href="#">Unanswered</a></li>
     <li><a href="#">User</a></li>
+    <% if (!!Qutria.currentUser.has("id")) { %>
+      <li><a href="#/favorites">Favorite Tags</a></li>
+    <% } %>
     <li><a href="#">Search</a></li>
     <% if (!!Qutria.currentUser.has("id")) { %>
       <li><a id="sign-out" href="#">Sign-Out</a></li>

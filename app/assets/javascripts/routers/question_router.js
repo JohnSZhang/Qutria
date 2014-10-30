@@ -6,6 +6,7 @@ Qutria.Routers.Question = Backbone.Router.extend({
   , routes: {
     "questions" : "questions"
     , "questions/:id" : "question"
+    , "favorites" : "favorites"
   }
   , questions: function () {
     var questions = new Qutria.Collections.Questions();
@@ -17,6 +18,13 @@ Qutria.Routers.Question = Backbone.Router.extend({
   , question: function (id) {
     var question = new Qutria.Models.Question({ id :id });
     var view = new Qutria.Views.Question({ model: question });
+    this._swapView({
+      "$main": view
+    });
+  }
+  , favorites: function () {
+    var favorite = new Qutria.Models.Favorite();
+    var view = new Qutria.Views.Favorites({ model: favorite})
     this._swapView({
       "$main": view
     });
