@@ -5,5 +5,6 @@ Qutria.Models.Tag = Backbone.Model.extend({
       this.questions = new Qutria.Collections.Questions(resp.questions);
       delete resp.questions;
     }
+    return resp
   }
 })

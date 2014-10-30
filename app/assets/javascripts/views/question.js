@@ -54,8 +54,12 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
       })
     }
     if(this.model.tags) {
+      var self = this;
       this.model.tags.each(function (tag) {
-        var view = new Qutria.Views.Tag({ model: tag })
+        var view = new Qutria.Views.Tag({
+          model: tag
+          , taggings: self.model
+          , taggings_type: "Question"})
         self.add_subview("div.question-tags", view)
       })
     }
