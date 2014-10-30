@@ -5,10 +5,18 @@ Qutria.Routers.Question = Backbone.Router.extend({
   }
   , routes: {
     "questions" : "questions"
+    , "questions/:id" : "question"
   }
   , questions: function () {
     var questions = new Qutria.Collections.Questions();
-    var view = new Qutria.Views.Questions({ collection: questions});
+    var view = new Qutria.Views.Questions({ collection: questions });
+    this._swapView({
+      "$main": view
+    });
+  }
+  , question: function (id) {
+    var question = new Qutria.Models.Question({ id :id });
+    var view = new Qutria.Views.Question({ model: question });
     this._swapView({
       "$main": view
     });

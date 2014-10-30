@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy] do
       get "current", to: "sessions#current"
     end
-    resources :users
+    resources :users, only: [:create, :destroy, :index, :show, :update]
+    resources :questions, only: [:create, :show, :index, :update, :destroy]
   end
 
 # Switch between rails and backbone here
