@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     resources :questions, only: [:create, :show, :index, :update, :destroy]
     resources :answers, only: [:create, :destroy, :update, :show]
     resources :comments, only: [:create, :destroy, :update]
+    resources :tags, only: [:destroy, :edit, :update, :create, :index, :show] do
+      resource :favorite, only: [:create, :destroy]
+    end
   end
 
 # Switch between rails and backbone here

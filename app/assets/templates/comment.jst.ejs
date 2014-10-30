@@ -2,7 +2,7 @@
   <%= comment.get('body') %>
   <div class="author"></div>
 </p>
-<% if (Qutria.currentUser &&
+<% if (Qutria.currentUser.get('id') &&
   Qutria.currentUser.get('id') == comment.get('user_id')) { %>
     <form class="edit-comment" >
       <textarea name="comment[body]"><%= comment.get('body') %></textarea>

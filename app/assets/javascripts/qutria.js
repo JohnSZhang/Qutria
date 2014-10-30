@@ -20,6 +20,7 @@ window.Qutria = {
     });
     self.router = new this.Routers.router({$rootEl: $rootEl});
     self.question_router = new this.Routers.Question({$rootEl: $rootEl});
+    self.tag_router = new Qutria.Routers.Tag({$rootEl: $rootEl})
     Backbone.history.start();
   }
 };

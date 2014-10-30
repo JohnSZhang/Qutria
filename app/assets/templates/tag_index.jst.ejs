@@ -1,0 +1,8 @@
+<% tags.each(function (tag) { %>
+  <p>
+    <a href="#/tags/<%= tag.get('id')%>"><%= tag.get('name') %></a>
+    <%= tag.get('description') %>
+  </p>
+
+<% }) %>
+<div class="new-tag"></div>
