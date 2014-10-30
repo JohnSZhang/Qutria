@@ -1,1 +1,41 @@
 <h1>Question!!!</h1>
+<div>
+  <strong><%= question.get('title') %></strong>
+  <p>
+    <%= question.get('body') %>
+  </p>
+</div>
+<% if (Qutria.currentUser &&
+      Qutria.currentUser.get('id') == question.get('user_id')) { %>
+  <form id="edit-form">
+    <input type="text" name="question[title]"
+      value='<%= question.get("title") %>' >
+      <textarea name="question[body]"><%= question.get('body') %>
+      </textarea>
+      <button id="update-question"> Update Question </button>
+  </form>
+  <button id="delete-question"> Delete Question </button>
+<% } %>
+<ul>
+  <% if (question.get('tags')) { %>
+    <%question.get('tags').forEach(function (tag) { %>
+      <p>
+        <%= tag.name %>
+      </p>
+    <% }) %>
+  <% } %>
+</ul>
+<% if (question.get('comments')) { %>
+  <%question.get('comments').forEach(function (comment) { %>
+    <p>
+      <%= comment.body %>
+    </p>
+  <% }) %>
+<% } %>
+<% if (question.get('answers')) { %>
+  <%question.get('answers').forEach(function (answer) { %>
+    <p>
+      <%= answer.body %>
+    </p>
+  <% }) %>
+<% } %>

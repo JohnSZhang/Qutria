@@ -1,5 +1,5 @@
-class Api::QuestionsController < ApplicationController
-  before_action :require_login, only: [:create, :new, :edit, :update, :destroy]
+class Api::QuestionsController < Api::ApplicationController
+  before_action :require_login, only: [:create, :update, :destroy]
 
   def index
     @questions = Question.all
@@ -21,34 +21,39 @@ class Api::QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user = current_user
     if @question.save
-      redirect_to question_url(@question)
+        render template: "api/question"
     else
-      flash[:msg] = @question.errors.full_messages
-      render :new
+      render json: "{ 'error': 'Cannot Create User'}",
+        status: :unprocessable_entity
     end
   end
 
   def update
     @question = Question.find(params[:id])
-    if check_owner(@question)
+    if not_owner?(@question)
+      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+        status: :unprocessable_entity
     elsif
       @question.update(question_params)
-      redirect_to question_url(@question)
+      render template: "api/question"
     else
-      flash[:msg] = @question.errors_full_messages
-      redirect_to question_url(@question)
+      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+        status: :unprocessable_entity
     end
   end
 
   def destroy
-    @quesiton = Question.find(params[:id])
-    if check_owner(@question)
-    elsif
-      @quesiton.destroy
-      redirect_to questions_url
+    @question = Question.find(params[:id])
+    if not_owner?(@question)
+      puts "not owner!"
+      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+        status: :unprocessable_entity
+    elsif @question.destroy
+      render template: "api/question"
     else
-      flash[:msg] = @question.errors_full_messages
-      redirect_to question_url(@question)
+      puts "cannot delete!"
+      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+        status: :unprocessable_entity
     end
   end
 

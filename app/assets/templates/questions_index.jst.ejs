@@ -4,3 +4,11 @@
     <a href="#/questions/<%= question.get('id') %>"><%= question.get('title') %></a>
   </p>
 <% }) %>
+<% if (Qutria.currentUser.get('id')) { %>
+  <form id="new-question-form">
+    <input type="text" name="question[title]"
+      value='' >
+      <textarea name="question[body]"></textarea>
+      <button id="new-question"> Ask A Question </button>
+  </form>
+<% } %>

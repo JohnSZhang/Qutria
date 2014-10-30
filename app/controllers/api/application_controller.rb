@@ -17,7 +17,8 @@ class Api::ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to new_session_url unless is_logged_in?
+    render json: "{ 'error': 'you must be logged in!'}",
+      status: :unprocessable_entity unless current_user
   end
 
   def check_owner(obj)
@@ -28,6 +29,10 @@ class Api::ApplicationController < ActionController::Base
   end
 
   def is_owner?(obj)
+    obj.user == current_user
+  end
+
+  def not_owner?(obj)
     obj.user != current_user
   end
 
