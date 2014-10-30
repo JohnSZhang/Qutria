@@ -1,6 +1,15 @@
 <p>
   <%= tag.get('name') %>
   <%= tag.get('description') %>
+  <% if (Qutria.currentUser.get('id')) {%>
+    <button id="favorite-toggle">
+      <% if (tag.get('favorite')) { %>
+        unfavorite
+      <% } else { %>
+        favorite
+      <% } %>
+      </button>
+  <% } %>
 </p>
 <div class="tag-edit"></div>
 <div class="tag-questions"></div>

@@ -19,8 +19,15 @@ class Api::TagsController < Api::ApplicationController
     # @tag = Tag.includes(:questions, questions: :user).find(params[:id])
 
     @tag = Tag.find(params[:id])
+    if is_logged_in? && @tag
+      @favorite = Favorite.find_by(
+          user: current_user,
+          tag: @tag
+      )
+      puts @favorite
+    end
     if @tag
-      render template: "api/tag"
+      puts render template: "api/tag"
     else
       render json: "{ 'error': 'That tag does not exist'",
       status: :not_found

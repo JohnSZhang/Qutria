@@ -24,7 +24,6 @@ Qutria.Views.Tag = Qutria.Views.Composite.extend({
       , error: function (resp) {
       }
     });
-
   }
   , render: function () {
     var self = this;

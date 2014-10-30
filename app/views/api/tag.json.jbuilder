@@ -10,3 +10,8 @@ json.questions @tag.questions do |question|
     json.username question.user.username
   end
 end
+if @favorite && @favorite.persisted?
+  json.favorite true
+else
+  json.favorite false
+end
