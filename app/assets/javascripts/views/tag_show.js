@@ -17,6 +17,7 @@ Qutria.Views.TagShow = Qutria.Views.Composite.extend({
         , cache: false
         , success: function (resp) {
           self.model.fetch();
+          Qutria.global.trigger('tagging');
         }
         , error: function (resp) {
         }
@@ -28,6 +29,7 @@ Qutria.Views.TagShow = Qutria.Views.Composite.extend({
         , cache: false
         , success: function (resp) {
           self.model.fetch();
+          Qutria.global.trigger('tagging');
         }
         , error: function (resp) {
         }
@@ -41,7 +43,7 @@ Qutria.Views.TagShow = Qutria.Views.Composite.extend({
       var view = new Qutria.Views.TagEdit({ model: this.model })
       self.add_subview("div.tag-edit", view)
     }
-    if (this.model.questions) {
+    if (this.model.questions && !this.collection) {
       this.model.questions.each(function (question) {
         var view = new Qutria.Views.QuestionSingle({ model: question })
         self.add_subview("div.tag-questions", view)

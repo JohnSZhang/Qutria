@@ -1,10 +1,11 @@
 Qutria.Views.Favorites = Qutria.Views.Composite.extend({
   initialize: function () {
+    var self = this;
     this.listenTo(this.model, "sync change destroy", this.render);
+    this.listenTo(Qutria.global, "tagging", function () {
+      self.model.fetch();
+    })
     this.model.fetch();
-  }
-  , events: {
-
   }
   , template: JST['favorite_questions']
   , render: function () {
@@ -12,7 +13,9 @@ Qutria.Views.Favorites = Qutria.Views.Composite.extend({
     this.$el.html(this.template({ favorites: self.model }));
     if (this.model.favorite_tags) {
       this.model.favorite_tags.each(function (tag) {
-        var view = new Qutria.Views.TagShow({model : tag})
+        var view = new Qutria.Views.TagShow({
+          model : tag,
+          collection: self.model.favorite_tags})
         self.add_subview(".tags", view)
       })
     }
