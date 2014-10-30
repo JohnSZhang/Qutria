@@ -7,8 +7,8 @@ class Api::AnswersController < Api::ApplicationController
     if @answer.save
       render template: "api/answer"
     else
-      flash[:msg] = @answer.errors.full_messages
-      redirect_to question_url(@answer.question)
+      render json: "{ 'error': '#{@answer.errors.full_messages}'}",
+        status: :unprocessable_entity
     end
   end
 

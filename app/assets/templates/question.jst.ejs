@@ -33,17 +33,25 @@
   <% }) %>
 <% } %>
 <% if (question.get('answers')) { %>
-  <%question.get('answers').forEach(function (answer) { %>
+  <% question.get('answers').forEach(function (answer) { %>
     <p>
       <%= answer.body %>
     </p>
+    <% if (Qutria.currentUser &&
+          Qutria.currentUser.get('id') == answer.user_id) { %>
+        <form class="edit-answer" data-id='<%= answer.id %>' >
+            <textarea name="answer[body]"><%= answer.body %></textarea>
+            <button class="edit-answer"> Edit Your Answer </button>
+        </form>
+    <% } %>
   <% }) %>
 <% } %>
 
 <% if (Qutria.currentUser ) { %>
   <form id="answer-form">
-      <textarea name="answer[body]">
-      </textarea>
+      <input type="hidden" name="answer[question_id]"
+      value="<%= question.get('id') %>">
+      <textarea name="answer[body]"></textarea>
       <button id="answer-question"> Add Your Answer </button>
   </form>
 <% } %>

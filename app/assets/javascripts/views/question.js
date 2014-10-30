@@ -7,6 +7,7 @@ Qutria.Views.Question = Backbone.View.extend({
   , events: {
     "click #update-question" : "questionUpdate"
     , "click #delete-question" : "questionDelete"
+    , "click button#answer-question": "answerCreate"
   }
   , questionUpdate: function (event) {
     event.preventDefault();
@@ -30,6 +31,17 @@ Qutria.Views.Question = Backbone.View.extend({
 
       }
     })
+  }
+  , answerCreate: function (event) {
+    event.preventDefault()
+    var data = $("#answer-form").serializeJSON();
+    var newAnswer = new Qutria.Models.Answer(data);
+    newAnswer.save({}, {
+      success: function (obj) {
+        //        this.model.answers.add(newAnswer) Need to Add
+        this.model.fetch() // need to remove
+      }
+    });
   }
   , render: function () {
     this.$el.html(this.template({ question: this.model }));
