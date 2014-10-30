@@ -8,6 +8,7 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     "click #update-question" : "questionUpdate"
     , "click #delete-question" : "questionDelete"
     , "click button#answer-question": "answerCreate"
+    , "click button#create-new-tag" : "tagCreate"
   }
   , questionUpdate: function (event) {
     event.preventDefault();
@@ -43,6 +44,17 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
         self.render();
       }
     });
+  }
+  , tagCreate: function (event) {
+    event.preventDefault();
+    var self = this;
+    var data = $("#new-tag-form").serializeJSON();
+    var newTag = new Qutria.Models.Taggable(data);
+    newTag.save({}, {
+      success: function () {
+        self.model.fetch();
+      }
+    })
   }
   , render: function () {
     var self = this;

@@ -8,7 +8,7 @@ class Api::TaggablesController < Api::ApplicationController
       status: :unprocessable_entity
     end
 
-    type, id = taggable_params[:taggingstype], taggable_params[:taggingsid]
+    type, id = taggable_params[:taggings_type], taggable_params[:taggings_id]
     @taggable = Taggable.new(
       tag: tag,
       taggings_id: id,

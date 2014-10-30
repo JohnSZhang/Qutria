@@ -24,6 +24,16 @@
 <div class="question-comment"></div>
 
 <% if (Qutria.currentUser.get('id') ) { %>
+  <form id="new-tag-form">
+    <input type="text" name="taggable[name]" value="">
+    <input type="hidden" name="taggable[taggings_id]"
+      value="<%= question.get('id') %>">
+    <input type="hidden" name="taggable[taggings_type]" value="Question">
+      <button id="create-new-tag"> Tag This Question </button>
+  </form>
+<% } %>
+
+<% if (Qutria.currentUser.get('id') ) { %>
   <form id="answer-form">
       <input type="hidden" name="answer[question_id]"
       value="<%= question.get('id') %>">
