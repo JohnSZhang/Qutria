@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     end
     resources :taggables, only: [:create]
     delete "taggables", to: "taggables#destroy"
+    resource :favorite, only: [:show]
   end
 
 # Switch between rails and backbone here

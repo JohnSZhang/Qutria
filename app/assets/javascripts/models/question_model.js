@@ -2,7 +2,7 @@ Qutria.Models.Question = Backbone.Model.extend({
   urlRoot: "/api/questions"
   , parse: function (resp) {
     if(resp.user) {
-      this.user = new Qutria.Models.User(resp.user);
+      this.user = new Qutria.Models.User(resp.user, { parse : true });
       delete resp.user;
     }
     if(resp.answers) {

@@ -24,7 +24,6 @@ class Api::FavoritesController < Api::ApplicationController
       user: user,
       tag: tag
     )
-    puts @favorite
     if @favorite && @favorite.destroy
       render template: "api/favorite"
     else
@@ -33,13 +32,9 @@ class Api::FavoritesController < Api::ApplicationController
     end
   end
 
-  # def show
-  #   unless is_logged_in?
-  #     redirect_to new_session_url
-  #   else
-  #     @user = User.includes(:favorite_tags, :favorite_tag_questions).find(current_user.id)
-  #     render :show
-  #   end
-  # end
+  def show
+    @user = User.includes(:favorite_tags, :favorite_tag_questions).find(current_user.id)
+    render template: "api/user_favorites"
+  end
 
 end
