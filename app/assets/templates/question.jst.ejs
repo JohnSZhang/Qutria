@@ -21,8 +21,9 @@
 <div class="question-comments"></div>
 <div class="answers"></div>
 <div class="question-author"></div>
+<div class="question-comment"></div>
 
-<% if (Qutria.currentUser ) { %>
+<% if (Qutria.currentUser.get('id') ) { %>
   <form id="answer-form">
       <input type="hidden" name="answer[question_id]"
       value="<%= question.get('id') %>">

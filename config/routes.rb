@@ -22,9 +22,11 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:create, :destroy, :index, :show, :update]
     resources :questions, only: [:create, :show, :index, :update, :destroy]
-    resources :answers, only: [:create, :destroy, :update]
+    resources :answers, only: [:create, :destroy, :update, :show]
+    resources :comments, only: [:create, :destroy, :update]
   end
 
 # Switch between rails and backbone here
   root to: "apps#index"
+# root to: "questions#index"
 end

@@ -1,6 +1,16 @@
 class Api::AnswersController < Api::ApplicationController
   before_action :require_login
 
+  def show
+      @answer = Answer.find(params[:id])
+      if @answer
+          render template: "api/answer"
+      else
+        render json: "{ 'error': 'Cannot Find Answer'}",
+        status: :unprocessable_entity
+      end
+  end
+
   def create
     @answer = Answer.new(answer_params)
     @answer.user = current_user
@@ -18,8 +28,7 @@ class Api::AnswersController < Api::ApplicationController
     if not_owner?(@answer)
       render json: "{ 'error': 'Thats not your answer!'}",
         status: :unprocessable_entity
-    elsif
-      @answer.update(answer_params)
+    elsif @answer.update(answer_params)
       render template: "api/answer"
     else
       render json: "{ 'error': '#{@answer.errors.full_messages}'}",
@@ -32,8 +41,7 @@ class Api::AnswersController < Api::ApplicationController
     if not_owner?(@answer)
       render json: "{ 'error': 'Thats not your answer!'}",
         status: :unprocessable_entity
-    elsif
-      @answer.destroy
+    elsif @answer.destroy
       render template: "api/answer"
     else
       render json: "{ 'error': '#{@answer.errors.full_messages}'}",

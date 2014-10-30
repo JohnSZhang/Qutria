@@ -66,8 +66,14 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
       })
     }
     if (this.model.user) {
-        var view = new Qutria.Views.Author({ model: this.model.user })
-        self.add_subview("div.question-author", view)
+      var view = new Qutria.Views.Author({ model: this.model.user })
+      self.add_subview("div.question-author", view)
+    }
+    if(Qutria.currentUser.get('id')) {
+      var view = new Qutria.Views.NewComment({
+          model: this.model
+          , obj_type: "Question" });
+      self.add_subview("div.question-comment", view);
     }
     return this;
   }

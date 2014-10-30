@@ -13,7 +13,9 @@ Qutria.Views.Composite = Backbone.View.extend({
     Backbone.View.prototype.remove.call(this);
     _(this.subviews()).each(function (subviews) {
       _(subviews).each(function (subview) {
-        subview.remove();
+        if (subview) {
+          subview.remove();
+        }
       })
     })
   }

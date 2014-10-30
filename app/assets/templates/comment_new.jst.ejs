@@ -1,0 +1,10 @@
+<% if (Qutria.currentUser.get('id')  ) { %>
+  <form class="comment-form">
+      <input type="hidden" name="comment[commentable_id]"
+      value="<%= obj.get('id') %>">
+      <input type="hidden" name="comment[commentable_type]"
+      value="<%= obj_type %>">
+      <textarea name="comment[body]"></textarea>
+      <button class="add-comment"> Add A Comment </button>
+  </form>
+<% } %>
