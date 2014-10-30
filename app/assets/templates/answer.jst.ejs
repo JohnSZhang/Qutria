@@ -1,0 +1,12 @@
+<p>
+  <%= answer.get('body') %>
+  <div class="answer-author"></div>
+  <div class="answer-comments"></div>
+</p>
+<% if (Qutria.currentUser &&
+  Qutria.currentUser.get('id') == answer.get('user_id')) { %>
+    <form class="edit-answer" data-id='<%= answer.get('id') %>' >
+      <textarea name="answer[body]"><%= answer.get('body') %></textarea>
+      <button class="edit-answer"> Edit Your Answer </button>
+    </form>
+<% } %>

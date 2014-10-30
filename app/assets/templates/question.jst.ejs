@@ -25,27 +25,9 @@
     <% }) %>
   <% } %>
 </ul>
-<% if (question.get('comments')) { %>
-  <%question.get('comments').forEach(function (comment) { %>
-    <p>
-      <%= comment.body %>
-    </p>
-  <% }) %>
-<% } %>
-<% if (question.get('answers')) { %>
-  <% question.get('answers').forEach(function (answer) { %>
-    <p>
-      <%= answer.body %>
-    </p>
-    <% if (Qutria.currentUser &&
-          Qutria.currentUser.get('id') == answer.user_id) { %>
-        <form class="edit-answer" data-id='<%= answer.id %>' >
-            <textarea name="answer[body]"><%= answer.body %></textarea>
-            <button class="edit-answer"> Edit Your Answer </button>
-        </form>
-    <% } %>
-  <% }) %>
-<% } %>
+<div class="question-comments"></div>
+<div class="answers"></div>
+<div class="question-author"></div>
 
 <% if (Qutria.currentUser ) { %>
   <form id="answer-form">
