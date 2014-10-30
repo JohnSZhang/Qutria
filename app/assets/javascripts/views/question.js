@@ -52,6 +52,12 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
         self.add_subview("div.answers", view)
       })
     }
+    if(this.model.tags) {
+      this.model.tags.each(function (tag) {
+        var view = new Qutria.Views.Tag({ model: tag })
+        self.add_subview("div.question-tags", view)
+      })
+    }
     if(this.model.comments) {
       this.model.comments.each(function (comment) {
         var view = new Qutria.Views.Comment({ model: comment })

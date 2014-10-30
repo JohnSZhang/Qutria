@@ -16,15 +16,8 @@
   </form>
   <button id="delete-question"> Delete Question </button>
 <% } %>
-<ul>
-  <% if (question.get('tags')) { %>
-    <%question.get('tags').forEach(function (tag) { %>
-      <p>
-        <%= tag.name %>
-      </p>
-    <% }) %>
-  <% } %>
-</ul>
+
+<div class="question-tags"></div>
 <div class="question-comments"></div>
 <div class="answers"></div>
 <div class="question-author"></div>
