@@ -22,6 +22,12 @@ cato = User.create(
   email: "a_virtuous_life@cato.io"
 )
 
+john = User.create(
+  username: "john",
+  password: "123456",
+  email: "john@cato.io"
+)
+
 sulla = julius.questions.create(
   title: "Seen Sulla lately?",
   body: "He throws a great party! Not sure what happened to him since he retired

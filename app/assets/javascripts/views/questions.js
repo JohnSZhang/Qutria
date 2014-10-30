@@ -1,6 +1,7 @@
 Qutria.Views.Questions = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.collection, "sync add remove reset", this.render);
+    this.listenTo(Qutria.currentUser, "change", this.render);
     this.collection.fetch();
   }
   , template: JST['questions_index']

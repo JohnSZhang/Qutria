@@ -39,3 +39,11 @@
     </p>
   <% }) %>
 <% } %>
+
+<% if (Qutria.currentUser ) { %>
+  <form id="answer-form">
+      <textarea name="answer[body]">
+      </textarea>
+      <button id="answer-question"> Add Your Answer </button>
+  </form>
+<% } %>

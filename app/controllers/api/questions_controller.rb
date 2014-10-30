@@ -31,7 +31,7 @@ class Api::QuestionsController < Api::ApplicationController
   def update
     @question = Question.find(params[:id])
     if not_owner?(@question)
-      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+      render json: "{ 'error': 'not your question!'}",
         status: :unprocessable_entity
     elsif
       @question.update(question_params)
@@ -46,7 +46,7 @@ class Api::QuestionsController < Api::ApplicationController
     @question = Question.find(params[:id])
     if not_owner?(@question)
       puts "not owner!"
-      render json: "{ 'error': '#{@question.errors.full_messages}'}",
+      render json: "{ 'error': 'not your question!'}",
         status: :unprocessable_entity
     elsif @question.destroy
       render template: "api/question"
