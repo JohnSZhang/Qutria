@@ -243,9 +243,19 @@ juno_q = juno.questions.create(
   body: "Did he run off as a swan again!"
 )
 
+minerva_a = juno_q.answers.create(
+  user: minerva,
+  body: "I dont know know, think I saw him watching tv earlier "
+)
+
 neptune_q = neptune.questions.create(
   title: "Anyone saw my trident?",
   body: "Lost it again, third one this year!!"
+)
+
+venus_a = neptune_q.answers.create(
+  user: venus,
+  body: "Ariel traded it for these 'legs'"
 )
 
 jupiter_q = jupiter.questions.create(
