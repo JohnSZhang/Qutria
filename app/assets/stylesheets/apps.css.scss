@@ -66,19 +66,21 @@ main {
 }
 
 
-footer nav {
+footer {
   background: $apollo;
-  min-height: $footer-height;
-  padding-left: 5%;
-  padding-top: 10px;
+  nav {
+    background: $apollo;
+    min-height: $footer-height;
+    padding-left: 5%;
+    padding-top: 10px;
 
-  ul.inline-list{
-    margin-bottom: 0;
+    ul.inline-list{
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $mars;
+      padding: 5px;
+    }
   }
-
-  a {
-    color: $mars;
-    padding: 5px;
-  }
-
 }
