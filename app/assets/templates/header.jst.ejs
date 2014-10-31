@@ -14,8 +14,7 @@
       <a href="#">Search</a>
       <% if (!!Qutria.currentUser.has("id")) { %>
         <a id="sign-out" href="#">Sign-Out</a>
-      <% } else {
-        console.log(Qutria.currentUser) %>
+      <% } else { %>
         <a href="#/sign-in">Sign-In</a>
         <a href="#/sign-up">Sign-Up</a>
       <% } %>

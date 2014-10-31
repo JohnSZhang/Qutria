@@ -15,9 +15,6 @@ class Api::QuestionsController < Api::ApplicationController
     answers: :comments,
     answers: { comments: :user }).find(params[:id])
     render template: "api/question"
-    # render json: @question.to_json(
-    #   include: [:answers, :comments, :tags]
-    # )
   end
 
   def create
@@ -26,7 +23,7 @@ class Api::QuestionsController < Api::ApplicationController
     if @question.save
         render template: "api/question"
     else
-      render json: "{ 'error': 'Cannot Create User'}",
+      render json: "{ 'error': 'Cannot Create question #{@question.errors.full_messages}'}",
         status: :unprocessable_entity
     end
   end

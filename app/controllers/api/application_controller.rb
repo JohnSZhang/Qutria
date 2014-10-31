@@ -17,8 +17,10 @@ class Api::ApplicationController < ActionController::Base
   end
 
   def require_login
-    render (json: "{ 'error': 'you must be logged in!'}",
-      status: :unprocessable_entity) unless current_user
+    if !current_user
+      render json: "{ 'error': 'you must be logged in!'}",
+        status: :unprocessable_entity
+    end
   end
 
   def check_owner(obj)
