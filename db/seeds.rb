@@ -243,14 +243,38 @@ juno_q = juno.questions.create(
   body: "Did he run off as a swan again!"
 )
 
+Taggable.create(
+  taggings: juno_q,
+  tag: jealousy
+)
+
+Taggable.create(
+  taggings: juno_q,
+  tag: war
+)
+
+Taggable.create(
+  taggings: juno_q,
+  tag: knowledge
+)
 minerva_a = juno_q.answers.create(
   user: minerva,
   body: "I dont know know, think I saw him watching tv earlier "
 )
 
+
 neptune_q = neptune.questions.create(
   title: "Anyone saw my trident?",
   body: "Lost it again, third one this year!!"
+)
+Taggable.create(
+  taggings: neptune_q,
+  tag: jealousy
+)
+
+Taggable.create(
+  taggings: neptune_q,
+  tag: knowledge
 )
 
 venus_a = neptune_q.answers.create(
@@ -263,17 +287,62 @@ jupiter_q = jupiter.questions.create(
   body: "Not really a question, I just want a new temple!"
 )
 
+Taggable.create(
+  taggings: jupiter_q,
+  tag: war
+)
+
+Taggable.create(
+  taggings: jupiter_q,
+  tag: weather
+)
+
 venus_q = venus.questions.create(
   title: "How can I prevent SQL-injection in PHP??",
   body: "I heard web development is pretty hot these days!"
+)
+
+Taggable.create(
+  taggings: venus_q,
+  tag: punishment
+)
+
+Taggable.create(
+  taggings: venus_q,
+  tag: war
+)
+Taggable.create(
+  taggings: venus_q,
+  tag: jealousy
+)
+
+Taggable.create(
+  taggings: venus_q,
+  tag: knowledge
 )
 
 apollo_q = apollo.questions.create(
   title: "How do you like Dlephi?",
   body: "Someones building a brand new temple for me there!"
 )
-
+Taggable.create(
+  taggings: apollo_q,
+  tag: war
+)
+Taggable.create(
+  taggings: apollo_q,
+  tag: knowledge
+)
 minerva_q = minerva.questions.create(
   title: "How do I build up a stealth-mage early in Skyrim?",
   body: "This game is really addicting!"
+)
+
+Taggable.create(
+  taggings: minerva_q,
+  tag: war
+)
+Taggable.create(
+  taggings: minerva_q,
+  tag: weather
 )
