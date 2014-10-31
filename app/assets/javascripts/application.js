@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require jquery.serializejson.min
 //= require underscore
@@ -24,3 +25,5 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree ../templates
+
+$(function(){ $(document).foundation(); });

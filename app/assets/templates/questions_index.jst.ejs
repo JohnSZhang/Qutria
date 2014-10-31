@@ -1,11 +1,15 @@
-<h1>Questions</h1>
+<h1>All Questions</h1>
 <% questions.each(function (question) { %>
   <p>
     <a href="#/questions/<%= question.get('id') %>"><%= question.get('title') %></a>
+    <span>by: <%= question.get('user') %></span>
   </p>
 <% }) %>
+
 <% if (Qutria.currentUser.get('id')) { %>
-  <form id="new-question-form">
+  <button class="form-toggle"
+  data-selector="new-question-form" href="#">Add A Question</button>
+  <form class="hide" id="new-question-form">
     <input type="text" name="question[title]"
       value='' >
       <textarea name="question[body]"></textarea>

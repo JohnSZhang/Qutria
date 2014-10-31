@@ -14,7 +14,7 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
   }
   , questionUpdate: function (event) {
     event.preventDefault();
-    var form = $('#edit-form').serializeJSON();
+    var form = $('#edit-question-form').serializeJSON();
     this.model.save(form, {
       success: function () {
 

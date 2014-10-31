@@ -1,22 +1,23 @@
-<div id="logo">
-  LOGO
-</div>
-<nav>
-  <ul>
-    <li><a href="#/questions">Questions</a></li>
-    <li><a href="#/tags">All Tags</a></li>
-    <li><a href="#/users">Users</a></li>
-    <li><a href="#">Unanswered</a></li>
-    <li><a href="#">User</a></li>
-    <% if (!!Qutria.currentUser.has("id")) { %>
-      <li><a href="#/favorites">Favorite Tags</a></li>
-    <% } %>
-    <li><a href="#">Search</a></li>
-    <% if (!!Qutria.currentUser.has("id")) { %>
-      <li><a id="sign-out" href="#">Sign-Out</a></li>
-    <% } else { %>
-      <li><a href="#/sign-in">Sign-In</a></li>
-      <li><a href="#/sign-up">Sign-Up</a></li>
-    <% } %>
-  </ul>
+<nav class="top-bar small-12">
+    <ul class="left">
+      <a href="#">Qutria</a>
+    </ul>
+    <ul class="right">
+      <a href="#/questions">Questions</a>
+      <a href="#/tags">All Tags</a>
+      <a href="#/users">Users</a>
+      <a href="#">Unanswered</a>
+      <% if (!!Qutria.currentUser.has("id")) { %>
+        <a href="#/favorites">Favorite Tags</a>
+      <% } %>
+      <a href="#">User</a>
+      <a href="#">Search</a>
+      <% if (!!Qutria.currentUser.has("id")) { %>
+        <a id="sign-out" href="#">Sign-Out</a>
+      <% } else {
+        console.log(Qutria.currentUser) %>
+        <a href="#/sign-in">Sign-In</a>
+        <a href="#/sign-up">Sign-Up</a>
+      <% } %>
+    </ul>
 </nav>

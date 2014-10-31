@@ -22,6 +22,11 @@ Qutria.Routers.router = Backbone.Router.extend({
       , "$footer": footerView
       , "$main" : mainView
       });
+    if (Qutria.currentUser.has('id')) {
+      Backbone.history.navigate("#/favorites", {trigger: true});
+    } else {
+      Backbone.history.navigate("#/questions", {trigger: true});
+    }
   }
   , signIn: function () {
     var view = new Qutria.Views.SignIn();
@@ -54,6 +59,10 @@ Qutria.Routers.router = Backbone.Router.extend({
   }
   , _swapView: function (options) {
     for (var view in options) {
+      if (view === "$main") {
+        options[view].$el.addClass("row")
+        options[view].className = "row";
+      }
       this._swapSingleView(options[view], view)
     }
   }

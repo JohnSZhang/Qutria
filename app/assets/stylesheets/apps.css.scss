@@ -1,3 +1,84 @@
 // Place all the styles related to the apps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$minerva: #FFFFFF; //white
+$jupiter: #F9F1B5; //gold
+$juno: #A6D8DE; //teal
+$apollo: #DDDAD6; //tan
+$ceres: #AE9C96; //soil
+$vulcan: #f2f0ED; //sand
+$mars: #404040; //iron
+$footer-height: 50px;
+$header-height: 50px;
+$main-height: 500px;
+
+p, h1, h2, h3, span {
+  color: $mars;
+}
+
+html body{
+  background: $vulcan;
+
+
+  button {
+    background: $ceres;
+    color: $jupiter;
+    border-radius: 5px;
+  }
+
+  button:hover, button:active, button:focus{
+    background: $mars;
+    color: $jupiter;
+    border-radius: 5px;
+  }
+
+}
+
+header nav.top-bar {
+  background: $apollo;
+  min-height: $header-height;
+
+  a {
+    color: $mars;
+    padding: 5px;
+  }
+
+  a:hover {
+    color: $minerva;
+  }
+
+  ul.left {
+    margin-top: 10px;
+    margin-left: 5%;
+  }
+  ul.right {
+    margin-top: 10px;
+    padding-right: 5%;
+  }
+}
+
+main {
+  background: $vulcan;
+  min-height: $main-height;
+
+}
+
+
+footer nav {
+  background: $apollo;
+  min-height: $footer-height;
+  padding-left: 5%;
+  padding-top: 10px;
+
+  ul.inline-list{
+    margin-bottom: 0;
+  }
+
+  a {
+    color: $mars;
+    padding: 5px;
+  }
+
+}

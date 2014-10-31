@@ -28,4 +28,12 @@ window.Qutria = {
 
 $(document).ready(function(){
   Qutria.initialize();
+
+  $('body').on("click", ".form-toggle", function (event) {
+    event.preventDefault()
+    var selector = '#'+ $(event.target).data('selector');
+    console.log(selector)
+    $(selector).toggle();
+  });
+
 });
