@@ -27,8 +27,6 @@ Qutria.Models.Question = Backbone.Model.extend({
   }
   , upvote: function () {
     var self = this;
-    console.log('upvotting pre ajax')
-    console.log(this.get('id'))
     $.ajax({
       url: "/api/vote"
       , type: "POST"
