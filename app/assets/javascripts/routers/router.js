@@ -22,11 +22,6 @@ Qutria.Routers.router = Backbone.Router.extend({
       , "$footer": footerView
       , "$main" : mainView
       });
-    if (Qutria.currentUser.has('id')) {
-      Backbone.history.navigate("#/favorites", {trigger: true});
-    } else {
-      Backbone.history.navigate("#/questions", {trigger: true});
-    }
   }
   , signIn: function () {
     var view = new Qutria.Views.SignIn();
