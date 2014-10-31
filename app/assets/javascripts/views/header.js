@@ -8,7 +8,7 @@ Qutria.Views.Header = Backbone.View.extend({
   , template: JST['header']
   , className: "header"
   , logout: function (event) {
-    event.preventDefault()
+    event.preventDefault();
     $.ajax({
         url: "/api/session/"
         , type: "DELETE"
