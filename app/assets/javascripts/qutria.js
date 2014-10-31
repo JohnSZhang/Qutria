@@ -30,7 +30,7 @@ window.Qutria = {
 $(document).ready(function(){
   Qutria.initialize();
 
-  $('main').on("click", "a.form-toggle", function (event) {
+  $('main').on("click", ".form-toggle", function (event) {
     event.preventDefault()
     var selector = '#'+ $(event.target).data('selector');
     $(selector).toggle();
