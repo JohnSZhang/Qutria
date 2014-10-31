@@ -2,6 +2,7 @@ json.id @question.id
 json.title @question.title
 json.body @question.body
 json.user_id @question.user_id
+json.vote_count @question.votes.sum(:vote_type)
 
 json.user do
   json.id @question.user.id
@@ -24,6 +25,7 @@ end
 
 json.answers @question.answers do |answer|
   json.user answer.user
+  json.vote_count answer.votes.sum(:vote_type)  
   json.comments answer.comments do |comment|
     json.id comment.id
     json.user comment.user

@@ -91,6 +91,13 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
           , obj_type: "Question" });
       self.add_subview("div.question-comment", view);
     }
+    var view = new Qutria.Views.Votes({
+        model: this.model
+        });
+console.log("div#question-votes" + this.model.get('id'))
+    self.add_subview(
+      "div#question-votes" + this.model.get('id')
+       , view);
     return this;
   }
 })

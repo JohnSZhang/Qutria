@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :edit, :update, :destroy]
   resources :votes, only: [:create]
   delete "votes", to: "votes#destroy"
+  post "vote", to: "votes#upvote"
+  delete "vote", to: "votes#downvote"
 
 # Backbone App
   namespace :api do
@@ -30,6 +32,8 @@ Rails.application.routes.draw do
     resources :taggables, only: [:create]
     delete "taggables", to: "taggables#destroy"
     resource :favorite, only: [:show]
+    post "vote", to: "votes#upvote"
+    delete "vote", to: "votes#downvote"
   end
 
 # Switch between rails and backbone here

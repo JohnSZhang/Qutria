@@ -25,4 +25,32 @@ Qutria.Models.Question = Backbone.Model.extend({
     }
     return resp;
   }
+  , upvote: function () {
+    var self = this;
+    $.ajax({
+      url: "/api/vote"
+      , type: "POST"
+      , data: {"vote": {
+        "id": this.get('id')
+        , "type": "Question"}
+      }
+      , success: function () {
+        self.fetch()
+      }
+    })
+  }
+  , downvote: function () {
+    var self = this;
+    $.ajax({
+      url: "/api/vote"
+      , type: "DELETE"
+      , data: {"vote": {
+        "id": this.get('id')
+        , "type": "Question"}
+      }
+      , success: function () {
+        self.fetch()
+      }
+    })
+  }
 })

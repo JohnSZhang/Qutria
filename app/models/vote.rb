@@ -3,7 +3,7 @@ class Vote < ActiveRecord::Base
     presence: true,
     uniqueness: { scope: :votable, message: "You already Voted!" }
   validates :votable, presence: true
-
+  validates :vote_type, presence: true, inclusion: { in: [-1, 0, 1] }
 
   belongs_to :user
   belongs_to :votable, polymorphic: true

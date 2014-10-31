@@ -1,15 +1,21 @@
 <h1>Question: <%=h @question.title %></h1>
 <p>
-  <strong>votes: <%= @question.votes.count %></strong>
+<% puts 'AHHHHHH!' %>
+  <% puts @question.votes %>
+  <% @question.votes.each do |vote|  %>
+  <% puts vote.vote_type %>
+  <% end %>
+  <% puts 'AHHHHHH!' %>
+  <strong>votes: <%= @question.votes.sum(:vote_type) %></strong>
   <%=h @question.body %>
   <% if is_logged_in? %>
-    <form action="<%= votes_url %>" method="post">
+    <form action="<%= vote_url %>" method="post">
       <%= autho_token %>
       <input type="hidden" name="vote[id]" value="<%= @question.id %>">
       <input type="hidden" name="vote[type]" value="Question">
       <input type="submit" value="upvote!">
     </form>
-    <form action="<%= votes_url %>" method="post">
+    <form action="<%= vote_url %>" method="post">
       <input type="hidden" name="_method" value="delete">
       <%= autho_token %>
       <input type="hidden" name="vote[id]" value="<%= @question.id %>">
