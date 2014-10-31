@@ -42,17 +42,18 @@ class Api::VotesController < Api::ApplicationController
 
   def create_vote(params, value)
     user = current_user
-    @vote = Vote.create(
+    @vote = Vote.create!(
     user: user,
-    votable_id: params[:id],
-    votable_type: params[:type],
+    votable_id: params["id"],
+    votable_type: params["type"],
     vote_type: value
     )
+
   end
 
   def get_vote(params)
     user = current_user
-    id, type = params[:id], params[:type]
+    id, type = params["id"], params["type"]
     @vote = Vote.find_by(
     user: user,
     votable_id: id,

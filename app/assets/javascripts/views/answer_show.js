@@ -1,5 +1,6 @@
 Qutria.Views.Answer = Qutria.Views.Composite.extend({
   initialize: function () {
+    var self = this;
     this.listenTo(this.model, "sync change destroy", this.render);
   }
   , template: JST['answer']
@@ -45,9 +46,9 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
     }
     var view = new Qutria.Views.Votes({
         model: this.model
-        });
+      });
     self.add_subview(
-      "div#answer-votes" + this.model.get('id')
+      ".answer-votes"
     , view);
     return this;
   }

@@ -23,7 +23,7 @@ Qutria.Models.Answer = Backbone.Model.extend({
       , "type": "Answer"}
     }
     , success: function () {
-      self.fetch()
+      self.fetch();
     }
   })
 }
@@ -33,11 +33,11 @@ Qutria.Models.Answer = Backbone.Model.extend({
     url: "/api/vote"
     , type: "DELETE"
     , data: {"vote": {
-      "id": this.get('id')
+      "id": self.get('id')
       , "type": "Answer"}
     }
     , success: function () {
-      self.fetch()
+      self.fetch();
     }
   })
 }

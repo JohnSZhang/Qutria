@@ -27,15 +27,20 @@ Qutria.Models.Question = Backbone.Model.extend({
   }
   , upvote: function () {
     var self = this;
+    console.log('upvotting pre ajax')
+    console.log(this.get('id'))
     $.ajax({
       url: "/api/vote"
       , type: "POST"
+      , cache: false
       , data: {"vote": {
-        "id": this.get('id')
+        "id": self.get('id')
         , "type": "Question"}
       }
       , success: function () {
         self.fetch()
+      }
+      , error: function (resp) {
       }
     })
   }
@@ -44,8 +49,9 @@ Qutria.Models.Question = Backbone.Model.extend({
     $.ajax({
       url: "/api/vote"
       , type: "DELETE"
+      , cache: false
       , data: {"vote": {
-        "id": this.get('id')
+        "id": self.get('id')
         , "type": "Question"}
       }
       , success: function () {

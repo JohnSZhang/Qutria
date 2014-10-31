@@ -1,6 +1,8 @@
 Qutria.Views.Question = Qutria.Views.Composite.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
+    this.listenTo(Qutria.global, "voted", this.render);
+
     this.model.fetch();
   }
   , template: JST['question']
@@ -91,13 +93,11 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
           , obj_type: "Question" });
       self.add_subview("div.question-comment", view);
     }
+
     var view = new Qutria.Views.Votes({
         model: this.model
-        });
-console.log("div#question-votes" + this.model.get('id'))
-    self.add_subview(
-      "div#question-votes" + this.model.get('id')
-       , view);
+    });
+    self.add_subview( "#question-votes", view);
     return this;
   }
 })

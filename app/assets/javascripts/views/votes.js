@@ -1,7 +1,6 @@
 Qutria.Views.Votes = Qutria.Views.Composite.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
-
   }
   , events: {
     "click button.upvote" : "upvote"
@@ -19,5 +18,6 @@ Qutria.Views.Votes = Qutria.Views.Composite.extend({
   , render: function () {
     var self = this;
     this.$el.html(this.template({ obj: this.model }));
+    return self;
   }
 });
