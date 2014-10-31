@@ -2,6 +2,7 @@ Qutria.Views.Header = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(Qutria.currentUser, "change sync reset", this.render);
   }
+  , className: "header row"
   , events: {
     "click a#sign-out" : "logout"
   }
@@ -23,7 +24,7 @@ Qutria.Views.Header = Backbone.View.extend({
     });
   }
   , render: function () {
-    this.$el = $(this.template());
+    this.$el.html(this.template());
     return this;
   }
 })
