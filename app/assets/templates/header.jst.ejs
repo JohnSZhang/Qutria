@@ -2,21 +2,30 @@
     <ul class="left">
       <a href="#">Qutria</a>
     </ul>
-    <ul class="right">
-      <a href="#/questions">Questions</a>
-      <a href="#/tags">All Tags</a>
-      <a href="#/users">Users</a>
-      <a href="#">Unanswered</a>
+    <ul class="right inline-list">
       <% if (!!Qutria.currentUser.has("id")) { %>
-        <a href="#/favorites">Favorite Tags</a>
+        <li><a href="#/favorites">Favorite Tags</a></li>
       <% } %>
-      <a href="#">User</a>
-      <a href="#">Search</a>
       <% if (!!Qutria.currentUser.has("id")) { %>
-        <a id="sign-out" href="#">Sign-Out</a>
+        <li><a id="sign-out" href="#">Sign-Out</a></li>
       <% } else { %>
-        <a href="#/sign-in">Sign-In</a>
-        <a href="#/sign-up">Sign-Up</a>
+        <li><a href="#/sign-in">Sign-In</a></li>
+        <li><a href="#/sign-up">Sign-Up</a></li>
       <% } %>
+      <li>
+        <input type="text" id="top-search" value="">
+      </li>
     </ul>
 </nav>
+<div class="container clearfix">
+  <nav id="main-nav">
+    <a class="left" href="#">Qutria</a>
+    <ul class="right inline-list">
+      <li><a href="#/questions">Questions</a></li>
+      <li><a href="#/tags">All Tags</a></li>
+      <li><a href="#/users">Users</a></li>
+      <li><a href="#">Unanswered</a></li>
+      <li><a href="#">User</a></li>
+    </ul>
+  </nav>
+</div>

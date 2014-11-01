@@ -3,73 +3,85 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$minerva: #FFFFFF; //white
-$jupiter: #F9F1B5; //gold
-$juno: #A6D8DE; //teal
-$apollo: #DDDAD6; //tan
-$ceres: #AE9C96; //soil
-$vulcan: #f2f0ED; //sand
-$mars: #404040; //iron
+$black: #000000;
+$white: #FFFFFF;
 $footer-height: 50px;
-$header-height: 50px;
+$header-height: 35px;
 $main-height: 500px;
 
 p, h1, h2, h3, span {
-  color: $mars;
 }
 
 html body{
-  background: $vulcan;
 
 
   button {
-    background: $ceres;
-    color: $jupiter;
     border-radius: 5px;
   }
 
   button:hover, button:active, button:focus{
-    background: $mars;
-    color: $jupiter;
     border-radius: 5px;
   }
 
 }
 
-header nav.top-bar {
-  background: $apollo;
-  min-height: $header-height;
+header {
 
-  a {
-    color: $mars;
-    padding: 5px;
+  nav.top-bar {
+    height: 35px;
+
+    a {
+      padding: 5px;
+      color: #E0E0E0;
+      font-size: 13px;
+    }
+
+    a:hover {
+    }
+
+    ul.left {
+      margin-top: 5px;
+      margin-left: 5%;
+    }
+    ul.right {
+      margin-top: 5px;
+      padding-right: 5%;
+      input {
+        position: static;
+        height: 1.5rem;
+      }
+    }
   }
 
-  a:hover {
-    color: $minerva;
-  }
+  .container{
+    background-image: url("http://meta.stackexchange.com/content/stackexchangemeta/img/bg-site@2.png?v=21e5b9edec62");
+    background-size: 63px 180px;
+    background-position: left -37px;
+    background-repeat: repeat-x;
+    background-color: $white;
 
-  ul.left {
-    margin-top: 10px;
-    margin-left: 5%;
-  }
-  ul.right {
-    margin-top: 10px;
-    padding-right: 5%;
+    #main-nav{
+      background-image: url("http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud@2.png?v=266703494be9");
+      background-size: 630px 139px;
+      width: 980px;
+      height: 135px;
+      padding: 12px 0 0 25px;
+      background-repeat: no-repeat;
+      margin: auto;
+    }
+    
   }
 }
 
+
 main {
-  background: $vulcan;
   min-height: $main-height;
 
 }
 
 
 footer {
-  background: $apollo;
   nav {
-    background: $apollo;
     min-height: $footer-height;
     padding-left: 5%;
     padding-top: 10px;
@@ -79,7 +91,6 @@ footer {
     }
 
     a {
-      color: $mars;
       padding: 5px;
     }
   }
