@@ -5,6 +5,8 @@
 
 $black: #000000;
 $white: #FFFFFF;
+$skyblue: #8ADFF9;
+$grey: #444444;
 $footer-height: 50px;
 $header-height: 35px;
 $main-height: 500px;
@@ -31,20 +33,27 @@ header {
     height: 35px;
 
     a {
-      padding: 5px;
+      padding: 9px 7px 6px 7px;
       color: #E0E0E0;
       font-size: 13px;
     }
 
+    input {
+      margin-top: 5px;
+    }
+
     a:hover {
+      background-color: $grey;
     }
 
     ul.left {
       margin-top: 5px;
       margin-left: 5%;
+      a {
+      font-size: 15px;
+      }
     }
     ul.right {
-      margin-top: 5px;
       padding-right: 5%;
       input {
         position: static;
@@ -68,8 +77,26 @@ header {
       padding: 12px 0 0 25px;
       background-repeat: no-repeat;
       margin: auto;
+
+      .home {
+        background-image: image-url("logo.png");
+        background-size: 170px 80px;
+        width: 170px;
+        height: 80px;
+        margin-top: 10px;
+      }
+
+      ul {
+        margin: 50px 50px 0 0 ;
+        a {
+          color: $white;
+        }
+        a:hover, a.here{
+          color: $skyblue;
+        }
+      }
     }
-    
+
   }
 }
 
@@ -81,8 +108,13 @@ main {
 
 
 footer {
+  background-image: url('http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud-footer@2.png?v=18fa052bb441'),url('http://meta.stackexchange.com/content/stackexchangemeta/img/bg-site@2.png?v=21e5b9edec62');
+  background-position: left bottom,left top;
+  background-repeat: no-repeat,repeat;
+  background-size: 475px 280px,63px 180px;
+  min-height: $footer-height;
+
   nav {
-    min-height: $footer-height;
     padding-left: 5%;
     padding-top: 10px;
 
@@ -91,7 +123,12 @@ footer {
     }
 
     a {
+      color: $skyblue;
       padding: 5px;
+      font-size: 13px;
+    }
+    a:hover {
+      color: $white;
     }
   }
 }
