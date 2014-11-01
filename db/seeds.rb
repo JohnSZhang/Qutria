@@ -147,202 +147,202 @@
 #   user: augustus,
 #   body: "I love Spain! Ill make those barbarians learn the virtues of hard work"
 # )
-
-jupiter = User.create(
-  username: "jupiter",
-  password: "123456",
-  email: "j@jupiter.house")
-
-juno = User.create(
-  username: "juno",
-  password: "123456",
-  email: "j@juno.house")
-
-neptune = User.create(
-  username: "neptune",
-  password: "123456",
-  email: "j@neptune.house")
-
-pluto = User.create(
-  username: "pluto",
-  password: "123456",
-  email: "j@pluto.house")
-
-apollo = User.create(
-  username: "apollo",
-  password: "123456",
-  email: "j@apollo.house")
-
-diana = User.create(
-  username: "diana",
-  password: "123456",
-  email: "j@diana.house")
-
-mars = User.create(
-  username: "mars",
-  password: "123456",
-  email: "j@mars.house")
-
-venus = User.create(
-  username: "venus",
-  password: "123456",
-  email: "j@venus.house")
-
-cupid = User.create(
-  username: "cupid",
-  password: "123456",
-  email: "j@cupid.house")
-
-mercury = User.create(
-  username: "mercury",
-  password: "123456",
-  email: "j@mercury.house")
-
-minerva = User.create(
-  username: "minerva",
-  password: "123456",
-  email: "j@minerva.house")
-
-vulcan = User.create(
-  username: "venus",
-  password: "123456",
-  email: "j@vulcan.house")
-
-john = User.create(
-  username: "john",
-  password: "123456",
-  email: "j@john.house")
-
-war = Tag.create(
-  name: "war",
-  description: "The gods are always fighting each other"
-)
-
-jealousy = Tag.create(
-  name: "jealousy",
-  description: "gods get jealous, a lot"
-)
-
-punishment = Tag.create(
-  name: "punishment",
-  description: "Someones a good lesson is hard learned"
-)
-
-knowledge = Tag.create(
-  name: "knowledge",
-  description: "They know all things"
-)
-
-weather = Tag.create(
-  name: "weather",
-  description: "Weahter, rain, wheat!"
-)
-
-juno_q = juno.questions.create(
-  title: "any one seen jupiter?",
-  body: "Did he run off as a swan again!"
-)
-
-Taggable.create(
-  taggings: juno_q,
-  tag: jealousy
-)
-
-Taggable.create(
-  taggings: juno_q,
-  tag: war
-)
-
-Taggable.create(
-  taggings: juno_q,
-  tag: knowledge
-)
-minerva_a = juno_q.answers.create(
-  user: minerva,
-  body: "I dont know know, think I saw him watching tv earlier "
-)
-
-
-neptune_q = neptune.questions.create(
-  title: "Anyone saw my trident?",
-  body: "Lost it again, third one this year!!"
-)
-Taggable.create(
-  taggings: neptune_q,
-  tag: jealousy
-)
-
-Taggable.create(
-  taggings: neptune_q,
-  tag: knowledge
-)
-
-venus_a = neptune_q.answers.create(
-  user: venus,
-  body: "Ariel traded it for these 'legs'"
-)
-
-jupiter_q = jupiter.questions.create(
-  title: "I want a bigger alter",
-  body: "Not really a question, I just want a new temple!"
-)
-
-Taggable.create(
-  taggings: jupiter_q,
-  tag: war
-)
-
-Taggable.create(
-  taggings: jupiter_q,
-  tag: weather
-)
-
-venus_q = venus.questions.create(
-  title: "How can I prevent SQL-injection in PHP??",
-  body: "I heard web development is pretty hot these days!"
-)
-
-Taggable.create(
-  taggings: venus_q,
-  tag: punishment
-)
-
-Taggable.create(
-  taggings: venus_q,
-  tag: war
-)
-Taggable.create(
-  taggings: venus_q,
-  tag: jealousy
-)
-
-Taggable.create(
-  taggings: venus_q,
-  tag: knowledge
-)
-
-apollo_q = apollo.questions.create(
-  title: "How do you like Dlephi?",
-  body: "Someones building a brand new temple for me there!"
-)
-Taggable.create(
-  taggings: apollo_q,
-  tag: war
-)
-Taggable.create(
-  taggings: apollo_q,
-  tag: knowledge
-)
-minerva_q = minerva.questions.create(
-  title: "How do I build up a stealth-mage early in Skyrim?",
-  body: "This game is really addicting!"
-)
-
-Taggable.create(
-  taggings: minerva_q,
-  tag: war
-)
-Taggable.create(
-  taggings: minerva_q,
-  tag: weather
-)
+#
+# jupiter = User.create(
+#   username: "jupiter",
+#   password: "123456",
+#   email: "j@jupiter.house")
+#
+# juno = User.create(
+#   username: "juno",
+#   password: "123456",
+#   email: "j@juno.house")
+#
+# neptune = User.create(
+#   username: "neptune",
+#   password: "123456",
+#   email: "j@neptune.house")
+#
+# pluto = User.create(
+#   username: "pluto",
+#   password: "123456",
+#   email: "j@pluto.house")
+#
+# apollo = User.create(
+#   username: "apollo",
+#   password: "123456",
+#   email: "j@apollo.house")
+#
+# diana = User.create(
+#   username: "diana",
+#   password: "123456",
+#   email: "j@diana.house")
+#
+# mars = User.create(
+#   username: "mars",
+#   password: "123456",
+#   email: "j@mars.house")
+#
+# venus = User.create(
+#   username: "venus",
+#   password: "123456",
+#   email: "j@venus.house")
+#
+# cupid = User.create(
+#   username: "cupid",
+#   password: "123456",
+#   email: "j@cupid.house")
+#
+# mercury = User.create(
+#   username: "mercury",
+#   password: "123456",
+#   email: "j@mercury.house")
+#
+# minerva = User.create(
+#   username: "minerva",
+#   password: "123456",
+#   email: "j@minerva.house")
+#
+# vulcan = User.create(
+#   username: "venus",
+#   password: "123456",
+#   email: "j@vulcan.house")
+#
+# john = User.create(
+#   username: "john",
+#   password: "123456",
+#   email: "j@john.house")
+#
+# war = Tag.create(
+#   name: "war",
+#   description: "The gods are always fighting each other"
+# )
+#
+# jealousy = Tag.create(
+#   name: "jealousy",
+#   description: "gods get jealous, a lot"
+# )
+#
+# punishment = Tag.create(
+#   name: "punishment",
+#   description: "Someones a good lesson is hard learned"
+# )
+#
+# knowledge = Tag.create(
+#   name: "knowledge",
+#   description: "They know all things"
+# )
+#
+# weather = Tag.create(
+#   name: "weather",
+#   description: "Weahter, rain, wheat!"
+# )
+#
+# juno_q = juno.questions.create(
+#   title: "any one seen jupiter?",
+#   body: "Did he run off as a swan again!"
+# )
+#
+# Taggable.create(
+#   taggings: juno_q,
+#   tag: jealousy
+# )
+#
+# Taggable.create(
+#   taggings: juno_q,
+#   tag: war
+# )
+#
+# Taggable.create(
+#   taggings: juno_q,
+#   tag: knowledge
+# )
+# minerva_a = juno_q.answers.create(
+#   user: minerva,
+#   body: "I dont know know, think I saw him watching tv earlier "
+# )
+#
+#
+# neptune_q = neptune.questions.create(
+#   title: "Anyone saw my trident?",
+#   body: "Lost it again, third one this year!!"
+# )
+# Taggable.create(
+#   taggings: neptune_q,
+#   tag: jealousy
+# )
+#
+# Taggable.create(
+#   taggings: neptune_q,
+#   tag: knowledge
+# )
+#
+# venus_a = neptune_q.answers.create(
+#   user: venus,
+#   body: "Ariel traded it for these 'legs'"
+# )
+#
+# jupiter_q = jupiter.questions.create(
+#   title: "I want a bigger alter",
+#   body: "Not really a question, I just want a new temple!"
+# )
+#
+# Taggable.create(
+#   taggings: jupiter_q,
+#   tag: war
+# )
+#
+# Taggable.create(
+#   taggings: jupiter_q,
+#   tag: weather
+# )
+#
+# venus_q = venus.questions.create(
+#   title: "How can I prevent SQL-injection in PHP??",
+#   body: "I heard web development is pretty hot these days!"
+# )
+#
+# Taggable.create(
+#   taggings: venus_q,
+#   tag: punishment
+# )
+#
+# Taggable.create(
+#   taggings: venus_q,
+#   tag: war
+# )
+# Taggable.create(
+#   taggings: venus_q,
+#   tag: jealousy
+# )
+#
+# Taggable.create(
+#   taggings: venus_q,
+#   tag: knowledge
+# )
+#
+# apollo_q = apollo.questions.create(
+#   title: "How do you like Dlephi?",
+#   body: "Someones building a brand new temple for me there!"
+# )
+# Taggable.create(
+#   taggings: apollo_q,
+#   tag: war
+# )
+# Taggable.create(
+#   taggings: apollo_q,
+#   tag: knowledge
+# )
+# minerva_q = minerva.questions.create(
+#   title: "How do I build up a stealth-mage early in Skyrim?",
+#   body: "This game is really addicting!"
+# )
+#
+# Taggable.create(
+#   taggings: minerva_q,
+#   tag: war
+# )
+# Taggable.create(
+#   taggings: minerva_q,
+#   tag: weather
+# )

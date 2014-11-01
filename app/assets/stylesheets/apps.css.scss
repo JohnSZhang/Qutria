@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-$black: #000000;
+$black: #111111;
 $white: #FFFFFF;
 $skyblue: #8ADFF9;
 $grey: #444444;
@@ -30,6 +30,7 @@ html body{
 header {
 
   nav.top-bar {
+    color: $black;
     height: 35px;
 
     a {
@@ -51,6 +52,7 @@ header {
       margin-left: 5%;
       a {
       font-size: 15px;
+      padding: 9px;
       }
     }
     ul.right {
