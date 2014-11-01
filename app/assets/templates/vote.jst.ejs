@@ -1,3 +1,5 @@
 <p>Vote Count: <%= obj.get("vote_count") %></p>
+<% if(Qutria.currentUser.has('id')) { %>
 <button class="upvote">Upvote</button>
 <button class="downvote">Downvote</button>
+<% } %>
