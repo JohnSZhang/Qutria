@@ -111,6 +111,10 @@ html body{
   .answer-comments > .comment:first-child {
     border-top: $comment-top;
   }
+
+  .answers .answer {
+    margin-top: 15px;
+  }
 }
 
 header {
@@ -177,6 +181,8 @@ header {
       ul {
         margin: 50px 50px 0 0 ;
         a {
+          font-size: 1rem;
+          font-weight: bold;
           color: $white;
         }
         a:hover, a.here{

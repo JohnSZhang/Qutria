@@ -3,6 +3,7 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
     var self = this;
     this.listenTo(this.model, "sync change destroy", this.render);
   }
+  , className: "row answer"
   , template: JST['answer']
   , events: {
     "click button.edit-answer" : "updateAnswer"
