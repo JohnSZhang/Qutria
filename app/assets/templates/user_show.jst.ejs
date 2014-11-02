@@ -1,5 +1,6 @@
 <div>
   <h2>User Page</h2>
+  <img class="profile" src=" <%=user.get('img') %> " >
   <p>
     <%= user.get('username') %>
   </p>
@@ -10,10 +11,11 @@
     <%= user.get("name") %>
   </p>
 </div>
-<% console.log(Qutria.currentUser) %>
-<% console.log(user) %>
+
+
 <% if (Qutria.currentUser && Qutria.currentUser.get("id") === user.get("id")) { %>
+  <button class="filepicker-user">Add/Edit Your Image</a>
   <form id="delete-user-form">
-    <button id="delete-user">Delete User</button>
+    <button id="delete-user">Delete Account</button>
   </form>
 <% } %>

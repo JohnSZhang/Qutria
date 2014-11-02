@@ -4,3 +4,4 @@ json.session user.session_token
 json.id user.id
 json.website user.website
 json.name user.name
+json.img user.filepicker_url

@@ -35,5 +35,15 @@ $(document).ready(function(){
     var selector = '#'+ $(event.target).data('selector');
     $(selector).toggle();
   });
+  $('main').on("click", ".filepicker-user", function (event) {
+    event.preventDefault()
+    filepicker.pick(function (blob) {
+      console.log(blob)
+      Qutria.currentUser.set("filepicker_url", blob.url);
+      Qutria.currentUser.save(function () {
+        alert('updated!')
+      })
+    })
+  });
 
 });

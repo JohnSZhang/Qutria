@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141031013001) do
+ActiveRecord::Schema.define(version: 20141102063512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20141031013001) do
     t.integer  "best_answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filepicker_url"
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
@@ -66,10 +67,11 @@ ActiveRecord::Schema.define(version: 20141031013001) do
   end
 
   create_table "tags", force: true do |t|
-    t.string   "name",        null: false
+    t.string   "name",           null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filepicker_url"
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
@@ -84,6 +86,7 @@ ActiveRecord::Schema.define(version: 20141031013001) do
     t.text     "about_me"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "filepicker_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -29,13 +29,11 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user != current_user
-      flash[:msg] = ["Thats not you!"]
-      redirect_to root_url
+      render text: "that is not you!"
     elsif @user.update(user_params)
-      redirect_to user_url(@user)
+      render template: "api/user"
     else
-      flash[:msg] = @user.errors.full_messages
-      redirect_to user_url(@user)
+      render text: "@user.errors.full_messages", status: :unprocessable_entity
     end
   end
 
@@ -54,6 +52,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :email, :name)
+    params.require(:user).permit(
+      :username, :password, :email, :name, :filepicker_url)
   end
 end

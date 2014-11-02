@@ -6,6 +6,7 @@ json.vote_count @question.votes.sum(:vote_type)
 
 json.user do
   json.id @question.user.id
+  json.img @question.user.filepicker_url
   json.username @question.user.username
   json.email @question.user.email
 end

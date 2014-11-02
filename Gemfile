@@ -54,6 +54,10 @@ gem 'rails_12factor', group: :production
 # Add Foundation
 gem 'foundation-rails'
 
+#Add Images
+
+gem 'filepicker-rails'
+
 #Use better debug tools for development
 group :development do
   gem 'better_errors'
