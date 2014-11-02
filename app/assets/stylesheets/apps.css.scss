@@ -107,7 +107,8 @@ html body{
      background: $ligtest-grey;
    }
 
-  .question-comments, .answer-comments {
+  .question-comments > .comment:first-child,
+  .answer-comments > .comment:first-child {
     border-top: $comment-top;
   }
 }
