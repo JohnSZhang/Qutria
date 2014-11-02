@@ -42,7 +42,7 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
       var view = new Qutria.Views.NewComment({
           model: this.model
           , obj_type: "Answer" });
-      self.add_subview("div.answer-comments", view);
+      self.add_subview("div.answer-comment", view);
     }
     var view = new Qutria.Views.Votes({
         model: this.model

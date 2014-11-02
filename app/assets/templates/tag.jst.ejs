@@ -1,10 +1,9 @@
-<p>
-  <%= tag.get('name') %>
-  <%= tag.get('description') %>
-</p>
+<a href="/#/tags/<%= tag.get('id')%>"><%= tag.get('name') %></a>
+<% if(Qutria.currentUser.has('id')) { %>
 <form class="taggable-destroy">
   <input type="hidden" name="taggable[tag_id]" value="<%= tag.get('id') %>">
   <input type="hidden" name="taggable[taggings_type]" value="<%= taggings_type %>">
   <input type="hidden" name="taggable[taggings_id]" value="<%= taggings.get('id') %>">
-  <button class="untag">Untag</button>
+  <button class="untag really-small">Untag</button>
 </form>
+<% } %>

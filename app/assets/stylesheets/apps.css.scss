@@ -7,24 +7,109 @@ $black: #111111;
 $white: #FFFFFF;
 $skyblue: #8ADFF9;
 $grey: #444444;
+$button-blue: #4ca3d7;
+$button-active: #4e82c2;
+$button-shadow: #086586;
+$link-grey: #888888;
+$light-grey: #e5e5e5;
+$comment-grey: #444444;
+$ligtest-grey: #FBFBFB;
 $footer-height: 50px;
 $header-height: 35px;
 $main-height: 500px;
+$comment-border: dotted 1px #dddddd;
+$comment-top: solid 1px #dddddd;
 
 p, h1, h2, h3, span {
 }
 
 html body{
 
-
-  button {
-    border-radius: 5px;
+  button:hover, .button:hover {
+    background: $button-active;
+    margin-top: 3px;
+    border-top: 4px $white;
+    box-shadow: none;
   }
 
-  button:hover, button:active, button:focus{
+  button, .button {
     border-radius: 5px;
+    padding: 8px 8px;
+    margin: 0 0 2rem 0;
+    color: $white;
+    font-size: 13px;
+    background: $button-blue;
+    box-shadow: 0 3px 0 0 $button-shadow;
   }
 
+  button.upvote, button.downvote {
+    margin: 0;
+    background: none;
+    width: 0;
+    height: 0;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 20px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }
+
+  button.upvote, button.upvote:hover{
+    border-bottom: 20px solid $button-shadow;
+  }
+
+  button.downvote, button.downvote:hover{
+    border-top: 20px solid $button-shadow;
+  }
+
+  form.taggable-destroy {
+    display: inline;
+  }
+
+  p.vote-count {
+    margin-bottom: 0;
+    padding-left: 1rem;
+    color: $button-shadow;
+    font-weight: bold;
+  }
+  h2.question-title, h4.answer-count {
+    color: $button-active;
+    font-size: 24px;
+    line-height: 1.35;
+    padding: 25px 0 20px;
+    border-bottom: 1px solid $light-grey;
+  }
+
+  a {
+    color: $link-grey;
+    font-size: 12px;
+    padding: 1px 6px;
+  }
+
+  button.untag{
+    padding: 3px 4px;
+  }
+
+  form#new-tag-form {
+    input {
+      width: 75%;
+      margin-right: 10px;
+    }
+  }
+
+  .question-comments > .comment, .answer-comments > .comment {
+    padding: 7px 7px 7px 10px;
+    border-bottom: $comment-border;
+  }
+
+  .question-comments > .comment:hover,
+   .answer-comments > .comment:hover {
+     background: $ligtest-grey;
+   }
+
+  .question-comments, .answer-comments {
+    border-top: $comment-top;
+  }
 }
 
 header {
@@ -74,7 +159,7 @@ header {
     #main-nav{
       background-image: url("http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud@2.png?v=266703494be9");
       background-size: 630px 139px;
-      width: 980px;
+
       height: 135px;
       padding: 12px 0 0 25px;
       background-repeat: no-repeat;
@@ -105,7 +190,6 @@ header {
 
 main {
   min-height: $main-height;
-
 }
 
 

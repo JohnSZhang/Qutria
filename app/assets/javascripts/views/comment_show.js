@@ -2,6 +2,7 @@ Qutria.Views.Comment = Qutria.Views.Composite.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change destroy", this.render);
   }
+  , className: "comment small-12"
   , template: JST['comment']
   , events: {
     "click button.edit-comment" : "updateComment"

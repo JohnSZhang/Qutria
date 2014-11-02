@@ -5,6 +5,7 @@ Qutria.Views.Tag = Qutria.Views.Composite.extend({
     this.taggings_type = options.taggings_type;
     this.model.fetch();
   }
+  , tagName: "span"
   , template: JST['tag']
   , events: {
     "click .untag" : "untag"

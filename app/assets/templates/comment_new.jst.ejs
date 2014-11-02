@@ -1,5 +1,7 @@
 <% if (Qutria.currentUser.get('id')  ) { %>
-  <form class="comment-form">
+  <a href="#" class="form-toggle left"
+  data-selector="edit-<%= obj_type + obj.get('id') %>" >Comment</a>
+  <form id="edit-<%= obj_type + obj.get('id') %>" class="comment-form hide">
       <input type="hidden" name="comment[commentable_id]"
       value="<%= obj.get('id') %>">
       <input type="hidden" name="comment[commentable_type]"

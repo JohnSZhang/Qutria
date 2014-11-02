@@ -1,47 +1,55 @@
-<h1>Question!!!</h1>
-<div>
-  <div id="question-votes"></div>
-  <strong><%= question.get('title') %></strong>
-  <p>
+<h2 class="question-title small-offset-1 small-10"><%= question.get('title') %></h2>
+<div class="row question">
+  <div id="question-votes" class="small-1 small-offset-1 left"></div>
+  <div class="question-main small-10 left">
+  <p class="left small-12">
     <%= question.get('body') %>
   </p>
+  <div class="question-tags left"></div>
+  </div>
+  <div class="question-author small-10 small-offset-2 left">
+  <% if (Qutria.currentUser.get('id') &&
+        Qutria.currentUser.get('id') == question.get('user_id')) { %>
+  <a class="form-toggle left" data-selector="edit-question-form" href="#">
+    Edit Your Question</a>
+    <a class="left" id="delete-question"> Delete Question </a>
+    <form id="edit-question-form" class="hide">
+      <input type="text" name="question[title]"
+        value='<%= question.get("title") %>' >
+        <textarea name="question[body]"><%= question.get('body') %>
+        </textarea>
+        <button id="update-question"> Update Question</button>
+    </form>
+  </div>
+  <% } %>
+  <div class="question-comment left"></div>
 </div>
-<% if (Qutria.currentUser.get('id') &&
-      Qutria.currentUser.get('id') == question.get('user_id')) { %>
-<button class="form-toggle"
-data-selector="edit-question-form" href="#">Edit Your Question</button>
 
-  <form id="edit-question-form" class="hide">
-    <input type="text" name="question[title]"
-      value='<%= question.get("title") %>' >
-      <textarea name="question[body]"><%= question.get('body') %>
-      </textarea>
-      <button id="update-question"> Update Question </button>
-  </form>
-  <button id="delete-question"> Delete Question </button>
-<% } %>
-
-<div class="question-tags"></div>
-<div class="question-comments"></div>
-<div class="answers"></div>
-<div class="question-author"></div>
-<div class="question-comment"></div>
-
+<div class="row">
 <% if (Qutria.currentUser.get('id') ) { %>
-  <form id="new-tag-form">
-    <input type="text" name="taggable[name]" value="">
+  <form id="new-tag-form" class="left small-5 small-offset-2">
+    <input type="text" class="left" name="taggable[name]" value="">
     <input type="hidden" name="taggable[taggings_id]"
       value="<%= question.get('id') %>">
     <input type="hidden" name="taggable[taggings_type]" value="Question">
-      <button id="create-new-tag"> Tag This Question </button>
+      <button id="create-new-tag"> Add A Tag </button>
   </form>
+
+</div>
 <% } %>
+<div class="question-comments small-8 small-offset-2"></div>
+
+<h4 class="answer-count small-offset-1 small-10">Answers</h4>
+<div class="answers row"></div>
+
 
 <% if (Qutria.currentUser.get('id') ) { %>
+<div class="small-8 small-offset-1">
   <form id="answer-form">
       <input type="hidden" name="answer[question_id]"
       value="<%= question.get('id') %>">
       <textarea name="answer[body]"></textarea>
       <button id="answer-question"> Add Your Answer </button>
   </form>
+</div>
 <% } %>

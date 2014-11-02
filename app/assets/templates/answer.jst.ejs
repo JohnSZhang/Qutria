@@ -1,14 +1,19 @@
-<p>
-  <div class="answer-votes"></div>
-  <%= answer.get('body') %>
-  <div class="answer-author"></div>
-  <div class="answer-comments"></div>
-</p>
-<% if (Qutria.currentUser.get('id') &&
-  Qutria.currentUser.get('id') == answer.get('user_id')) { %>
-    <form class="edit-answer" >
-      <textarea name="answer[body]"><%= answer.get('body') %></textarea>
-      <button class="edit-answer"> Edit Your Answer </button>
-    </form>
-    <a class="delete-answer" href="#">Delete Your Answer</a>
-<% } %>
+<div class="answer-votes small-1 small-offset-1 left"></div>
+
+  <p class="left small-10 left"><%= answer.get('body') %></p>
+  <div class="answer-author small-10 small-offset-2 left">
+    <% if (Qutria.currentUser.get('id') &&
+      Qutria.currentUser.get('id') == answer.get('user_id')) { %>
+        <a class="form-toggle left"
+        data-selector="edit-answer-<%=answer.get('id')%>" href="#">
+          Edit Your Answer</a>
+        <form id="edit-answer-<%=answer.get('id')%>" class="hide" >
+          <textarea name="answer[body]"><%= answer.get('body') %></textarea>
+          <button class="edit-answer"> Edit </button>
+        </form>
+        <a class="delete-answer left" href="#">Delete Answer</a>
+    <% } %>
+    <div class="answer-comment left"></div>
+</div>
+
+<div class="answer-comments left small-8 small-offset-2"></div>

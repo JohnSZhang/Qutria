@@ -1,12 +1,16 @@
-<p>
+<span class="comment">
   <%= comment.get('body') %>
-  <div class="author"></div>
-</p>
+  by: <a class="commenter" href="#/users/comment.user.get('id')%>">
+    <%= comment.user.get('username')%>
+  </a>
+</span>
 <% if (Qutria.currentUser.get('id') &&
   Qutria.currentUser.get('id') == comment.get('user_id')) { %>
-    <form class="edit-comment" >
+    <a href="#" class="form-toggle"
+      data-selector="edit-comment-<%= comment.get('id')%>">Edit</a>
+    <form class="hide" id="edit-comment-<%= comment.get('id')%>" >
       <textarea name="comment[body]"><%= comment.get('body') %></textarea>
       <button class="edit-comment"> Edit Your Comment </button>
     </form>
-    <a class="delete-comment" href="#">Delete Your Comment</a>
+    <a class="delete-comment" href="#">Delete</a>
 <% } %>
