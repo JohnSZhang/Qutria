@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:destroy, :edit, :update, :create, :index, :show] do
       resource :favorite, only: [:create, :destroy]
     end
+    post "tags/search/", to: "tags#search"
     resources :taggables, only: [:create]
     delete "taggables", to: "taggables#destroy"
     resource :favorite, only: [:show]

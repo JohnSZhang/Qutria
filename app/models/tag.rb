@@ -1,6 +1,7 @@
 class Tag < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:name, :description]
+  pg_search_scope :search_by_name, :against => :name
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2 }
 

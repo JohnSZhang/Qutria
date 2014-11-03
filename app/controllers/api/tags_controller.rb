@@ -24,13 +24,21 @@ class Api::TagsController < Api::ApplicationController
           user: current_user,
           tag: @tag
       )
-      puts @favorite
     end
     if @tag
-      puts render template: "api/tag"
+      render template: "api/tag"
     else
       render json: "{ 'error': 'That tag does not exist'",
       status: :not_found
+    end
+  end
+
+  def search
+    @tags = Tag.search_by_name(params[:query]).limit(6)
+    if @tags
+       render template: "api/tags"
+    else
+      render text: "no result"
     end
   end
 

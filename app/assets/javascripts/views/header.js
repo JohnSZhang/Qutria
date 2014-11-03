@@ -34,6 +34,7 @@ Qutria.Views.Header = Backbone.View.extend({
   , linkTo: function (event) {
     var link = $(event.currentTarget).data("link");
     Backbone.history.navigate(link, {trigger: true});
+    $('#top-search-results').empty;
   }
   , logout: function (event) {
     console.log('not logging out')

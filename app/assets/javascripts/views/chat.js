@@ -5,7 +5,9 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
   , template: JST['chat']
   , events: {
     "click #send-chat": "sendChat"
-    , "click #update-channel": "changeRoom"
+    , "click #update-channel": "changeRoomByInput"
+    , "keyup #change-channel": "search"
+    , "click .chat-search-result": "changeRoomByClick"
   }
   , initChat: function () {
     Qutria.currentChannel = Qutria.chat.subscribe('main');
@@ -35,6 +37,28 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       })
     }
   }
+  , search: function (event) {
+    $.ajax({
+      url: "/api/tags/search/"
+      , data: { "query" : $(event.currentTarget).val() }
+      , type: "POST"
+      , success: function (resp) {
+        var container = $('#chat-search-results');
+        console.log(resp)
+        if (resp.length !== 0) {
+          container.removeClass("hide")
+        } else {
+          container.addClass("hide")
+        }
+        container.empty();
+        resp.forEach(function (tag) {
+          var item = "<li class='chat-search-result' data-id='"
+            + tag.id + "'>" + tag.name + "</li>";
+          container.append(item)
+        });
+      }
+    })
+  }
   , getHistory: function () {
     $('#board').empty();
     $.ajax({
@@ -47,10 +71,17 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       }
     })
   }
-  , changeRoom: function () {
-    var newRoom = $('#change-channel').val()
+  , changeRoomByClick: function (event) {
+    var newRoom = $(event.currentTarget).data("id");
+    this.changeRoom(newRoom);
+  }
+  , changeRoomByInput: function (event) {
+    var newRoom = $('#change-channel').val();
+    this.changeRoom(newRoom);
+  }
+  , changeRoom: function (roomId) {
     Qutria.currentChannel.unsubscribe();
-    Qutria.currentChannel = Qutria.chat.subscribe(newRoom);
+    Qutria.currentChannel = Qutria.chat.subscribe(roomId);
     Qutria.currentChannel.bind('server-message', function(data) {
       $('#board').append("<p>" + data.message + "</p>")
     });
