@@ -1,0 +1,12 @@
+<script>
+$(function () {
+  Qutria.currentChannel = Qutria.chat.subscribe('main');
+  Qutria.currentChannel.bind('server-message', function(data) {
+    $('#board').append("<p>" + data.message + "</p>")
+  });
+})
+</script>
+<h1> Qutria Chat Main</h1>
+<p id="board">  </p>
+<input type="text" id="new-message" value="">
+<button id="send-chat">send</send>

@@ -207,6 +207,11 @@ main {
   min-height: $main-height;
 }
 
+#chat {
+  position: absolute;
+  right: 0;
+  top: 200px;
+}
 
 footer {
   background-image: url('http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud-footer@2.png?v=18fa052bb441'),url('http://meta.stackexchange.com/content/stackexchangemeta/img/bg-site@2.png?v=21e5b9edec62');

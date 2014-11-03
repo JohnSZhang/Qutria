@@ -4,7 +4,8 @@ Qutria.Routers.router = Backbone.Router.extend({
     this.$header = this.$rootEl.find('header');
     this.$footer = this.$rootEl.find('footer');
     this.$main = this.$rootEl.find('main');
-    this.index();
+    this.$chat = this.$rootEl.find('#chat');
+    this.init();
   }
   , routes: {
     "" : "index"
@@ -13,15 +14,21 @@ Qutria.Routers.router = Backbone.Router.extend({
     , "sign-up" : "signUp"
     , "users/:id" : "userShow"
   }
-  , index: function () {
+  , init: function () {
     var headerView = new Qutria.Views.Header();
     var footerView = new Qutria.Views.Footer();
-    var collection = new Qutria.Collections.Questions();
-    var mainView = new Qutria.Views.Questions({ collection: collection});
+    var chatView = new Qutria.Views.Chat();
     this._swapView({
       "$header": headerView
       , "$footer": footerView
-      , "$main" : mainView
+      , "$chat": chatView
+      });
+  }
+  , index: function () {
+    var collection = new Qutria.Collections.Questions();
+    var mainView = new Qutria.Views.Questions({ collection: collection});
+    this._swapView({
+        "$main" : mainView
       });
   }
   , signIn: function () {

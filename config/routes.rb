@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resource :favorite, only: [:show]
     post "vote", to: "votes#upvote"
     delete "vote", to: "votes#downvote"
+    post "chat/:channel/", to: "chats#get_chat"
   end
 
 # Switch between rails and backbone here

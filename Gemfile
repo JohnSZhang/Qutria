@@ -58,6 +58,10 @@ gem 'foundation-rails'
 
 gem 'filepicker-rails'
 
+#Add Pusher For Chat
+
+gem 'pusher'
+
 #Use better debug tools for development
 group :development do
   gem 'better_errors'
