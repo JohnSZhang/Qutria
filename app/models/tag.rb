@@ -7,5 +7,6 @@ class Tag < ActiveRecord::Base
     source: :taggings,
     source_type: "Question"
   has_many :favorites, inverse_of: :tag
+  has_many :chats, inverse_of: :tag
 
 end

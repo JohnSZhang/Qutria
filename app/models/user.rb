@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
       source_type: "Question"
   has_many :comments
   has_many :votes
+  has_many :chats, inverse_of: :user
 
   attr_reader :password
 
