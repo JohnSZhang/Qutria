@@ -11,18 +11,18 @@ class Api::ChatsController < Api::ApplicationController
   end
 
   def set_chat_channel
-    tag = Tag.find(params[:id])
+    tag = Tag.find_by_name(params[:name])
     render json: "{ 'error': 'invalid chatroom'}",
       status: :unprocessable_entity unless tag
     render json: "{ 'error': 'you need to log in to use tag chats'}",
       status: :unprocessable_entity unless current_user
-    Pusher.trigger(params[:id], 'server-message', { message: params[:message]})
+    Pusher.trigger(params[:name], 'server-message', { message: params[:message]})
     Chat.create(user: current_user, tag: tag, message: params[:message])
     render text: ""
   end
 
   def get_history
-    @chats = Tag.find(params[:id]).chats.limit(10)
+    @chats = Tag.find_by_name(params[:name]).chats.limit(10)
     render template: "api/chat_history"
   end
 end

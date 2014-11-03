@@ -52,8 +52,8 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
         }
         container.empty();
         resp.forEach(function (tag) {
-          var item = "<li class='chat-search-result' data-id='"
-            + tag.id + "'>" + tag.name + "</li>";
+          var item = "<li class='chat-search-result' data-name='"
+            + tag.name + "'>" + tag.name + "</li>";
           container.append(item)
         });
       }
@@ -72,12 +72,14 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
     })
   }
   , changeRoomByClick: function (event) {
-    var newRoom = $(event.currentTarget).data("id");
+    var newRoom = $(event.currentTarget).data("name");
     this.changeRoom(newRoom);
   }
   , changeRoomByInput: function (event) {
     var newRoom = $('#change-channel').val();
-    this.changeRoom(newRoom);
+    if (newRoom !== "") {
+      this.changeRoom(newRoom);
+    }
   }
   , changeRoom: function (roomId) {
     Qutria.currentChannel.unsubscribe();

@@ -37,8 +37,8 @@ Rails.application.routes.draw do
     post "vote", to: "votes#upvote"
     delete "vote", to: "votes#downvote"
     post "chats/", to: "chats#set_main_chat"
-    post "chats/:id/", to: "chats#set_chat_channel"
-    get "chats/:id/", to: "chats#get_history"
+    post "chats/:name/", to: "chats#set_chat_channel"
+    get "chats/:name/", to: "chats#get_history"
     post "search/", to: "searches#search"
   end
 
