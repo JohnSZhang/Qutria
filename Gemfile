@@ -62,6 +62,9 @@ gem 'filepicker-rails'
 
 gem 'pusher'
 
+#Add PG Search
+gem 'pg_search'
+
 #Use better debug tools for development
 group :development do
   gem 'better_errors'

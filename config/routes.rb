@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     post "chats/", to: "chats#set_main_chat"
     post "chats/:id/", to: "chats#set_chat_channel"
     get "chats/:id/", to: "chats#get_history"
+    post "search/", to: "searches#search"
   end
 
 # Switch between rails and backbone here

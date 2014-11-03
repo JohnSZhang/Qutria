@@ -1,4 +1,7 @@
 class Question < ActiveRecord::Base
+  include PgSearch
+  multisearchable :against => [:title, :body]
+
   validates :user, :title, :body, presence: true
   validates :title, uniqueness: true
 
@@ -8,6 +11,7 @@ class Question < ActiveRecord::Base
   has_many :tags, through: :taggables, source: :tag
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+
 
   def best_answer
     @best_answer = self.answers.where(is_best: true)

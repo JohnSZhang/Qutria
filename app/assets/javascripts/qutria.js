@@ -13,7 +13,6 @@ window.Qutria = {
         , cache: false
         , success: function (resp) {
             console.log(resp)
-            Qutria.currentUser.set(resp);
         }
         , error: function (resp) {
           console.log('something went wrong')

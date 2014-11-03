@@ -206,8 +206,39 @@ header {
         }
       }
     }
-
   }
+
+  #top-search-results {
+    position: absolute;
+    width: 300px;
+    right: 10px;
+    top: 40px;
+    border: 1px solid $light-grey;
+    background-color: $white;
+    border-radius: 6px;
+    padding-top: 4px;
+    box-shadow: 3px 5px 3px $skyblue;
+  }
+  #top-search-results.hide {
+    display: none;
+  }
+
+  #top-search-results li{
+    padding-top: 5px;
+    margin: 0 10px 4px 10px;
+    border-top: 1px solid $light-grey;
+    color: $link-grey;
+  }
+
+  #top-search-results li:first-child{
+    border: none;
+  }
+
+  #top-search-results li:hover{
+    background-color: $ligtest-grey;
+    cursor: pointer;
+  }
+
 }
 
 
