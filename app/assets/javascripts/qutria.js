@@ -29,6 +29,10 @@ window.Qutria = {
 
 $(document).ready(function(){
   Qutria.initialize();
+  $('#toggle-chat').on("click", function (event) {
+    event.preventDefault();
+    $('#chat').animate({width: 'toggle'}, 500);
+  });
 
   $('main').on("click", ".form-toggle", function (event) {
     event.preventDefault()

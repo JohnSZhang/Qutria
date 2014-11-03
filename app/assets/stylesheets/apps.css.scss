@@ -86,6 +86,14 @@ html body{
     padding: 1px 6px;
   }
 
+  a#toggle-chat {
+    position: absolute;
+    right: 0;
+    top: 170px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
   button.untag{
     padding: 3px 4px;
   }
