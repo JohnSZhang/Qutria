@@ -42,8 +42,7 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     var newAnswer = new Qutria.Models.Answer(data);
     newAnswer.save({}, {
       success: function (obj) {
-        self.model.answers.add(newAnswer);
-        self.render();
+        self.model.fetch()
       }
     });
   }
@@ -63,7 +62,7 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     this.$el.html(this.template({ question: this.model }));
     if(this.model.answers) {
       this.model.answers.each(function (answer) {
-        var view = new Qutria.Views.Answer({ model: answer })
+        var view = new Qutria.Views.Answer({ model: answer, question: self.model })
         self.add_subview("div.answers", view)
       })
     }

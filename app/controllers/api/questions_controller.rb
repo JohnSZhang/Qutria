@@ -45,14 +45,32 @@ class Api::QuestionsController < Api::ApplicationController
   def destroy
     @question = Question.find(params[:id])
     if not_owner?(@question)
-      puts "not owner!"
       render json: "{ 'error': 'not your question!'}",
         status: :unprocessable_entity
     elsif @question.destroy
       render template: "api/question"
     else
-      puts "cannot delete!"
       render json: "{ 'error': '#{@question.errors.full_messages}'}",
+        status: :unprocessable_entity
+    end
+  end
+
+  def best_answer
+    @question = Question.find(params[:id])
+    @answer = Answer.find(params[:answer_id])
+    if !@question || !@answer
+      render json: "{ 'error': 'not a valid question or answer!'}",
+        status: :unprocessable_entity
+    elsif not_owner?(@question)
+      render json: "{ 'error': 'not your question!'}",
+        status: :unprocessable_entity
+    elsif @question.best_answer?
+      render json: "{ 'error': 'aleady has best answer!'}",
+        status: :unprocessable_entity
+    elsif @question.best_answer = @answer
+      render json: { msg: 'updated!'}.to_json
+    else
+      render json: "{ 'error': 'cannot update best answer!'}",
         status: :unprocessable_entity
     end
   end

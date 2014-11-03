@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:create, :destroy, :index, :show, :update]
     resources :questions, only: [:create, :show, :index, :update, :destroy]
+    post "questions/:id/best", to: "questions#best_answer"
     resources :answers, only: [:create, :destroy, :update, :show]
     resources :comments, only: [:create, :destroy, :update]
     resources :tags, only: [:destroy, :edit, :update, :create, :index, :show] do

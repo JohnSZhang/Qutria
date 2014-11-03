@@ -1,6 +1,7 @@
 Qutria.Views.Answer = Qutria.Views.Composite.extend({
-  initialize: function () {
-    var self = this;
+  initialize: function (options) {
+    this.question = options.question;
+    this.listenTo(this.question, "sync change destroy", this.render);
     this.listenTo(this.model, "sync change destroy", this.render);
   }
   , className: "row answer"
@@ -8,6 +9,7 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
   , events: {
     "click button.edit-answer" : "updateAnswer"
     , "click a.delete-answer" : "deleteAnswer"
+    , "click a.mark-correct": "markCorrect"
   }
   , updateAnswer: function (event) {
     event.preventDefault();
@@ -26,9 +28,24 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
       }
     })
   }
+  , markCorrect: function (event) {
+    event.preventDefault();
+    var self = this;
+    $.ajax({
+      url: "/api/questions/"+ self.question.get('id') +"/best"
+      , type: "POST"
+      , cache: false
+      , data: {"answer_id": $(event.currentTarget).data('id')}
+      , success: function () {
+        self.question.fetch()
+      }
+      , error: function (resp) {
+      }
+    })
+  }
   , render: function () {
     var self = this;
-    this.$el.html(this.template({ answer: this.model }));
+    this.$el.html(this.template({ answer: this.model, question: this.question }));
     if(this.model.comments) {
       this.model.comments.each(function (comment) {
         var view = new Qutria.Views.Comment({ model: comment })

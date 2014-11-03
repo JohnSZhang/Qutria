@@ -1,5 +1,8 @@
 <div class="answer-votes small-1 small-offset-1 left"></div>
-
+<% if ( question.get('answered') &&
+    question.get('best_answer_id') == answer.get("id")) { %>
+      <p> Best Answer! </p>
+  <% } %>
   <p class="left small-10 left"><%= answer.get('body') %></p>
   <div class="answer-author small-10 small-offset-2 left">
     <% if (Qutria.currentUser.get('id') &&
@@ -12,6 +15,11 @@
           <button class="edit-answer"> Edit </button>
         </form>
         <a class="delete-answer left" href="#">Delete Answer</a>
+    <% } %>
+    <% if (Qutria.currentUser.get('id') &&
+      Qutria.currentUser.get('id') == question.get('user_id') &&
+        !question.get("answered")) { %>
+        <a class="mark-correct left" data-id="<%= answer.get('id') %>" href="#">Mark As Correct</a>
     <% } %>
     <div class="answer-comment left"></div>
 </div>

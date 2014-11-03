@@ -3,6 +3,8 @@ json.title @question.title
 json.body @question.body
 json.user_id @question.user_id
 json.vote_count @question.votes.sum(:vote_type)
+json.answered @question.best_answer?
+json.best_answer_id @question.best_answer ? @question.best_answer.id : 0
 
 json.user do
   json.id @question.user.id
