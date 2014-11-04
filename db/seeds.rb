@@ -14,17 +14,40 @@ tags_array = ['ruby', 'backbone',
       'rails', 'javascript',
       'css', 'html5', 'node.js', 'python' ]
 
-questions = SeedHelper::get_questions('ruby') #An Array Of Questions
+tags_array.each do |tag|
+  puts tag
+  questions = SeedHelper::get_questions(tag, 'votes') #An Array Of Questions
 
-questions.each do |question|
-  rails_q = SeedHelper::create_question(question)
-  SeedHelper::create_comments(question, rails_q) 
+  questions.each do |question|
+    next if SeedHelper::question_exit?(question.title)
+    rails_q = SeedHelper::create_question(question)
+    SeedHelper::create_comments(question, rails_q)
 
-  if question.answers.count > 0
-    answers = SeedHelper::parse_answers(question)
-    answers.each do |answer|
-      rails_a = SeedHelper::create_answer(answer, rails_q)
-      SeedHelper::create_comments(answer, rails_a)
+    if question.answers.count > 0
+      answers = SeedHelper::parse_answers(question)
+      answers.each do |answer|
+        rails_a = SeedHelper::create_answer(answer, rails_q)
+        SeedHelper::create_comments(answer, rails_a)
+      end
+    end
+  end
+end
+
+tags_array.each do |tag|
+  puts tag
+  questions = SeedHelper::get_questions(tag, 'hot') #An Array Of Questions
+
+  questions.each do |question|
+    next if SeedHelper::question_exit?(question.title)
+    rails_q = SeedHelper::create_question(question)
+    SeedHelper::create_comments(question, rails_q)
+
+    if question.answers.count > 0
+      answers = SeedHelper::parse_answers(question)
+      answers.each do |answer|
+        rails_a = SeedHelper::create_answer(answer, rails_q)
+        SeedHelper::create_comments(answer, rails_a)
+      end
     end
   end
 end

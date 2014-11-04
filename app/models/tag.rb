@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
                     :tsearch => {:prefix => true}
                   }
 
-  validates :name, presence: true, uniqueness: true, length: { minimum: 2 }
+  validates :name, presence: true, uniqueness: true, length: { minimum: 1 }
 
   has_many :taggables
   has_many :questions,
