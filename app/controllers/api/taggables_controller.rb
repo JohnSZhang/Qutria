@@ -2,7 +2,7 @@ class Api::TaggablesController < Api::ApplicationController
   before_action :require_login
 
   def create
-    tag = Taggable.CreateAndTag(taggable_params[:name])
+    tag = Taggable.create_or_find(taggable_params[:name])
     unless tag
       render json: "{ 'error': 'Cannot Find Answer'}",
       status: :unprocessable_entity

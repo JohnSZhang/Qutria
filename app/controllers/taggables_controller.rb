@@ -2,7 +2,7 @@ class TaggablesController < ApplicationController
   before_action :require_login
 
   def create
-    tag = Taggable.CreateAndTag(taggable_params[:name])
+    tag = Taggable.create_or_find(taggable_params[:name])
     unless tag
       flash[:msg] = 'Cannot Find Or Create Tag'
       redirect_to request.referer

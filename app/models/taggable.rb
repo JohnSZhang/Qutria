@@ -4,7 +4,7 @@ class Taggable < ActiveRecord::Base
   belongs_to :tag
   belongs_to :taggings, polymorphic: true
 
-  def self.CreateAndTag(name)
+  def self.create_or_find(name)
     tag = Tag.find_by_name(name)
     if tag
       tag
