@@ -171,14 +171,15 @@ header {
   }
 
   .container{
-    background-image: url("http://meta.stackexchange.com/content/stackexchangemeta/img/bg-site@2.png?v=21e5b9edec62");
+
+    background-image: url("bg-site.png");
     background-size: 63px 180px;
     background-position: left -37px;
     background-repeat: repeat-x;
     background-color: $white;
 
     #main-nav{
-      background-image: url("http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud@2.png?v=266703494be9");
+      background-image: url("icon-cloud.png");
       background-size: 630px 139px;
 
       height: 135px;
@@ -253,7 +254,7 @@ main {
 }
 
 footer {
-  background-image: url('http://meta.stackexchange.com/content/stackexchangemeta/img/icon-cloud-footer@2.png?v=18fa052bb441'),url('http://meta.stackexchange.com/content/stackexchangemeta/img/bg-site@2.png?v=21e5b9edec62');
+  background-image: url('icon-cloud-footer.png'), url('bg-site.png');
   background-position: left bottom,left top;
   background-repeat: no-repeat,repeat;
   background-size: 475px 280px,63px 180px;

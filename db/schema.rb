@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103172502) do
+ActiveRecord::Schema.define(version: 20141104200126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: true do |t|
-    t.integer  "question_id",                 null: false
-    t.integer  "user_id",                     null: false
-    t.text     "body",                        null: false
+    t.integer  "question_id",                     null: false
+    t.integer  "user_id",                         null: false
+    t.text     "body",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_best",     default: false
+    t.boolean  "is_best",         default: false
+    t.integer  "meta_vote_count"
+    t.text     "title"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
@@ -64,12 +66,13 @@ ActiveRecord::Schema.define(version: 20141103172502) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "title",          null: false
-    t.text     "body",           null: false
-    t.integer  "user_id",        null: false
+    t.string   "title",           null: false
+    t.text     "body",            null: false
+    t.integer  "user_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "filepicker_url"
+    t.integer  "meta_vote_count"
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
@@ -105,7 +108,6 @@ ActiveRecord::Schema.define(version: 20141103172502) do
     t.string   "filepicker_url"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   create_table "votes", force: true do |t|

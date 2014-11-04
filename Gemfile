@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -59,11 +60,17 @@ gem 'foundation-rails'
 gem 'filepicker-rails'
 
 #Add Pusher For Chat
-
 gem 'pusher'
 
 #Add PG Search
 gem 'pg_search'
+
+#user Http request for Stack API
+gem 'httpclient'
+
+#Add stackoverflow gem for getting questions
+gem 'ruby-stackoverflow'
+
 
 #Use better debug tools for development
 group :development do
