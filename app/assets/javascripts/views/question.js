@@ -2,9 +2,11 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(Qutria.global, "voted", this.render);
+    this.on('render', this.afterRender);
 
     this.model.fetch();
   }
+
   , template: JST['question']
   , events: {
     "click #update-question" : "questionUpdate"
@@ -97,6 +99,12 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
         model: this.model
     });
     self.add_subview( "#question-votes", view);
+    this.trigger('render')
     return this;
+  }
+  , afterRender: function() {
+    $('pre code, p code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
   }
 })
