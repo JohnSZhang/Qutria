@@ -3,7 +3,7 @@ Qutria.Views.Questions = Backbone.View.extend({
     this.listenTo(this.collection, "sync add remove reset", this.render);
     this.listenTo(Qutria.currentUser, "change", this.render);
     Qutria.current_page = 1;
-    //$(window).scroll(this.scrolling.bind(this));
+    $(window).scroll(this.scrolling.bind(this));
     this.collection.fetch({
       data: { ßpage: Qutria.current_page,
               ßsort: 'title asc'}
@@ -52,8 +52,8 @@ Qutria.Views.Questions = Backbone.View.extend({
   }
   , scrolling: function (event) {
     // If we almost scroll to bottom
-    if ($(window).scrollTop() >= Qutria.scroll_trigger * .7 ) {
-      if (Qutria.current_page <= this.collection.max_pages) {
+    if ($(window).scrollTop() >= Qutria.scroll_trigger * 1
+      && Qutria.current_page < this.collection.max_pages ) {
         this.collection.fetch({
           remove: false
           , data: { page: Qutria.current_page + 1}
@@ -64,7 +64,6 @@ Qutria.Views.Questions = Backbone.View.extend({
         });
       }
     }
-  }
   , render: function () {
     this.$el.html(this.template({ questions: this.collection }));
     Qutria.scroll_trigger = $(document).height() - $(window).height()
