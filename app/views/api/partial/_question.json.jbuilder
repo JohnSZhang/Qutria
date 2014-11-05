@@ -5,7 +5,7 @@ json.votes question.meta_vote_count
 json.user_vote question.votes.count
 json.answers question.answers.count
 json.answered question.best_answer?
-json.create question.meta_create_date
+json.create time_ago_in_words(question.meta_create_date)
 json.user question.user.username
 json.user_id question.user.id
 json.user_img question.user.filepicker_url

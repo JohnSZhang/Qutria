@@ -14,7 +14,7 @@ $button-shadow: #086586;
 $link-grey: #888888;
 $light-grey: #e5e5e5;
 $comment-grey: #444444;
-$ligtest-grey: #FBFBFB;
+$lightest-grey: #FBFBFB;
 $footer-height: 50px;
 $header-height: 35px;
 $main-height: 500px;
@@ -30,6 +30,10 @@ html body{
 
   h1, h2, h3, h4, h5 {
     color: $link-grey;
+  }
+
+  h1 {
+    font-size: 1.7rem;
   }
 
   button:hover, .button:hover {
@@ -119,7 +123,7 @@ html body{
 
   .question-comments > .comment:hover,
    .answer-comments > .comment:hover {
-     background: $ligtest-grey;
+     background: $lightest-grey;
    }
 
   .question-comments > .comment:first-child,
@@ -139,14 +143,66 @@ html body{
     height: 32px;
   }
 
+  h3 {
+    line-height: 1;
+  }
+
   h3.title a{
     color: $button-active;
     font-weight: bold;
     font-size: 15px;
+    padding: 0;
   }
 
   ul.questions {
     list-style: none;
+
+    li.question {
+
+      border-top: 1px solid $light-grey;
+      padding: 15px 0px;
+
+      div.glance {
+        margin-top: 10px;
+
+        .vote_count, .vote_count span {
+          color: $link-grey;
+        }
+
+        .answer_count, .answer_count span {
+          color: $comment_grey;
+        }
+
+        span {
+          clear: both;
+        }
+      }
+
+      p.excerpt {
+        font-size: 13px;
+        color: $comment-grey;
+        margin-bottom: 5px;
+      }
+
+      div.meta {
+
+        span {
+          padding: 0 5px;
+          color: $link-grey;
+          font-size: 12px;
+        }
+
+        img {
+          width: 32px;
+        }
+      }
+
+      a.tag {
+        background: $lightest-grey;
+        border: 1px solid $light-grey;
+        border-radius: 10px;
+      }
+    }
   }
 }
 
@@ -253,7 +309,7 @@ header {
   }
 
   #top-search-results li:hover{
-    background-color: $ligtest-grey;
+    background-color: $lightest-grey;
     cursor: pointer;
   }
 

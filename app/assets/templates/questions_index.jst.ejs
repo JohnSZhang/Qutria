@@ -4,10 +4,13 @@
   <li class="question columns small-12">
     <div class="glance columns small-2">
       <div class="vote_count">
-        <%= question.get('votes') + question.get('user_vote') %> Votes
+        <%= question.get('votes') + question.get('user_vote') %>
+        <span> votes </span>
       </div>
       <div class="answer_count <%=question.get('answered') %>">
-        <%= question.get('answers')%> Answers</div>
+        <%= question.get('answers')%>
+        <span>answers</span>
+      </div>
     </div>
     <div class="info columns small-10">
       <h3 class="title ">
@@ -18,18 +21,19 @@
       </p>
     </div>
 
-  <div class="question-tags">
+  <div class="question-tags columns left small-6 small-offset-2">
     <% question.get('tags').forEach(function (tag) { %>
       <a class="tag" href="#/tags/<%= tag.id %>"><%= tag.name %></a>
     <% }) %>
   </div>
 
-    <span class="meta">
-      asked <%= question.get('create') %>
+    <div class="meta right columns small-4">
+      <span class="columns small-12">asked <%= question.get('create') %></span>
       <a href="#/users/<%= question.get('user_id') %>">
         <img src="<%= question.get('user_img') %>">
-      </a></span>
+      </a>
       <a href="#/users/<%= question.get('user_id') %>"><%= question.get('user') %></a></span>
+    </span>
   </li>
 
 <% }) %>
