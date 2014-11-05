@@ -25,7 +25,7 @@ module SeedHelper
   end
 
   def self.create_comments(stack_obj, rails_obj)
-    unless defined? stack_obj.comments
+    unless stack_obj.comments.nil?
       comments = RubyStackoverflow::Client::Comment.parse_data(stack_obj.comments)
       comments.each do |comment|
         owner = self.get_user(comment)
