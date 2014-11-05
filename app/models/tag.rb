@@ -4,6 +4,7 @@ class Tag < ActiveRecord::Base
   pg_search_scope :search_by_name, :against => :name, :using =>{
                     :tsearch => {:prefix => true}
                   }
+  paginates_per 12
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 1 }
 

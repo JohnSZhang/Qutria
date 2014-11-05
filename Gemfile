@@ -70,6 +70,9 @@ gem 'ruby-stackoverflow'
 #Add Nokogiri For Parsing Html
 gem 'nokogiri'
 
+#Add Karminari For Infinite Scroll
+gem 'kaminari'
+
 
 #Use better debug tools for development
 group :development do

@@ -1,6 +1,7 @@
 class Question < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:title, :body]
+  paginates_per 10
 
   validates :user, :title, :body, presence: true
   validates :title, uniqueness: true

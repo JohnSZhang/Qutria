@@ -1,1 +1,2 @@
-json.array! @questions, partial: 'api/partial/question', as: :question
+json.pages @questions.total_pages
+json.questions  @questions, partial: 'api/partial/question', as: :question

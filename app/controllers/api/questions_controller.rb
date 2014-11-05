@@ -2,7 +2,10 @@ class Api::QuestionsController < Api::ApplicationController
   before_action :require_login, only: [:create, :update, :destroy]
 
   def index
-    @questions = Question.all
+    # @questions = Question.all
+    current_page = params[:page] || 1
+    @questions = Question.page(current_page)
+    @total_pages = @questions.total_pages
     render template: "api/questions"
   end
 
