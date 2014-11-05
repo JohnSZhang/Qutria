@@ -1,6 +1,6 @@
-Qutria.Collections.Users = Backbone.Collection.extend({
+Qutria.Collections.UsersSearch = Backbone.Collection.extend({
   model: Qutria.Models.User
-  , url: "/api/users"
+  , url: "/api/users/search"
   , parse: function (resp) {
     this.max_pages = resp['pages'];
     delete resp['pages']

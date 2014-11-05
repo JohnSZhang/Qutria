@@ -12,7 +12,6 @@ window.Qutria = {
         , dataType: "json"
         , cache: false
         , success: function (resp) {
-            console.log(resp)
         }
         , error: function (resp) {
           console.log('something went wrong')

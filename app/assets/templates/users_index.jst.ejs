@@ -1,8 +1,8 @@
-<h2> All Users </h2>
-<% users.each(function(user) { %>
-  <ul>
-    <li><a href="#/users/<%= user.get("id") %>"><%= user.get('username') %></a></li>
-    <li><%= user.get('email') %></li>
-    <li><%= user.get('name') %></li>
-  </ul>
-<% }) %>
+<h1> Users </h1>
+
+<div class="row"><form id="user-search">
+  <label for="find-user">Type to find users: </label>
+  <input type="text" id="find-user" value="<%= search %> ">
+</form>
+</div>
+<div id="users"></div>

@@ -2,7 +2,10 @@ class Api::UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    #@users = User.all
+    current_page = params[:page] || 1
+    @users = User.page(current_page)
+    @total_pages = @users.total_pages
     render template: "api/users"
   end
 
@@ -47,6 +50,16 @@ class Api::UsersController < ApplicationController
     else
       render json: "{ 'error': '#{@user.errors.full_messages}'}",
       status: :unprocessable_entity
+    end
+  end
+
+  def search
+    current_page = params[:page] || 1
+    @users = User.search_by_name(params[:query]).page(current_page)
+    if @users
+       render template: "api/users"
+    else
+      render text: "no result"
     end
   end
 

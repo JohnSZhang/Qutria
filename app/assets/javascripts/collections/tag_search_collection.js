@@ -1,5 +1,5 @@
-Qutria.Collections.Tags = Backbone.Collection.extend({
-  url: "/api/tags"
+Qutria.Collections.TagsSearch = Backbone.Collection.extend({
+  url: "/api/tags/search"
   , model: Qutria.Models.Tag
   , parse: function (resp) {
     this.max_pages = resp['pages'];

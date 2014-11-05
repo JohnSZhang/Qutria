@@ -83,4 +83,12 @@ module SeedHelper
       Taggable.create!( tag: rails_tag, taggings: rails_q)
     end
   end
+
+  def self.update_tags(stack_tags)
+    stack_tags.each do |tag|
+      rails_tag = Tag.find_by_name(tag.tag_name)
+      rails_tag.description = tag.excerpt
+      rails_tag.save!
+    end
+  end
 end

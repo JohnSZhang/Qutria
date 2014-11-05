@@ -1,0 +1,14 @@
+<% tags.each(function (tag, idx) { %>
+  <% console.log(idx) %>
+  <% if((idx % 4) === 0) { %>
+    <div class="row">
+  <% } %>
+      <div class="tag small-3 columns left">
+        <a href="#/tags/<%= tag.get('id')%>"><%= tag.get('name') %></a>
+        <p><%= tag.get('description') %></p>
+        <span> x <%= tag.get('count') %></span>
+      </div>
+  <% if(((idx + 1) % 4) === 0 || idx === (tags.length - 1)) { %>
+    </div>
+  <% } %>
+<% }) %>

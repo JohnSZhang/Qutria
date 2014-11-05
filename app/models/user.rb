@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:username]
+  pg_search_scope :search_by_name, :against => :username, :using =>{
+                    :tsearch => {:prefix => true}
+                  }
+  paginates_per 16
 
   validates :username, presence: true, uniqueness: true
   validates :password_digest, :email, presence: true

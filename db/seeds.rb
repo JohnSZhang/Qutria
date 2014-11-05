@@ -9,11 +9,10 @@ require 'rubygems'
 require 'ruby-stackoverflow'
 require_relative 'seed_helper'
 include SeedHelper
-
-tags_array = ['ruby']
-  # , 'backbone',
-  #     'rails', 'javascript',
-  #     'css', 'html5', 'node.js', 'python' ]
+client = RubyStackoverflow::Client.new
+tags_array = ['ruby', 'backbone',
+      'rails', 'javascript',
+      'css', 'html5', 'node.js', 'python' ]
 
 tags_array.each do |tag|
   puts tag
@@ -51,4 +50,10 @@ tags_array.each do |tag|
       end
     end
   end
+end
+
+Tag.find_in_batches(batch_size: 15) do |tags|
+  tag_names = tags.map(&:name)
+  response = client.tags_wiki_by_names(tag_names).data
+  SeedHelper::update_tags(response) unless response.nil?
 end

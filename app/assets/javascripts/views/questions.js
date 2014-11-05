@@ -3,7 +3,7 @@ Qutria.Views.Questions = Backbone.View.extend({
     this.listenTo(this.collection, "sync add remove reset", this.render);
     this.listenTo(Qutria.currentUser, "change", this.render);
     Qutria.current_page = 1;
-    $(window).scroll(this.scrolling.bind(this));
+    //$(window).scroll(this.scrolling.bind(this));
     this.collection.fetch({
       data: { page: Qutria.current_page }
     });

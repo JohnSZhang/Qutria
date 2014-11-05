@@ -1,0 +1,13 @@
+<% users.each(function(user, idx) { %>
+  <% if((idx % 4) === 0) { %>
+    <div class="row">
+  <% } %>
+    <div class="user small-3 columns left">
+      <img class="thumbnail" src="<%= user.get('img') %>">
+      <a href="#/users/<%= user.get("id") %>"><%= user.get('username') %></a>
+      <%= user.get('name') %>
+    </div>
+  <% if(((idx + 1) % 4) === 0 || idx === (user.length - 1)) { %>
+    </div>
+  <% } %>
+<% }) %>

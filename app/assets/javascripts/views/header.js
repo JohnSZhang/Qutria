@@ -37,7 +37,7 @@ Qutria.Views.Header = Backbone.View.extend({
     $('#top-search-results').empty;
   }
   , logout: function (event) {
-    console.log('not logging out')
+    console.log('now logging out')
     event.preventDefault();
     $.ajax({
         url: "/api/session/"

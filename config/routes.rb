@@ -22,15 +22,16 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy] do
       get "current", to: "sessions#current"
     end
+    get "users/search/", to: "users#search"
     resources :users, only: [:create, :destroy, :index, :show, :update]
     resources :questions, only: [:create, :show, :index, :update, :destroy]
     post "questions/:id/best", to: "questions#best_answer"
     resources :answers, only: [:create, :destroy, :update, :show]
     resources :comments, only: [:create, :destroy, :update]
+    get "tags/search/", to: "tags#search"
     resources :tags, only: [:destroy, :edit, :update, :create, :index, :show] do
       resource :favorite, only: [:create, :destroy]
     end
-    post "tags/search/", to: "tags#search"
     resources :taggables, only: [:create]
     delete "taggables", to: "taggables#destroy"
     resource :favorite, only: [:show]

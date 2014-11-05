@@ -2,7 +2,10 @@ class Api::TagsController < Api::ApplicationController
   before_action :require_login, only: [:create, :edit, :update, :destroy]
 
   def index
-    @tags = Tag.all
+    #@tags = Tag.all
+    current_page = params[:page] || 1
+    @tags = Tag.page(current_page)
+    @total_pages = @tags.total_pages
     render template: "api/tags"
   end
 
@@ -33,7 +36,7 @@ class Api::TagsController < Api::ApplicationController
     end
   end
 
-  def search
+  def search_chat
     @tags = Tag.search_by_name(params[:query]).limit(6)
     if @tags
        render template: "api/tags"
@@ -41,6 +44,17 @@ class Api::TagsController < Api::ApplicationController
       render text: "no result"
     end
   end
+
+  def search
+    current_page = params[:page] || 1
+    @tags = Tag.search_by_name(params[:query]).page(current_page)
+    if @tags
+       render template: "api/tags"
+    else
+      render text: "no result"
+    end
+  end
+
 
   def update
     @tag = Tag.find(params[:id])
