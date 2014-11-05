@@ -56,7 +56,6 @@ gem 'rails_12factor', group: :production
 gem 'foundation-rails'
 
 #Add Images
-
 gem 'filepicker-rails'
 
 #Add Pusher For Chat
@@ -65,11 +64,11 @@ gem 'pusher'
 #Add PG Search
 gem 'pg_search'
 
-#user Http request for Stack API
-gem 'httpclient'
-
 #Add stackoverflow gem for getting questions
 gem 'ruby-stackoverflow'
+
+#Add Nokogiri For Parsing Html
+gem 'nokogiri'
 
 
 #Use better debug tools for development

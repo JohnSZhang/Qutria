@@ -1,6 +1,6 @@
 module SeedHelper
   def self.get_questions(tag_name, sort)
-    filter = '!1vKUAKm-60ktCnxF4HHcRrhkds7jQ8M6xcIQhSk((F-rmWBAZQTUf*pn1p*lAc(5avq'
+    filter = '!FRQ4VUIaa880PeTBSXJP))vWQSulQE8_DD1CX(FKVYQ0*QtU9s4MYbw1*tf.JWTt(tK2gthy'
     options = { order:'desc',
       sort: sort, filter: filter, pagesize: 100 }
     questions = RubyStackoverflow.questions(options.merge({ tagged: tag_name })).data
@@ -17,6 +17,7 @@ module SeedHelper
         title: question.title,
         body: question.body,
         meta_vote_count: question.score,
+        meta_create_date: question.creation_date,
         view_count: question.view_count)
     new_question.save
     self.parse_tags(new_question, question)
@@ -31,6 +32,7 @@ module SeedHelper
         new_comment = Comment.new(
           user: owner,
           body: comment.body,
+          meta_create_date: comment.creation_date,
           commentable: rails_obj
           )
         new_comment.save
@@ -46,6 +48,7 @@ module SeedHelper
         body: answer.body,
         question: rails_q,
         meta_vote_count: answer.score,
+        meta_create_date: answer.creation_date,
         is_best: answer.is_accepted
         )
     new_answer.save

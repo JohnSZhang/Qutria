@@ -10,9 +10,10 @@ require 'ruby-stackoverflow'
 require_relative 'seed_helper'
 include SeedHelper
 
-tags_array = ['ruby', 'backbone',
-      'rails', 'javascript',
-      'css', 'html5', 'node.js', 'python' ]
+tags_array = ['ruby']
+  # , 'backbone',
+  #     'rails', 'javascript',
+  #     'css', 'html5', 'node.js', 'python' ]
 
 tags_array.each do |tag|
   puts tag

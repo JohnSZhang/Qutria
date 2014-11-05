@@ -6,6 +6,7 @@
 $black: #111111;
 $white: #FFFFFF;
 $skyblue: #8ADFF9;
+$visited-blue: #18529A;
 $grey: #444444;
 $button-blue: #4ca3d7;
 $button-active: #4e82c2;
@@ -23,7 +24,13 @@ $comment-top: solid 1px #dddddd;
 p, h1, h2, h3, span {
 }
 
+
+
 html body{
+
+  h1, h2, h3, h4, h5 {
+    color: $link-grey;
+  }
 
   button:hover, .button:hover {
     background: $button-active;
@@ -130,6 +137,16 @@ html body{
 
   img.thumbnail {
     height: 32px;
+  }
+
+  h3.title a{
+    color: $button-active;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  ul.questions {
+    list-style: none;
   }
 }
 

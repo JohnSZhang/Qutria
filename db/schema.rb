@@ -11,20 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104203219) do
+ActiveRecord::Schema.define(version: 20141104232604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: true do |t|
-    t.integer  "question_id",                     null: false
-    t.integer  "user_id",                         null: false
-    t.text     "body",                            null: false
+    t.integer  "question_id",                      null: false
+    t.integer  "user_id",                          null: false
+    t.text     "body",                             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_best",         default: false
+    t.boolean  "is_best",          default: false
     t.integer  "meta_vote_count"
     t.text     "title"
+    t.datetime "meta_create_date"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20141104203219) do
     t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "meta_create_date"
   end
 
   create_table "favorites", force: true do |t|
@@ -66,14 +68,15 @@ ActiveRecord::Schema.define(version: 20141104203219) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "title",           null: false
-    t.text     "body",            null: false
-    t.integer  "user_id",         null: false
+    t.string   "title",            null: false
+    t.text     "body",             null: false
+    t.integer  "user_id",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "filepicker_url"
     t.integer  "meta_vote_count"
     t.integer  "view_count"
+    t.datetime "meta_create_date"
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
