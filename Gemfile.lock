@@ -1,5 +1,6 @@
-PATH
-  remote: lib/ruby-stackoverflow
+GIT
+  remote: git://github.com/JohnSZhang/ruby-stackoverflow.git
+  revision: fb5b9a430e7be3943530140357a22cedffaeda57
   specs:
     ruby-stackoverflow (0.0.2)
       httparty (~> 0.11.0)
