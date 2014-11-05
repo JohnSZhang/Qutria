@@ -22,7 +22,7 @@ Qutria.Views.TagsIndex = Qutria.Views.Composite.extend({
         self.currentTags = new Qutria.Views.TagsList({ collection: newCollection});
         self.add_subview('div#tags', self.currentTags);
       }
-    })
+    });
   }
   , render: function () {
     var query = this.query ? this.query : "";
