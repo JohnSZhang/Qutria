@@ -65,7 +65,7 @@ gem 'pusher'
 gem 'pg_search'
 
 #Add stackoverflow gem for getting questions
-gem 'ruby-stackoverflow', path: 'lib/ruby-stackoverflow'
+gem 'ruby-stackoverflow', :git => 'https://github.com/JohnSZhang/ruby-stackoverflow.git'
 
 #Add Nokogiri For Parsing Html
 gem 'nokogiri'
