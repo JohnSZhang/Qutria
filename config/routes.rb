@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
     get "users/search/", to: "users#search"
     resources :users, only: [:create, :destroy, :index, :show, :update]
+    get "questions/unanswered", to: "questions#unanswered"
+    get "questions/noanswers", to: "questions#no_answers"
     resources :questions, only: [:create, :show, :index, :update, :destroy]
     post "questions/:id/best", to: "questions#best_answer"
     resources :answers, only: [:create, :destroy, :update, :show]

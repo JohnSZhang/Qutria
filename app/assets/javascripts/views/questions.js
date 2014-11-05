@@ -5,12 +5,18 @@ Qutria.Views.Questions = Backbone.View.extend({
     Qutria.current_page = 1;
     //$(window).scroll(this.scrolling.bind(this));
     this.collection.fetch({
-      data: { page: Qutria.current_page }
+      data: { ßpage: Qutria.current_page,
+              ßsort: 'title asc'}
     });
   }
   , template: JST['questions_index']
   , events: {
       "click #new-question" : "questionCreate"
+      , 'click #sort-newest' : 'questionSort'
+      , 'click #sort-popular' : 'questionSort'
+      , 'click #sort-name' : 'questionSort'
+      , 'click #filter-month' : 'questionFilter'
+      , 'click #filter-year' : 'questionFilter'
   }
   , questionCreate: function (event) {
     event.preventDefault();
@@ -25,6 +31,24 @@ Qutria.Views.Questions = Backbone.View.extend({
       , error: function () {
       }
     })
+  }
+  , questionFilter: function (event) {
+    Qutria.current_page = 1;
+    event.preventDefault()
+    var sort_criteria = $(event.currentTarget).data('filter')
+    this.collection.fetch({
+      data: { page: Qutria.current_page,
+              filter: sort_criteria}
+    });
+  }
+  , questionSort: function (event) {
+    Qutria.current_page = 1;
+    event.preventDefault()
+    var sort_criteria = $(event.currentTarget).data('sort')
+    this.collection.fetch({
+      data: { page: Qutria.current_page,
+              sort: sort_criteria}
+    });
   }
   , scrolling: function (event) {
     // If we almost scroll to bottom

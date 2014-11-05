@@ -1,4 +1,16 @@
 <h1>Top Questions</h1>
+<ul class="sorts inline-list right small-6 columns">
+  <li><a href="#" id="sort-newest"
+      data-sort="created_at desc">Newest</a></li>
+  <li><a href="#" id="sort-popular"
+      data-sort="view_count desc" >Popular</a></li>
+  <li><a href="#" id="filter-month"
+      data-filter="month" >Month</a></li>
+  <li><a href="#" id="filter-year"
+      data-filter="year" >Year</a></li>
+  <li><a href="#" id="sort-name"
+      data-sort="title asc" >Name</a></li>
+</ul>
 <ul class="small-10 small-centered questions">
 <% questions.each(function (question) { %>
   <li class="question columns small-12">

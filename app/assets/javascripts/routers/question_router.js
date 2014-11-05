@@ -9,6 +9,7 @@ Qutria.Routers.Question = Backbone.Router.extend({
     "questions" : "questions"
     , "questions/:id" : "question"
     , "favorites" : "favorites"
+    , "unanswered" : "unanswered"
   }
   , questions: function () {
     var questions = new Qutria.Collections.Questions();
@@ -27,6 +28,13 @@ Qutria.Routers.Question = Backbone.Router.extend({
   , favorites: function () {
     var favorite = new Qutria.Models.Favorite();
     var view = new Qutria.Views.Favorites({ model: favorite})
+    this._swapView({
+      "$main": view
+    });
+  }
+  , unanswered: function () {
+    var questions = new Qutria.Collections.UnansweredQuestions();
+    var view = new Qutria.Views.Questions({ collection: questions });
     this._swapView({
       "$main": view
     });

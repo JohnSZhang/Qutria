@@ -12,6 +12,19 @@ class Question < ActiveRecord::Base
   has_many :tags, through: :taggables, source: :tag
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
+  scope :unanswered, -> {
+    where("id NOT IN (
+      SELECT DISTINCT question_id
+      FROM answers
+      WHERE answers.is_best = true
+    )")
+  }
+  scope :no_answers, -> {
+    where("id NOT IN (
+      SELECT DISTINCT question_id
+      FROM answers
+    )")
+  }
 
   def best_answer
     @best_answer = self.answers.where(is_best: true)
@@ -28,4 +41,5 @@ class Question < ActiveRecord::Base
   def best_answer?
     self.answers.where(is_best: true).count > 0
   end
+
 end

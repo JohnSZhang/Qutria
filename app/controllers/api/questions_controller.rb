@@ -3,8 +3,13 @@ class Api::QuestionsController < Api::ApplicationController
 
   def index
     # @questions = Question.all
+    sort = params[:sort] || 'id asc'
+    filter = Time.now - 1.month if params[:filter] === "month"
+    filter = Time.now - 1.year if params[:filter] === "year"
+
+    @questions = filter ? Question.where("meta_create_date > ? ", filter ) : Question.all
     current_page = params[:page] || 1
-    @questions = Question.page(current_page)
+    @questions = @questions.order(sort).page(current_page)
     @total_pages = @questions.total_pages
     render template: "api/questions"
   end
@@ -58,6 +63,23 @@ class Api::QuestionsController < Api::ApplicationController
     end
   end
 
+  def unanswered
+    # @questions = Question.all
+    current_page = params[:page] || 1
+    @questions = Question.unanswered.page(current_page)
+    @total_pages = @questions.total_pages
+    render template: "api/questions"
+  end
+
+
+  def no_answers
+    # @questions = Question.all
+    current_page = params[:page] || 1
+    @questions = Question.no_answers.page(current_page)
+    @total_pages = @questions.total_pages
+    render template: "api/questions"
+  end
+
   def best_answer
     @question = Question.find(params[:id])
     @answer = Answer.find(params[:answer_id])
@@ -77,6 +99,7 @@ class Api::QuestionsController < Api::ApplicationController
         status: :unprocessable_entity
     end
   end
+
 
   private
   def question_params
