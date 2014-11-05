@@ -22,9 +22,11 @@
     </div>
 
   <div class="question-tags columns left small-6 small-offset-2">
-    <% question.get('tags').forEach(function (tag) { %>
-      <a class="tag" href="#/tags/<%= tag.id %>"><%= tag.name %></a>
-    <% }) %>
+    <% if (question.has('tags')) { %>
+      <% question.get('tags').forEach(function (tag) { %>
+        <a class="tag" href="#/tags/<%= tag.id %>"><%= tag.name %></a>
+      <% }) %>
+    <% } %>
   </div>
 
     <div class="meta right columns small-4">

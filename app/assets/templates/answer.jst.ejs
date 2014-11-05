@@ -1,9 +1,11 @@
-<div class="answer-votes small-1 small-offset-1 left"></div>
+<div class="answer-votes small-1 columns left"></div>
 <% if ( question.get('answered') &&
     question.get('best_answer_id') == answer.get("id")) { %>
       <p> Best Answer! </p>
   <% } %>
-  <p class="left small-10 left"><%= answer.get('body') %></p>
+  <div class="answer-body right small-11 columns">
+    <%= answer.get('body') %>
+  </div>
   <div class="answer-author small-10 small-offset-2 left">
     <% if (Qutria.currentUser.get('id') &&
       Qutria.currentUser.get('id') == answer.get('user_id')) { %>

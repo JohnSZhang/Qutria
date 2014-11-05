@@ -116,25 +116,6 @@ html body{
     }
   }
 
-  .question-comments > .comment, .answer-comments > .comment {
-    padding: 7px 7px 7px 10px;
-    border-bottom: $comment-border;
-  }
-
-  .question-comments > .comment:hover,
-   .answer-comments > .comment:hover {
-     background: $lightest-grey;
-   }
-
-  .question-comments > .comment:first-child,
-  .answer-comments > .comment:first-child {
-    border-top: $comment-top;
-  }
-
-  .answers .answer {
-    margin-top: 15px;
-  }
-
   img.profile {
     height: 100px;
   }
@@ -318,6 +299,46 @@ header {
 
 main {
   min-height: $main-height;
+
+  div.question {
+    padding: 15px 0px;
+
+    .question-links{
+      margin-top: 8px;
+    }
+
+    #new-tag-form {
+
+      margin-top: 10px;
+    }
+  }
+
+  .answers .answer {
+    border-top: 1px solid $light-grey;
+    padding-top: 15px;
+    margin-top: 15px;
+
+    h1, h2, h3, h4, h5 {
+      font-size: 16px;
+    }
+  }
+
+  .question-comments > .comment, .answer-comments > .comment {
+    padding: 7px 7px 7px 10px;
+    border-bottom: $comment-border;
+  }
+
+  .question-comments > .comment:hover,
+   .answer-comments > .comment:hover {
+     background: $lightest-grey;
+   }
+
+  .question-comments > .comment:first-child,
+  .answer-comments > .comment:first-child {
+    border-top: $comment-top;
+  }
+
+
 }
 
 #chat {
