@@ -1,4 +1,9 @@
 class Api::ApplicationController < ActionController::Base
+  require 'pusher'
+
+  Pusher.app_id = ENV['PUSHER_APP']
+  Pusher.key = ENV['PUSHER_KEY']
+  Pusher.secret = ENV['PUSHER_SECRET']
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -36,6 +41,11 @@ class Api::ApplicationController < ActionController::Base
 
   def not_owner?(obj)
     obj.user != current_user
+  end
+
+  def send_notification(notification)
+    user_channel = "user_#{notification.user_id}"
+    Pusher.trigger(user_channel, 'notification', { notification: "notification created" })
   end
 
   helper_method :current_user, :is_logged_in?, :is_owner?

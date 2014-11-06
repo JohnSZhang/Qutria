@@ -5,6 +5,7 @@ class Api::CommentsController < Api::ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     if @comment.save
+      send_notification(@comment.notification)
       render template: "api/comment"
     else
       render json: "{ 'error': '#{@comment.errors.full_messages}'}",

@@ -15,6 +15,7 @@ class Api::AnswersController < Api::ApplicationController
     @answer = Answer.new(answer_params)
     @answer.user = current_user
     if @answer.save
+      send_notification(@answer.notification)
       render template: "api/answer"
     else
       render json: "{ 'error': '#{@answer.errors.full_messages}'}",
