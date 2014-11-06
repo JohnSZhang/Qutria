@@ -6,7 +6,6 @@ class Answer < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :votes, as: :votable
   has_many :notifications, as: :new_object
-  has_one :notified, as: :notified_on
 
   after_save :create_notification
 
