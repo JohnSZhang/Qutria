@@ -7,7 +7,7 @@ class Notification < ActiveRecord::Base
   belongs_to :new_object, polymorphic: true
   belongs_to :notified_on, polymorphic: true
 
-  def read
+  def to_read
     self.read = true
     self.save
   end
