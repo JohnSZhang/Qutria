@@ -23,9 +23,11 @@ class User < ActiveRecord::Base
       through: :favorite_taggables,
       source: :taggings,
       source_type: "Question"
-  has_many :comments
-  has_many :votes
+  has_many :comments, inverse_of: :user
+  has_many :votes, inverse_of: :user
   has_many :chats, inverse_of: :user
+  has_many :notifications, inverse_of: :user
+
 
   attr_reader :password
 

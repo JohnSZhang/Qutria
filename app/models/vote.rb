@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
   validates :votable, presence: true
   validates :vote_type, presence: true, inclusion: { in: [-1, 0, 1] }
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :votes
   belongs_to :votable, polymorphic: true
 
 end

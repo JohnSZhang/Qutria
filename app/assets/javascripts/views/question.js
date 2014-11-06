@@ -42,6 +42,7 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     var self = this;
     var data = $("#answer-form").serializeJSON();
     var newAnswer = new Qutria.Models.Answer(data);
+    console.log(newAnswer)
     newAnswer.save({}, {
       success: function (obj) {
         self.model.fetch()

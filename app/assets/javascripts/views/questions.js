@@ -1,12 +1,16 @@
 Qutria.Views.Questions = Backbone.View.extend({
   initialize: function () {
-    this.listenTo(this.collection, "sync add remove reset", this.render);
+    var self = this;
+    this.listenTo(this.collection, "sync reset", this.render);
     this.listenTo(Qutria.currentUser, "change", this.render);
     Qutria.current_page = 1;
-    $(window).scroll(this.scrolling.bind(this));
+    $(window).scroll(_.throttle(this.scrolling.bind(self),
+        2500,
+        {leading: false}
+      ));
     this.collection.fetch({
-      data: { ßpage: Qutria.current_page,
-              ßsort: 'title asc'}
+      data: { page: Qutria.current_page,
+              sort: 'title asc'}
     });
     Qutria.scroll_trigger = $(document).height() - $(window).height()
   }
@@ -53,16 +57,14 @@ Qutria.Views.Questions = Backbone.View.extend({
   }
   , scrolling: function (event) {
     // If we almost scroll to bottom
-    if ($(window).scrollTop() >= Qutria.scroll_trigger * .7
+    if ($(window).scrollTop() >= Qutria.scroll_trigger * .9
       && Qutria.current_page < this.collection.max_pages ) {
         this.collection.fetch({
           remove: false
           , data: { page: Qutria.current_page + 1}
           , success: function (resp) {
             Qutria.current_page += 1;
-            console.log(Qutria.current_page)
-            Qutria.scroll_trigger = $(document).height() - $(window).height()
-
+            Qutria.scroll_trigger = $(document).height() - $(window).height();
           }
         });
       }

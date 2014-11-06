@@ -12,6 +12,7 @@ window.Qutria = {
         , dataType: "json"
         , cache: false
         , success: function (resp) {
+          Qutria.currentUser.set(resp)
         }
         , error: function (resp) {
           console.log('something went wrong')
