@@ -2,8 +2,20 @@
     <ul class="left inline-list">
         <li><a href="#">Qutria</a></li>
       <% if (!!Qutria.currentUser.has("id")) { %>
-      <li><a id="messages" class="form-toggle"
-          data-selector="message-list" href="#"></a></li>
+      <li>
+        <% if (Qutria.currentUserNotifications &&
+         Qutria.currentUserNotifications.count > 0) { %>
+        <span class="messages-icon" href="#">
+            <strong class="form-toggle"
+              data-selector="message-list"><%= Qutria.currentUserNotifications.count %></strong>
+        </span>
+        <% } else { %>
+          <a class="messages-icon form-toggle new"
+            data-selector="message-list" href="#">
+            <span> &nbsp; </span>
+          </a>
+        <% } %>
+        </li>
       <% } %>
     </ul>
       <% if (!!Qutria.currentUserNotifications) { %>
@@ -11,7 +23,12 @@
           <span> Notifications </span>
           <ul>
           <% Qutria.currentUserNotifications.each( function (notification) { %>
-            <li><a href="#">a new <%= notification.get('new_type') %> was posted about your <%= notification.get('your_type') %>
+            <li>
+              <a class="notification"
+                href="#/questions/<%= notification.get('q_id') %>"
+                data-id="<%= notification.id %>"
+                  >a new <%= notification.get('new_type')
+                  %> was posted about your <%= notification.get('your_type') %>
               </a>
             </li>
           <% }) %>

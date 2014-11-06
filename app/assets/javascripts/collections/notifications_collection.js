@@ -2,8 +2,8 @@ Qutria.Collections.Notifications = Backbone.Collection.extend({
   url: "/api/notifications"
   , Model: Qutria.Models.Notification
   , parse: function (resp) {
-    this.notification_count = resp.notification_count;
-    delete resp.notification_count;
+    this.count = resp.count;
+    delete resp.count;
     return resp['notifications']
   }
 })

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy] do
       get "current", to: "sessions#current"
     end
+    get "notifications/:id", to: "notifications#read"
     get "notifications", to: "notifications#index"
     get "users/search/", to: "users#search"
     resources :users, only: [:create, :destroy, :index, :show, :update]

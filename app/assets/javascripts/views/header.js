@@ -7,6 +7,7 @@ Qutria.Views.Header = Backbone.View.extend({
     "click a#sign-out" : "logout"
     , "keyup #top-search" : "search"
     , "click .search-result": "linkTo"
+    , "click .notification": "readNotification"
   }
   , template: JST['header']
   , className: "header"
@@ -41,17 +42,32 @@ Qutria.Views.Header = Backbone.View.extend({
     Qutria.currentUserNotifications = new Qutria.Collections.Notifications()
     Qutria.currentUserNotifications.fetch({
       success: function (resp) {
-        console.log(Qutria.currentUserNotifications)
         self.render();
       }
     })
-    if (Qutria.currentUser.has('id')) {
-      Qutria.notificationChannel =
-          Qutria.chat.subscribe('user_' + Qutria.currentUser.get('id'));
-      Qutria.notificationChannel.bind('notification', function(data) {
-        console.log('new notification!')
-      });
+    if (Qutria.currentUser.has('id') && !Qutria.notificationChannel) {
+      self.bindChannel();
     }
+  }
+  , bindChannel: function () {
+    var self = this;
+    Qutria.notificationChannel =
+        Qutria.chat.subscribe('user_' + Qutria.currentUser.get('id'));
+    Qutria.notificationChannel.bind('notification', function(data) {
+      self.getNotification();
+    });
+  }
+  , readNotification: function (event) {
+    $('#message-list').toggle();
+    var self = this;
+    var id = $(event.currentTarget).data('id');
+    var notification = new Qutria.Models.Notification({ id: id });
+  notification.read(
+    {
+      success: function () {
+        self.getNotification();
+      }
+    });
   }
   , logout: function (event) {
     event.preventDefault();
