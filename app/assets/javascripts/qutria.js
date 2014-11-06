@@ -13,6 +13,11 @@ window.Qutria = {
         , cache: false
         , success: function (resp) {
           Qutria.currentUser.set(resp)
+          Qutria.notificationChannel =
+              Qutria.chat.subscribe('user_' + Qutria.currentUser.get('id'));
+          Qutria.notificationChannel.bind('notification', function(data) {
+            console.log('new notification!')
+          });
         }
         , error: function (resp) {
           console.log('something went wrong')
@@ -42,9 +47,7 @@ $(document).ready(function(){
     event.preventDefault()
     filepicker.pick(function (blob) {
       Qutria.currentUser.set("filepicker_url", blob.url);
-      Qutria.currentUser.save(function () {
-        alert('updated!')
-      })
+      Qutria.currentUser.save()
     })
   });
 
