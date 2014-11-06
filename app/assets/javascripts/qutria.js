@@ -13,11 +13,6 @@ window.Qutria = {
         , cache: false
         , success: function (resp) {
           Qutria.currentUser.set(resp)
-          Qutria.notificationChannel =
-              Qutria.chat.subscribe('user_' + Qutria.currentUser.get('id'));
-          Qutria.notificationChannel.bind('notification', function(data) {
-            console.log('new notification!')
-          });
         }
         , error: function (resp) {
           console.log('something went wrong')
@@ -38,7 +33,7 @@ $(document).ready(function(){
     $('#chat').animate({width: 'toggle'}, 500);
   });
 
-  $('main').on("click", ".form-toggle", function (event) {
+  $('body').on("click", ".form-toggle", function (event) {
     event.preventDefault()
     var selector = '#'+ $(event.target).data('selector');
     $(selector).toggle();

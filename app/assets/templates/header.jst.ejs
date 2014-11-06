@@ -1,12 +1,30 @@
 <nav class="top-bar small-12">
-    <ul class="left">
-      <a href="#">Qutria</a>
+    <ul class="left inline-list">
+        <li><a href="#">Qutria</a></li>
+      <% if (!!Qutria.currentUser.has("id")) { %>
+      <li><a id="messages" class="form-toggle"
+          data-selector="message-list" href="#"></a></li>
+      <% } %>
     </ul>
+      <% if (!!Qutria.currentUserNotifications) { %>
+        <div id="message-list" class="hide">
+          <span> Notifications </span>
+          <ul>
+          <% Qutria.currentUserNotifications.each( function (notification) { %>
+            <li><a href="#">a new <%= notification.get('new_type') %> was posted about your <%= notification.get('your_type') %>
+              </a>
+            </li>
+          <% }) %>
+          </ul>
+        </div>
+      <% } %>
     <ul class="right inline-list">
       <% if (!!Qutria.currentUser.has("id")) { %>
         <li><a href="#/favorites">Favorite Tags</a></li>
-      <% } %>
-      <% if (!!Qutria.currentUser.has("id")) { %>
+        <li><a href="#/users/<%= Qutria.currentUser.get('id') %>">
+          <img src="<%= Qutria.currentUser.get('img') %>">
+          <span><%= Qutria.currentUser.get('username') %></span>
+        </a></li>
         <li><a id="sign-out" href="#">Sign-Out</a></li>
       <% } else { %>
         <li><a href="#/sign-in">Sign-In</a></li>

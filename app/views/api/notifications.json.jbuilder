@@ -1,4 +1,5 @@
-json.array! @notifications do |notification|
+json.notification_count @notification_count
+json.notifications @notifications do |notification|
   json.id notification.id
   json.new_type notification.new_object_type
   json.new_id notification.new_object_id

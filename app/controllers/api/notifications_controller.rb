@@ -1,7 +1,8 @@
 class Api::NotificationsController < Api::ApplicationController
   before_action :require_login
   def index
-    @notifications = current_user.notifications.order('id desc').limit(5)
+    @notification_count = current_user.notifications.count
+    @notifications = current_user.notifications.order('id desc').page(1)
     render template: 'api/notifications'
   end
 

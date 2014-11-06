@@ -9,7 +9,7 @@ class Notification < ActiveRecord::Base
 
   def to_read
     self.read = true
-    self.save
+    true if self.save
   end
 
 end

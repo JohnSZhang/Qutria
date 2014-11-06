@@ -1,6 +1,6 @@
 Qutria.Views.Header = Backbone.View.extend({
   initialize: function (options) {
-    this.listenTo(Qutria.currentUser, "change sync reset", this.render);
+    this.listenTo(Qutria.currentUser, "change sync reset", this.getNotification);
   }
   , className: "header row"
   , events: {
@@ -35,6 +35,23 @@ Qutria.Views.Header = Backbone.View.extend({
     var link = $(event.currentTarget).data("link");
     Backbone.history.navigate(link, {trigger: true});
     $('#top-search-results').empty;
+  }
+  , getNotification: function () {
+    var self = this;
+    Qutria.currentUserNotifications = new Qutria.Collections.Notifications()
+    Qutria.currentUserNotifications.fetch({
+      success: function (resp) {
+        console.log(Qutria.currentUserNotifications)
+        self.render();
+      }
+    })
+    if (Qutria.currentUser.has('id')) {
+      Qutria.notificationChannel =
+          Qutria.chat.subscribe('user_' + Qutria.currentUser.get('id'));
+      Qutria.notificationChannel.bind('notification', function(data) {
+        console.log('new notification!')
+      });
+    }
   }
   , logout: function (event) {
     event.preventDefault();
