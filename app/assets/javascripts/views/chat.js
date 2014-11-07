@@ -12,7 +12,7 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
   , initChat: function () {
     Qutria.currentChannel = Qutria.chat.subscribe('main');
     Qutria.currentChannel.bind('server-message', function(data) {
-      $('#board').append("<p>" + data.message + "</p>")
+      $('#board').append("<li>" + data.message + "</li>")
     });
   }
   , sendChat: function () {
@@ -66,7 +66,8 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       , type: "GET"
       , success: function (resp) {
           resp.forEach(function (chat) {
-            $('#board').append("<p>" + chat.user + ":" + chat.message + "</p>")
+            $('#board').append(
+              "<li>" + chat.user + ":" + chat.message + "</li>")
           })
       }
     })
@@ -85,7 +86,7 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
     Qutria.currentChannel.unsubscribe();
     Qutria.currentChannel = Qutria.chat.subscribe(roomId);
     Qutria.currentChannel.bind('server-message', function(data) {
-      $('#board').append("<p>" + data.message + "</p>")
+      $('#board').append("<li>" + data.message + "</li>")
     });
     $('#change-channel').val("")
     this.getHistory();

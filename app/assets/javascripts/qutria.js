@@ -27,7 +27,7 @@ window.Qutria = {
 };
 
 window.onbeforeunload = function(e) {
-    return "Please, please don't leave, it's cold and dark in here!";
+    //return "Please, please don't leave, it's cold and dark in here!";
 };
 
 $(document).ready(function(){
@@ -38,7 +38,8 @@ $(document).ready(function(){
   }
   $('#toggle-chat').on("click", function (event) {
     event.preventDefault();
-    $('#chat').animate({width: 'toggle'}, 500);
+    $('#chat').toggleClass('small-7').toggleClass('right').toggle()
+    $('#main').toggleClass('small-5').toggleClass('left')
   });
 
   $('body').on("click", ".form-toggle", function (event) {

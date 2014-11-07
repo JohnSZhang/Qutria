@@ -3,7 +3,7 @@ Qutria.Routers.router = Backbone.Router.extend({
     this.$rootEl = options.$rootEl;
     this.$header = this.$rootEl.find('header');
     this.$footer = this.$rootEl.find('footer');
-    this.$main = this.$rootEl.find('main');
+    this.$main = this.$rootEl.find('#main');
     this.$chat = this.$rootEl.find('#chat');
     this.init();
   }
@@ -15,6 +15,7 @@ Qutria.Routers.router = Backbone.Router.extend({
     , "users/:id" : "userShow"
   }
   , init: function () {
+    console.log(this.$chat)
     var headerView = new Qutria.Views.Header();
     var footerView = new Qutria.Views.Footer();
     var chatView = new Qutria.Views.Chat();

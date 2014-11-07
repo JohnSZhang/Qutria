@@ -1,7 +1,7 @@
 Qutria.Routers.Question = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.$main = this.$rootEl.find('main');
+    this.$main = this.$rootEl.find('#main');
     this.$header = this.$rootEl.find('header');
     this.$footer = this.$rootEl.find('footer');
   }

@@ -1,7 +1,7 @@
 Qutria.Routers.Tag = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this.$main = this.$rootEl.find('main');
+    this.$main = this.$rootEl.find('#main');
   }
   , routes: {
     "tags" : "tags"
