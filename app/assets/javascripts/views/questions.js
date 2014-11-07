@@ -12,7 +12,8 @@ Qutria.Views.Questions = Backbone.View.extend({
       data: { page: Qutria.current_page,
               sort: 'title asc'}
     });
-    Qutria.scroll_trigger = $(document).height() - $(window).height()
+    Qutria.scroll_trigger = $(document).height() - $(window).height();
+    this.sort_criteria = "id asc";
   }
   , className: "row"
   , template: JST['questions_index']
@@ -41,10 +42,11 @@ Qutria.Views.Questions = Backbone.View.extend({
   , questionFilter: function (event) {
     Qutria.current_page = 1;
     event.preventDefault()
-    var sort_criteria = $(event.currentTarget).data('filter')
+    this.filter_criteria = $(event.currentTarget).data('filter')
     this.collection.fetch({
-      data: { page: Qutria.current_page,
-              filter: sort_criteria}
+      data: { page: Qutria.current_page
+              , filter: this.filter_criteria
+            }
     });
   }
   , questionSort: function (event) {
@@ -52,8 +54,9 @@ Qutria.Views.Questions = Backbone.View.extend({
     event.preventDefault()
     var sort_criteria = $(event.currentTarget).data('sort')
     this.collection.fetch({
-      data: { page: Qutria.current_page,
-              sort: sort_criteria}
+      data: { page: Qutria.current_page
+              , sort: sort_criteria
+            }
     });
   }
   , scrolling: function (event) {
@@ -62,7 +65,9 @@ Qutria.Views.Questions = Backbone.View.extend({
       && Qutria.current_page < this.collection.max_pages ) {
         this.collection.fetch({
           remove: false
-          , data: { page: Qutria.current_page + 1}
+          , data: { page: Qutria.current_page + 1
+            , filter: this.filter_criteria
+            , sort: this.sort_criteria }
           , success: function (resp) {
             Qutria.current_page += 1;
             Qutria.scroll_trigger = $(document).height() - $(window).height();
@@ -72,6 +77,8 @@ Qutria.Views.Questions = Backbone.View.extend({
     }
   , render: function () {
     this.$el.html(this.template({ questions: this.collection }));
+
+    Qutria.scroll_trigger = $(document).height() - $(window).height();
     return this;
   }
 })

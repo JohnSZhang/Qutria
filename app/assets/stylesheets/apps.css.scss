@@ -21,6 +21,7 @@ $main-height: 500px;
 $comment-border: dotted 1px #dddddd;
 $comment-top: solid 1px #dddddd;
 $red: #f00;
+$shadow: rgba(0,0,0,.4);
 
 p, h1, h2, h3, span {
 }
@@ -44,14 +45,14 @@ html body{
   button:hover, .button:hover {
     background: $button-active;
     margin-top: 3px;
-    border-top: 4px $white;
+    margin-bottom: 17px;
     box-shadow: none;
   }
 
   button, .button {
     border-radius: 5px;
     padding: 8px 8px;
-    margin: 0 0 2rem 0;
+    margin: 0 0 20px 0;
     color: $white;
     font-size: 13px;
     background: $button-blue;
@@ -110,7 +111,7 @@ html body{
     border-bottom-left-radius: 15px;
     top: 188px;
     font-size: 20px;
-    background: $skyblue;
+    background: url('bg-site.png');
     color: $lightest-grey;
     border: 1px solid $button-blue;
     box-shadow: 0 1px 5px $comment-grey;
@@ -217,6 +218,27 @@ html body{
     margin-right: auto;
     background: $white;
   }
+
+  .tag {
+    margin: 10px 0;
+    padding-top: 15px;
+    border-top: 1px solid $light-grey;
+    a {
+      padding: 0;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+    p, span {
+      height: 60px;
+      font-size: 12px;
+      color: $comment-grey;
+    }
+  }
+
+  .user {
+    height: 50px;
+    margin: 15px 0;
+  }
 }
 
 header {
@@ -312,7 +334,33 @@ header {
       border: 2px solid $light-grey;
       border-top: none;
       box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-      z-index: 2
+      z-index: 2;
+      span {
+        color: $black;
+        margin-left: 5px;
+      }
+      ul {
+        padding: 0 10px 10px;
+        margin-left: 0;
+
+        li {
+          padding: 5px 10px;
+
+          &:hover {
+            background: $light-grey;
+          }
+
+          a.notification {
+            color: $comment-grey;
+            padding: 0;
+
+            &:hover{
+              background: transparent;
+            }
+          }
+
+        }
+      }
     }
   }
 
@@ -364,7 +412,8 @@ header {
     background-color: $white;
     border-radius: 6px;
     padding-top: 4px;
-    box-shadow: 3px 5px 3px $skyblue;
+    box-shadow: 3px 5px 3px $shadow;
+    z-index: 6;
   }
   #top-search-results.hide {
     display: none;

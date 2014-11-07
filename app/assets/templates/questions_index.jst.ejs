@@ -1,4 +1,4 @@
-<h1>Top Questions</h1>
+<h1>Questions: </h1>
 <ul class="sorts inline-list right small-6 columns">
   <li><a href="#" id="sort-newest"
       data-sort="created_at desc">Newest</a></li>
@@ -57,11 +57,14 @@
   <button class="modal-form-toggle"
   data-selector="new-question-form" href="#">Add A Question</button>
   <form class="hide modal" id="new-question-form">
+      <h5> New Question </h5>
       <button class="modal-form-toggle"
       data-selector="new-question-form" href="#">&#215;</button>
-    <input type="text" name="question[title]"
+      <label for="question-title">Title: </label>
+    <input type="text" id="question-title" name="question[title]"
       value='' >
-      <textarea name="question[body]"></textarea>
+      <label for="question-body">Body:</label>
+      <textarea name="question[body]" id="question-body"></textarea>
       <button id="new-question"> Ask A Question </button>
   </form>
 <% } %>

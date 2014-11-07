@@ -25,8 +25,8 @@ Qutria.Views.Header = Qutria.Views.Composite.extend({
         }
         container.empty();
         resp.forEach(function (result) {
-          var item = "<li class='search-result' data-link='" + result.link + "'>"
-            + result.searchable_type + ": " + result.content + "</li>";
+          var item = "<li class='search-result' data-link='" + result.link + "'><strong>"
+            + result.searchable_type + "</strong>: " + result.content + "</li>";
           container.append(item)
         });
       }

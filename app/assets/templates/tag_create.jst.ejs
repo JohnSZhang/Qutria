@@ -1,7 +1,11 @@
-<form class="create-tag" >
+<button class="modal-form-toggle"
+ data-selector="new-tag-form" href="#">Add A Tag</button>
+<form class="create-tag hide modal" id="new-tag-form" >
+  <button class="modal-form-toggle"
+  data-selector="new-tag-form" href="#">&#215;</button>
   <label for="name">Tag Name</label>
   <input type="text" id="name" name="tag[name]" value="">
   <label for="description">Tag Description</label>
   <textarea id="description" name="tag[description]"></textarea>
-  <button class="create-tag"> Create A New Tag </button>
+  <button class="create-tag"> Create! </button>
 </form>

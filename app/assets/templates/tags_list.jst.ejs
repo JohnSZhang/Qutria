@@ -5,7 +5,7 @@
       <div class="tag small-3 columns left">
         <a href="#/tags/<%= tag.get('id')%>"><%= tag.get('name') %></a>
         <p><%= tag.get('description') %></p>
-        <span> x <%= tag.get('count') %></span>
+        <span> x <%= tag.get('count') %> Questions</span>
       </div>
   <% if(((idx + 1) % 4) === 0 || idx === (tags.length - 1)) { %>
     </div>
