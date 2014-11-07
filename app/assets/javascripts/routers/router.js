@@ -25,7 +25,6 @@ Qutria.Routers.router = Backbone.Router.extend({
       });
   }
   , index: function () {
-    console.log('indexing')
     var collection = new Qutria.Collections.Questions();
     var mainView = new Qutria.Views.Questions({ collection: collection});
     this._swapView({
