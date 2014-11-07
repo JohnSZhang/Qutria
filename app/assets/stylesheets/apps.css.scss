@@ -356,8 +356,13 @@ header {
 }
 
 
-main {
+main.row {
   min-height: $main-height;
+
+  .row {
+
+    margin: 0;
+  }
 
   div.question {
     padding: 15px 0px;

@@ -71,12 +71,14 @@ Qutria.Views.Header = Backbone.View.extend({
   }
   , logout: function (event) {
     event.preventDefault();
+    var self = this;
     $.ajax({
         url: "/api/session/"
         , type: "DELETE"
         , cache: false
         , success: function (resp) {
           Qutria.currentUser.clear()
+          self.render()
         }
         , error: function (resp) {
           console.log("cannot log out")
