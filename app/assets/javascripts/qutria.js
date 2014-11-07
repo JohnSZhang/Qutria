@@ -25,9 +25,11 @@ window.Qutria = {
     Backbone.history.start();
   }
 };
+
 window.onbeforeunload = function(e) {
     return "Please, please don't leave, it's cold and dark in here!";
 };
+
 $(document).ready(function(){
   Qutria.initialize();
   Qutria.modalToggle = function () {
