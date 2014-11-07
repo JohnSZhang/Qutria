@@ -540,11 +540,27 @@ main #main{
     height: 20px;
   }
 
-  a.close, button.close {
-    position: absolute;
-  }
 
 }
+
+a.close, button.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: $comment-grey;
+  font-wieght: bold;
+  margin-top: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+
+  &:hover {
+    background: none;
+    margin-top: 0;
+    color: $comment-grey;
+  }
+}
+
 
 #chat {
   position: absolute;
