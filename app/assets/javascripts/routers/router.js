@@ -15,7 +15,6 @@ Qutria.Routers.router = Backbone.Router.extend({
     , "users/:id" : "userShow"
   }
   , init: function () {
-    console.log(this.$chat)
     var headerView = new Qutria.Views.Header();
     var footerView = new Qutria.Views.Footer();
     var chatView = new Qutria.Views.Chat();

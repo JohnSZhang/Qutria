@@ -3,7 +3,12 @@
 <label for="new-message">Message:</label>
 <input type="text" id="new-message" value="">
 <button id="send-chat">send</button>
-<label for="change-channel">Room Search:</label>
+
+<% if (Qutria.currentUser.has('id')) { %>
+<label for="change-hannel">Room Search:</label>
 <input type="text" id="change-channel" value="">
 <button id="update-channel">Change Room</button>
-<ul id="chat-search-results"></ul>
+<h4>Click Name To Change Your Room </h4>
+<ul id="chat-search-results">
+</ul>
+<% } %>

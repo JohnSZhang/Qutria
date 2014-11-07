@@ -499,6 +499,29 @@ main #main{
 
   }
 
+  h4 {
+    font-size: 17px;
+    color: $light-grey;
+  }
+
+  #chat-search-results {
+    list-style: none;
+
+    li {
+      color: $light-grey;
+      padding: 5px;
+      background: $button-shadow;
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px soid $button-blue;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+
 }
 
 footer {

@@ -1,5 +1,6 @@
 Qutria.Views.Chat = Qutria.Views.Composite.extend({
   initialize: function (options) {
+    this.listenTo(Qutria.currentUser, 'sync change', this.render);
   }
   , className: "chat slider"
   , template: JST['chat']
@@ -46,8 +47,6 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
         var container = $('#chat-search-results');
         var tags = new Qutria.Collections.TagsSearch();
         tags.set(resp.tags)
-        console.log(resp)
-        console.log(tags)
         if (tags.length !== 0) {
           container.removeClass("hide")
         } else {
@@ -68,7 +67,6 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       url: "/api/chats/" + Qutria.currentChannel.name
       , type: "GET"
       , success: function (resp) {
-        console.log('resp', resp)
           resp.forEach(function (chat) {
             $('#board').append(
               "<li>" + chat.user + ":" + chat.message + "</li>")
@@ -94,6 +92,12 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
     });
     $('#change-channel').val("")
     this.getHistory();
+    $('.chat > h2').text('Qutria Chat: ' + roomId)
+    $("html, body").animate({
+      scrollTop: 200
+    },"fast");
+    $('#chat-search-results').empty();
+
   }
   , render: function () {
     var self = this;

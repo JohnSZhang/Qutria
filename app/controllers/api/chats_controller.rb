@@ -17,6 +17,7 @@ class Api::ChatsController < Api::ApplicationController
     render json: "{ 'error': 'you need to log in to use tag chats'}",
       status: :unprocessable_entity unless current_user
     Pusher.trigger(params[:name], 'server-message', { message: params[:message]})
+    puts 'cerating chat!!'
     Chat.create(user: current_user, tag: tag, message: params[:message])
     render text: ""
   end

@@ -72,7 +72,6 @@ Qutria.Views.Questions = Backbone.View.extend({
     }
   , render: function () {
     this.$el.html(this.template({ questions: this.collection }));
-    console.log('render')
     return this;
   }
 })
