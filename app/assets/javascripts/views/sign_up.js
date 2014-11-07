@@ -10,6 +10,7 @@ Qutria.Views.SignUp = Qutria.Views.Composite.extend({
     newUser.save({}, {
       success: function (obj) {
         Qutria.currentUser.set("id", obj.id);
+        Qutria.modalToggle();
         Backbone.history.navigate("", { trigger: true });
       }
     });

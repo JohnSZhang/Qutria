@@ -54,9 +54,11 @@
 </ul>
 
 <% if (Qutria.currentUser.get('id')) { %>
-  <button class="form-toggle"
+  <button class="modal-form-toggle"
   data-selector="new-question-form" href="#">Add A Question</button>
-  <form class="hide" id="new-question-form">
+  <form class="hide modal" id="new-question-form">
+      <button class="modal-form-toggle"
+      data-selector="new-question-form" href="#">&#215;</button>
     <input type="text" name="question[title]"
       value='' >
       <textarea name="question[body]"></textarea>

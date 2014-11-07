@@ -44,8 +44,10 @@
         </a></li>
         <li><a id="sign-out" href="#">Sign-Out</a></li>
       <% } else { %>
-        <li><a href="#/sign-in">Sign-In</a></li>
-        <li><a href="#/sign-up">Sign-Up</a></li>
+        <li><a a class="modal-form-toggle" data-selector="sign-in"
+          href="#/sign-in">Sign-In</a></li>
+        <li><a class="modal-form-toggle" data-selector="sign-up"
+          href="#/sign-up">Sign-Up</a></li>
       <% } %>
       <li>
         <input type="text" id="top-search" value="">
@@ -53,6 +55,8 @@
       </li>
     </ul>
 </nav>
+<div id="sign-in" class="modal hide"></div>
+<div id="sign-up" class="modal hide"></div>
 <div class="container clearfix small-12">
   <nav id="main-nav">
     <a class="home left" href="#"> </a>
@@ -61,7 +65,7 @@
       <li><a href="#/tags">All Tags</a></li>
       <li><a href="#/users">Users</a></li>
       <li><a href="#/unanswered">Unanswered</a></li>
-      <li><a href="#">User</a></li>
+      <li><a href="Ask">Ask</a></li>
     </ul>
   </nav>
 </div>

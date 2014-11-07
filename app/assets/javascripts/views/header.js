@@ -1,4 +1,4 @@
-Qutria.Views.Header = Backbone.View.extend({
+Qutria.Views.Header = Qutria.Views.Composite.extend({
   initialize: function (options) {
     this.listenTo(Qutria.currentUser, "change sync reset", this.getNotification);
   }
@@ -87,6 +87,11 @@ Qutria.Views.Header = Backbone.View.extend({
   }
   , render: function () {
     this.$el.html(this.template());
+    var signIn = new Qutria.Views.SignIn()
+    this.add_subview( "#sign-in", signIn);
+
+    var signUp = new Qutria.Views.SignUp()
+    this.add_subview( "#sign-up", signUp);
     return this;
   }
 })

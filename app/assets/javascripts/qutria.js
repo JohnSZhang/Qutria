@@ -25,9 +25,15 @@ window.Qutria = {
     Backbone.history.start();
   }
 };
-
+window.onbeforeunload = function(e) {
+    return "Please, please don't leave, it's cold and dark in here!";
+};
 $(document).ready(function(){
   Qutria.initialize();
+  Qutria.modalToggle = function () {
+    $('body').toggleClass('modal-open');
+    $('#modal-backdrop').toggle();
+  }
   $('#toggle-chat').on("click", function (event) {
     event.preventDefault();
     $('#chat').animate({width: 'toggle'}, 500);
@@ -38,6 +44,13 @@ $(document).ready(function(){
     var selector = '#'+ $(event.target).data('selector');
     $(selector).toggle();
   });
+  $('body').on("click", ".modal-form-toggle", function (event) {
+    event.preventDefault()
+    console.log('clicked')
+    var selector = '#'+ $(event.target).data('selector');
+    $(selector).toggle();
+    Qutria.modalToggle();
+  });
   $('main').on("click", ".filepicker-user", function (event) {
     event.preventDefault()
     filepicker.pick(function (blob) {
@@ -45,5 +58,4 @@ $(document).ready(function(){
       Qutria.currentUser.save()
     })
   });
-
 });

@@ -12,6 +12,7 @@ Qutria.Views.SignIn = Qutria.Views.Composite.extend({
         , data: user
         , success: function (resp) {
           Qutria.currentUser.set(resp);
+          Qutria.modalToggle();
           Backbone.history.navigate("", { trigger: true})
         }
         , error: function (resp) {
