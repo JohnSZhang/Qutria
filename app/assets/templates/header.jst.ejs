@@ -65,7 +65,19 @@
       <li><a href="#/tags">All Tags</a></li>
       <li><a href="#/users">Users</a></li>
       <li><a href="#/unanswered">Unanswered</a></li>
-      <li><a href="Ask">Ask</a></li>
+      <li><a href="#" class="modal-form-toggle"
+        data-selector="new-question-form">Ask</a></li>
     </ul>
   </nav>
 </div>
+<form class="hide modal" id="new-question-form">
+    <h5> New Question </h5>
+    <button class="modal-form-toggle"
+    data-selector="new-question-form" href="#">&#215;</button>
+    <label for="question-title">Title: </label>
+  <input type="text" id="question-title" name="question[title]"
+    value='' >
+    <label for="question-body">Body:</label>
+    <textarea name="question[body]" id="question-body"></textarea>
+    <button id="new-question"> Ask A Question </button>
+</form>

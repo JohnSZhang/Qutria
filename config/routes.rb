@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     end
     resources :taggables, only: [:create]
     delete "taggables", to: "taggables#destroy"
-    resource :favorite, only: [:show]
+    get "favorites", to: "favorites#show"
     post "vote", to: "votes#upvote"
     delete "vote", to: "votes#downvote"
     post "chats/", to: "chats#set_main_chat"

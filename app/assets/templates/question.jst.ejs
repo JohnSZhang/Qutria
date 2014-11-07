@@ -48,14 +48,22 @@
 </div>
 
 
+<div class="row">
 <% if (Qutria.currentUser.get('id') ) { %>
+<button href="#" class="modal-form-toggle"
+  data-selector="answer-form">Add Your Answer</button>
 <div class="small-10 columns small-centered">
-  <form id="answer-form">
-      <input type="hidden" name="answer[question_id]"
+  <form id="answer-form" class="hide modal">
+      <a class="modal-form-toggle" data-selector="answer-form"
+        href="#">&#215;</a>
+      <input type="hidden" iname="answer[question_id]"
       value="<%= question.get('id') %>">
-      <input type="text" name="answer[title]" value="">
-      <textarea name="answer[body]"></textarea>
-      <button id="answer-question"> Add Your Answer </button>
+      <label for="new-answer-title">Answer Title</label>
+      <input type="text" id="new-answer-title" name="answer[title]" value="">
+      <label for="new-answer-body">Body</label>
+      <textarea id="new-answer-body" name="answer[body]"></textarea>
+      <button id="answer-question">Add</button>
   </form>
 </div>
 <% } %>
+</div>

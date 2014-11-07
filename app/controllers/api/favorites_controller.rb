@@ -34,6 +34,9 @@ class Api::FavoritesController < Api::ApplicationController
 
   def show
     @user = User.includes(:favorite_tags, :favorite_tag_questions).find(current_user.id)
+    current_page = params[:page] || 1
+    puts params[:page]
+    @questions = @user.favorite_tag_questions.page(current_page)
     render template: "api/user_favorites"
   end
 
