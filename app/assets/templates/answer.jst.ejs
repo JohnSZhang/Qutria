@@ -5,8 +5,7 @@
   <% } %>
   <div class="answer-body right small-11 columns">
     <%= answer.get('body') %>
-  </div>
-  <div class="answer-author small-10 small-offset-2 left">
+  <div class="small-8 left">
     <% if (Qutria.currentUser.get('id') &&
       Qutria.currentUser.get('id') == answer.get('user_id')) { %>
         <a class="form-toggle left"
@@ -25,5 +24,11 @@
     <% } %>
     <div class="answer-comment left"></div>
 </div>
+<div class="answer-author small-4 right">
 
+  </div>
+
+
+
+</div>
 <div class="answer-comments left small-8 small-offset-2"></div>

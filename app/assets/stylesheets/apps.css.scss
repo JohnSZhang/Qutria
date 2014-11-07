@@ -95,6 +95,8 @@ html body{
     line-height: 1.35;
     padding: 25px 0 20px;
     border-bottom: 1px solid $light-grey;
+    clear: both;
+    display: block;
   }
 
   a {
@@ -219,10 +221,13 @@ html body{
     left: 0;
     right: 0;
     top: 30%;
-    width: 200px;
+    width: 350px;
     margin-left: auto;
     margin-right: auto;
     background: $white;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid $light-grey;
   }
 
   #tags .tag {
@@ -471,6 +476,9 @@ main #main{
       color: $comment-grey;
     }
 
+    .question-main {
+      border-bottom: $comment-top;
+    }
     #new-tag-form {
 
       margin-top: 10px;
@@ -482,15 +490,22 @@ main #main{
     padding-top: 15px;
     margin-top: 15px;
 
+    &:first-child {
+      border-top: none;
+    }
+
     h1, h2, h3, h4, h5 {
       font-size: 16px;
     }
 
     .answer-body {
       color: $comment-grey;
+      border-bottom: $comment-top;
     }
-  }''
-
+  }
+  .answer-comments {
+    margin: 15px 0;
+  }
   .question-comments > .comment, .answer-comments > .comment {
     padding: 7px 7px 7px 10px;
     border-bottom: $comment-border;
@@ -498,14 +513,17 @@ main #main{
     &:hover {
         background: $lightest-grey;
     }
+
+    span.comment{
+      font-size: 14px;
+      color: $comment-grey;
+    }
   }
 
-
-  .question-comments > .comment:first-child,
-  .answer-comments > .comment:first-child {
-    border-top: $comment-top;
+  .comment img {
+    width: 20px;
+    height: 20px;
   }
-
 
 }
 

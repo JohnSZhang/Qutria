@@ -26,6 +26,14 @@ class Question < ActiveRecord::Base
     )")
   }
 
+  def vote_count
+    if self.meta_vote_count
+      self.votes.sum(:vote_type) + self.meta_vote_count
+    else
+      self.votes.sum(:vote_type)
+    end
+  end
+
   def best_answer
     @best_answer = self.answers.where(is_best: true)
     @best_answer.count == 0 ? nil : @best_answer.first

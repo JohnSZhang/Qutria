@@ -1,7 +1,7 @@
 json.id question.id
 json.title question.title
 json.exerpt truncate(Nokogiri::HTML(question.body).xpath("//text()").to_s, length: 200)
-json.votes question.meta_vote_count ? question.meta_vote_count : 0
+json.votes question.vote_count
 json.user_vote question.votes.count
 json.answers question.answers.count
 json.answered question.best_answer?

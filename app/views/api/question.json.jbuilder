@@ -2,13 +2,13 @@ json.id @question.id
 json.title @question.title
 json.body @question.body
 json.user_id @question.user_id
-json.vote_count @question.votes.sum(:vote_type)
+json.vote_count @question.vote_count
 json.answered @question.best_answer?
 json.best_answer_id @question.best_answer ? @question.best_answer.id : 0
 
 json.user do
   json.id @question.user.id
-  json.img @question.user.filepicker_url
+  json.filepicker_url @question.user.filepicker_url
   json.username @question.user.username
   json.email @question.user.email
 end
@@ -28,7 +28,7 @@ end
 
 json.answers @question.answers do |answer|
   json.user answer.user
-  json.vote_count answer.votes.sum(:vote_type)
+  json.vote_count answer.vote_count
   json.comments answer.comments do |comment|
     json.id comment.id
     json.user comment.user

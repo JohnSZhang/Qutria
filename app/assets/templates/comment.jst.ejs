@@ -1,6 +1,8 @@
 <span class="comment">
   <%= comment.get('body') %>
-  by: <a class="commenter" href="#/users/comment.user.get('id')%>">
+  by:
+  <img src="<%= comment.user.get('filepicker_url') %>">
+   <a class="commenter" href="#/users/comment.user.get('id')%>">
     <%= comment.user.get('username')%>
   </a>
 </span>

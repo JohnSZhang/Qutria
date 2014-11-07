@@ -1,6 +1,25 @@
+<div class="row">
 <h2 class="question-title row small-centered">
 <%= question.get('title') %>
 </h2>
+<% if (Qutria.currentUser.get('id') ) { %>
+<button href="#" class="modal-form-toggle"
+  data-selector="answer-form">Add Your Answer</button>
+<div class="small-10 columns small-centered">
+  <form id="answer-form" class="hide modal">
+      <a class="modal-form-toggle" data-selector="answer-form"
+        href="#">&#215;</a>
+      <input type="hidden" iname="answer[question_id]"
+      value="<%= question.get('id') %>">
+      <label for="new-answer-title">Answer Title</label>
+      <input type="text" id="new-answer-title" name="answer[title]" value="">
+      <label for="new-answer-body">Body</label>
+      <textarea id="new-answer-body" name="answer[body]"></textarea>
+      <button id="answer-question">Add</button>
+  </form>
+</div>
+<% } %>
+</div>
 <div class="row question">
   <div id="question-votes" class="small-1 columns left"></div>
   <div class="question-main columns small-10 left">
@@ -39,31 +58,10 @@
 </div>
 
 
-<div class="question-comments small-9 small-offset-1 columns"></div>
+<div class="question-comments small-9 small-offset-2 columns"></div>
 
 <h4 class="answer-count row small-centered">Answers</h4>
 
 <div class="answers row small-centered">
 
-</div>
-
-
-<div class="row">
-<% if (Qutria.currentUser.get('id') ) { %>
-<button href="#" class="modal-form-toggle"
-  data-selector="answer-form">Add Your Answer</button>
-<div class="small-10 columns small-centered">
-  <form id="answer-form" class="hide modal">
-      <a class="modal-form-toggle" data-selector="answer-form"
-        href="#">&#215;</a>
-      <input type="hidden" iname="answer[question_id]"
-      value="<%= question.get('id') %>">
-      <label for="new-answer-title">Answer Title</label>
-      <input type="text" id="new-answer-title" name="answer[title]" value="">
-      <label for="new-answer-body">Body</label>
-      <textarea id="new-answer-body" name="answer[body]"></textarea>
-      <button id="answer-question">Add</button>
-  </form>
-</div>
-<% } %>
 </div>

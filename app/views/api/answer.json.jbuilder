@@ -1,5 +1,5 @@
 json.user @answer.user
-json.vote_count @answer.votes.sum(:vote_type)
+json.vote_count @answer.vote_count
 json.comments @answer.comments do |comment|
   json.id comment.id
   json.user comment.user

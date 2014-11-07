@@ -8,6 +8,13 @@ class Answer < ActiveRecord::Base
   has_one :notification, as: :new_object
 
   after_save :create_notification
+  def vote_count
+    if self.meta_vote_count
+      self.votes.sum(:vote_type) + self.meta_vote_count
+    else
+      self.votes.sum(:vote_type)
+    end
+  end
 
   private
     def create_notification

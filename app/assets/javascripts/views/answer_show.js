@@ -3,6 +3,8 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
     this.question = options.question;
     this.listenTo(this.question, "sync change destroy", this.render);
     this.listenTo(this.model, "sync change destroy", this.render);
+    this.on('render', this.afterRender);
+
   }
   , className: "row answer"
   , template: JST['answer']
@@ -68,6 +70,12 @@ Qutria.Views.Answer = Qutria.Views.Composite.extend({
     self.add_subview(
       ".answer-votes"
     , view);
+    this.trigger('render')
     return this;
+  }
+  , afterRender: function() {
+    $('pre code, p code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
   }
 });
