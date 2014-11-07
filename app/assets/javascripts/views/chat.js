@@ -9,18 +9,21 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
     , "click #update-channel": "changeRoomByInput"
     , "keyup #change-channel": "search"
     , "click .chat-search-result": "changeRoomByClick"
+    , "keypress #new-message" : "sendKeyPressChat"
+    ,
   }
   , initChat: function () {
+    var self = this;
     Qutria.currentChannel = Qutria.chat.subscribe('main');
     Qutria.currentChannel.bind('server-message', function(data) {
-      $('#board').append("<li>" + data.message + "</li>")
+        $('#board').append("<li>" + data.message + "</li>");
     });
   }
   , sendChat: function () {
 
     if (Qutria.currentChannel.name === "main") {
       $.ajax({
-        url: "/api/chats/"
+        url: "/api/chats/main"
         , type: "POST"
         , data: {"message": $("#new-message").val() }
         , success: function () {
@@ -28,6 +31,7 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
         }
       })
     } else {
+      console.log("sending special chat")
       $.ajax({
         url: "/api/chats/" + Qutria.currentChannel.name
         , type: "POST"
@@ -37,6 +41,15 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
         }
       })
     }
+  }
+  , sendKeyPressChat: function (event) {
+    if (event.keyCode == 13) {
+      this.sendChat();
+    }
+  }
+  , receiveChat: function (data) {
+    $('#board').append("<li><img src='" + data.user.filepicker_url + "'><span>" +
+      data.user.username + ": "+ data.message + "</li>");
   }
   , search: function (event) {
     $.ajax({
@@ -69,7 +82,7 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       , success: function (resp) {
           resp.forEach(function (chat) {
             $('#board').append(
-              "<li>" + chat.user + ":" + chat.message + "</li>")
+              "<li><img src='" + chat.filepicker_url + "'>" + chat.user + ":" + chat.message + "</li>")
           })
       }
     })
@@ -85,10 +98,11 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
     }
   }
   , changeRoom: function (roomId) {
+    var self = this;
     Qutria.currentChannel.unsubscribe();
     Qutria.currentChannel = Qutria.chat.subscribe(roomId);
     Qutria.currentChannel.bind('server-message', function(data) {
-      $('#board').append("<li>" + data.message + "</li>")
+      self.receiveChat(data);
     });
     $('#change-channel').val("")
     this.getHistory();

@@ -540,6 +540,10 @@ main #main{
     height: 20px;
   }
 
+  a.close, button.close {
+    position: absolute;
+  }
+
 }
 
 #chat {
@@ -585,6 +589,12 @@ main #main{
     li {
       color: $comment-grey;
       padding: 5px 15px;
+
+      img{
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+      }
     }
 
     button {
