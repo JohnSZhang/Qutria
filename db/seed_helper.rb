@@ -2,7 +2,7 @@ module SeedHelper
   def self.get_questions(tag_name, sort)
     filter = '!FRQ4VUIaa880PeTBSXJP))vWQSulQE8_DD1CX(FKVYQ0*QtU9s4MYbw1*tf.JWTt(tK2gthy'
     options = { order:'desc',
-      sort: sort, filter: filter, pagesize: 100 }
+      sort: sort, filter: filter, pagesize: 10 }
     questions = RubyStackoverflow.questions(options.merge({ tagged: tag_name })).data
   end
 
