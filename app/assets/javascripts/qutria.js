@@ -27,7 +27,7 @@ window.Qutria = {
 };
 
 window.onbeforeunload = function(e) {
-    //return "Please, please don't leave, it's cold and dark in here!";
+    return "Please, please don't leave, it's cold and dark in here!";
 };
 
 $(document).ready(function(){
