@@ -46,7 +46,7 @@ Qutria.Views.TagShow = Qutria.Views.Composite.extend({
     if (this.model.questions && !this.collection) {
       this.model.questions.each(function (question) {
         var view = new Qutria.Views.QuestionSingle({ model: question })
-        self.add_subview("div.tag-questions", view)
+        self.add_subview("ul.tag-questions", view)
       })
     }
     return this

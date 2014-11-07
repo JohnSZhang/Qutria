@@ -147,6 +147,11 @@ html body{
     padding: 0;
   }
 
+  #tags {
+    margin-bottom: 20px;
+  }
+
+
   ul.questions {
     list-style: none;
 
@@ -189,6 +194,7 @@ html body{
           width: 32px;
         }
       }
+
 
       a.tag {
         background: $lightest-grey;
@@ -238,6 +244,10 @@ html body{
   .user {
     height: 50px;
     margin: 15px 0;
+  }
+  p.tag-description {
+    color: $comment-grey;
+    font-size: 15px;
   }
 }
 
@@ -579,6 +589,8 @@ footer {
   background-repeat: no-repeat,repeat;
   background-size: 475px 280px,63px 180px;
   min-height: $footer-height;
+  bottom: 0;
+  width: 100%;
 
   nav {
     padding-left: 5%;

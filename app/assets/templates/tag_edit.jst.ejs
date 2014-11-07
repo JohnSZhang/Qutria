@@ -1,6 +1,9 @@
-
-<form class="edit-tag" >
+<button class="modal-form-toggle"
+  data-selector="edit-tag-form" href="#">Edit Tag</button>
+<form class="edit-tag modal hide" id="edit-tag-form" >
+  <button class="modal-form-toggle"
+  data-selector="edit-tag-form" href="#">&#215;</button>
   <input type="text" name="tag[name]" value="<%= tag.get('name') %>">
   <textarea name="tag[description]"><%= tag.get('description') %></textarea>
-  <button class="edit-tag"> Edit Tag </button>
+  <button class="edit-tag"> Edit </button>
 </form>

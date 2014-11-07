@@ -12,45 +12,6 @@
       data-sort="title asc" >Name</a></li>
 </ul>
 <ul class="small-10 small-centered questions">
-<% questions.each(function (question) { %>
-  <li class="question columns small-12">
-    <div class="glance columns small-2">
-      <div class="vote_count">
-        <%= question.get('votes') + question.get('user_vote') %>
-        <span> votes </span>
-      </div>
-      <div class="answer_count <%=question.get('answered') %>">
-        <%= question.get('answers')%>
-        <span>answers</span>
-      </div>
-    </div>
-    <div class="info columns small-10">
-      <h3 class="title ">
-        <a href="#/questions/<%= question.get('id') %>"><%= question.get('title') %></a>
-      </h3>
-      <p class="excerpt">
-        <%= question.get('exerpt') %>
-      </p>
-    </div>
-
-  <div class="question-tags columns left small-6 small-offset-2">
-    <% if (question.has('tags')) { %>
-      <% question.get('tags').forEach(function (tag) { %>
-        <a class="tag" href="#/tags/<%= tag.id %>"><%= tag.name %></a>
-      <% }) %>
-    <% } %>
-  </div>
-
-    <div class="meta right columns small-4">
-      <span class="columns small-12">asked <%= question.get('create') %></span>
-      <a href="#/users/<%= question.get('user_id') %>">
-        <img src="<%= question.get('user_img') %>">
-      </a>
-      <a href="#/users/<%= question.get('user_id') %>"><%= question.get('user') %></a></span>
-    </span>
-  </li>
-
-<% }) %>
 </ul>
 
 <% if (Qutria.currentUser.get('id')) { %>

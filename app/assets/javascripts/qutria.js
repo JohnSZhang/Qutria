@@ -49,7 +49,6 @@ $(document).ready(function(){
   });
   $('body').on("click", ".modal-form-toggle", function (event) {
     event.preventDefault()
-    console.log('clicked')
     var selector = '#'+ $(event.target).data('selector');
     $(selector).toggle();
     Qutria.modalToggle();

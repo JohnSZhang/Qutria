@@ -1,4 +1,4 @@
-Qutria.Views.Questions = Backbone.View.extend({
+Qutria.Views.Questions = Qutria.Views.Composite.extend({
   initialize: function () {
     var self = this;
     this.listenTo(this.collection, "sync reset", this.render);
@@ -76,8 +76,12 @@ Qutria.Views.Questions = Backbone.View.extend({
       }
     }
   , render: function () {
+    var self= this;
     this.$el.html(this.template({ questions: this.collection }));
-
+    this.collection.each(function (question) {
+      var view = new Qutria.Views.QuestionSingle({model : question});
+      self.add_subview('ul.questions', view);
+    })
     Qutria.scroll_trigger = $(document).height() - $(window).height();
     return this;
   }
