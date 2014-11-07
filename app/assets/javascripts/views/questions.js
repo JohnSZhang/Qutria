@@ -14,6 +14,7 @@ Qutria.Views.Questions = Backbone.View.extend({
     });
     Qutria.scroll_trigger = $(document).height() - $(window).height()
   }
+  , className: "row"
   , template: JST['questions_index']
   , events: {
       "click #new-question" : "questionCreate"

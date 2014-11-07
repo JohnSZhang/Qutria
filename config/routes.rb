@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     post "questions/:id/best", to: "questions#best_answer"
     resources :answers, only: [:create, :destroy, :update, :show]
     resources :comments, only: [:create, :destroy, :update]
+
+    post "tags/search/", to: "tags#search_chat"
     get "tags/search/", to: "tags#search"
     resources :tags, only: [:destroy, :edit, :update, :create, :index, :show] do
       resource :favorite, only: [:create, :destroy]

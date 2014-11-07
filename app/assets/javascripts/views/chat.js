@@ -44,16 +44,19 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       , type: "POST"
       , success: function (resp) {
         var container = $('#chat-search-results');
+        var tags = new Qutria.Collections.TagsSearch();
+        tags.set(resp.tags)
         console.log(resp)
-        if (resp.length !== 0) {
+        console.log(tags)
+        if (tags.length !== 0) {
           container.removeClass("hide")
         } else {
           container.addClass("hide")
         }
         container.empty();
-        resp.forEach(function (tag) {
+        tags.forEach(function (tag) {
           var item = "<li class='chat-search-result' data-name='"
-            + tag.name + "'>" + tag.name + "</li>";
+            + tag.get('name') + "'>" + tag.get('name') + "</li>";
           container.append(item)
         });
       }
@@ -65,6 +68,7 @@ Qutria.Views.Chat = Qutria.Views.Composite.extend({
       url: "/api/chats/" + Qutria.currentChannel.name
       , type: "GET"
       , success: function (resp) {
+        console.log('resp', resp)
           resp.forEach(function (chat) {
             $('#board').append(
               "<li>" + chat.user + ":" + chat.message + "</li>")

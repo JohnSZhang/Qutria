@@ -6,6 +6,7 @@ Qutria.Views.Users = Qutria.Views.Composite.extend({
       data: { page: Qutria.current_page }
     });
   }
+  , className: "row"
   , events: {
     "keyup #find-user" : "search"
   }

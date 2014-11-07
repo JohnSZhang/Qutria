@@ -9,6 +9,7 @@ Qutria.Views.TagsIndex = Qutria.Views.Composite.extend({
   , events: {
     "keyup #find-tag" : "search"
   }
+  , className: "row"
   , template: JST['tag_index']
   , search: function (event) {
     var self = this;
