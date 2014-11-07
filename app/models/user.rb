@@ -27,7 +27,8 @@ class User < ActiveRecord::Base
   has_many :votes, inverse_of: :user
   has_many :chats, inverse_of: :user
   has_many :notifications, inverse_of: :user
-
+  has_many :voted_questions, through: :votes, source: :votable, source_type: "Question"
+  has_many :voted_answers, through: :votes, source: :votable, source_type: "Answer"
 
   attr_reader :password
 

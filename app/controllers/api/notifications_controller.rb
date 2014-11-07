@@ -8,10 +8,11 @@ class Api::NotificationsController < Api::ApplicationController
 
   def read
     puts 'reading notification'
-   if Notification.find(params[:id]).to_read
+    @notification = Notification.find(params[:id])
+   if @notification.to_read
      render text: 'notification read'
    else
-     render text: 'cannot read'
+     render text: "cannot read #{@notification.errors.full_messages}"
    end
   end
 end

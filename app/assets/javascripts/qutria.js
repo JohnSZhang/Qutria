@@ -38,8 +38,16 @@ $(document).ready(function(){
   }
   $('#toggle-chat').on("click", function (event) {
     event.preventDefault();
-    $('#chat').toggleClass('small-7').toggleClass('right').toggle()
-    $('#main').toggleClass('small-5').toggleClass('left')
+    $('#chat').toggleClass('large-7');
+    $('#main').toggleClass('large-5');
+
+    $('#chat').toggleClass('medium-12');
+    $('#main').toggleClass('medium-0');
+
+    $('#chat').toggleClass('small-12').toggleClass('right');
+    $('#main').toggleClass('small-0').toggleClass('left');
+
+    $('#chat').toggle();
   });
 
   $('body').on("click", ".form-toggle", function (event) {

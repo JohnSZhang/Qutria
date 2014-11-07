@@ -17,7 +17,12 @@ Qutria.Views.Votes = Qutria.Views.Composite.extend({
   , template: JST['vote']
   , render: function () {
     var self = this;
-    this.$el.html(this.template({ obj: this.model }));
+    if (this.model.has('vote_type') &&  this.model.get('vote_type') === 1) {
+      var vote_type = "upvotted"
+    } else if (this.model.has('vote_type') &&  this.model.get('vote_type') === -1) {
+        var vote_type = "downvotted"
+    } else { var vote_type = "none"}
+    this.$el.html(this.template({ obj: this.model, vote_type: vote_type }));
     return self;
   }
 });

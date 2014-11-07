@@ -1,7 +1,10 @@
 <% if(Qutria.currentUser.has('id')) { %>
+<div class="<%= vote_type %>">
 <button class="upvote">Upvote</button>
 <p class="vote-count"><%= obj.get("vote_count") %></p>
 <button class="downvote">Downvote</button>
+</div>
 <% } else {%>
 <p class="vote-count"><%= obj.get("vote_count") %></p>
+<p> votes </p>
 <% } %>

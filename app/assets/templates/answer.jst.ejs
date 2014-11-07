@@ -3,8 +3,8 @@
     question.get('best_answer_id') == answer.get("id")) { %>
       <p> Best Answer! </p>
   <% } %>
-  <div class="answer-body right small-11 columns">
-    <%= answer.get('body') %>
+  <div class="answer-body left small-10 columns">
+    <p><%= answer.get('body') %></p>
   <div class="small-8 left">
     <% if (Qutria.currentUser.get('id') &&
       Qutria.currentUser.get('id') == answer.get('user_id')) { %>
@@ -31,4 +31,4 @@
 
 
 </div>
-<div class="answer-comments left small-8 small-offset-2"></div>
+<div class="answer-comments left small-10 small-offset-1"></div>

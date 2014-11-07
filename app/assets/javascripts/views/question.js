@@ -45,7 +45,12 @@ Qutria.Views.Question = Qutria.Views.Composite.extend({
     console.log(newAnswer)
     newAnswer.save({}, {
       success: function (obj) {
-        self.model.fetch()
+        self.model.fetch({
+          success: function () {
+            Qutria.modalToggle();
+            $("#answer-form").toggle();
+          }
+        });
       }
     });
   }

@@ -8,6 +8,7 @@ Qutria.Views.Header = Qutria.Views.Composite.extend({
     , "keyup #top-search" : "search"
     , "click .search-result": "linkTo"
     , "click .notification": "readNotification"
+    , "click #new-question" : "questionCreate"
   }
   , template: JST['header']
   , className: "header"
@@ -37,6 +38,21 @@ Qutria.Views.Header = Qutria.Views.Composite.extend({
     Backbone.history.navigate(link, {trigger: true});
     $('#top-search-results').empty;
   }
+  , questionCreate: function (event) {
+    event.preventDefault();
+    var self = this;
+    var form = $('#new-question-form').serializeJSON();
+    var newQuestion = new Qutria.Models.Question(form);
+    newQuestion.set("user", Qutria.currentUser);
+    newQuestion.save({}, {
+      success: function () {
+        Qutria.modalToggle();
+        $('#new-question-form').toggle();
+      }
+      , error: function () {
+      }
+    })
+  }
   , getNotification: function () {
     var self = this;
     Qutria.currentUserNotifications = new Qutria.Collections.Notifications()
@@ -58,6 +74,8 @@ Qutria.Views.Header = Qutria.Views.Composite.extend({
     });
   }
   , readNotification: function (event) {
+
+      console.log('broke')
     $('#message-list').toggle();
     var self = this;
     var id = $(event.currentTarget).data('id');

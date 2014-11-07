@@ -3,8 +3,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, polymorphic: true
   belongs_to :user, inverse_of: :comments
-  has_many :comment, as: :commentable
-  has_one :notification, as: :new_object
+  has_many :comment, as: :commentable, dependent: :destroy
+  has_one :notification, as: :new_object, dependent: :destroy
 
   after_save :create_notification
 

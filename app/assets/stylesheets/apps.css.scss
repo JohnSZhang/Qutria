@@ -22,6 +22,9 @@ $comment-border: dotted 1px #dddddd;
 $comment-top: solid 1px #dddddd;
 $red: #f00;
 $shadow: rgba(0,0,0,.4);
+$upvote: #B05002;
+$downvote: #B05002;
+$list-body-min: 80px;
 
 p, h1, h2, h3, span {
 }
@@ -70,6 +73,14 @@ html body{
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
   }
+
+  .upvotted button.upvote{
+      border-bottom: 20px solid $upvote;
+    }
+
+  .downvotted button.downvote {
+      border-top: 20px solid $downvote;
+    }
 
   button.upvote, button.upvote:hover{
     border-bottom: 20px solid $button-shadow;
@@ -474,6 +485,7 @@ main #main{
 
     .question-body {
       color: $comment-grey;
+      min-height: $list-body-min;
     }
 
     .question-main {
@@ -501,6 +513,9 @@ main #main{
     .answer-body {
       color: $comment-grey;
       border-bottom: $comment-top;
+      p {
+        min-height: $list-body-min;
+      }
     }
   }
   .answer-comments {

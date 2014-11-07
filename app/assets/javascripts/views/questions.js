@@ -18,26 +18,11 @@ Qutria.Views.Questions = Qutria.Views.Composite.extend({
   , className: "row"
   , template: JST['questions_index']
   , events: {
-      "click #new-question" : "questionCreate"
-      , 'click #sort-newest' : 'questionSort'
+      'click #sort-newest' : 'questionSort'
       , 'click #sort-popular' : 'questionSort'
       , 'click #sort-name' : 'questionSort'
       , 'click #filter-month' : 'questionFilter'
       , 'click #filter-year' : 'questionFilter'
-  }
-  , questionCreate: function (event) {
-    event.preventDefault();
-    var self = this;
-    var form = $('#new-question-form').serializeJSON();
-    var newQuestion = new Qutria.Models.Question(form);
-    newQuestion.set("user", Qutria.currentUser);
-    newQuestion.save({}, {
-      success: function () {
-        self.collection.add(newQuestion)
-      }
-      , error: function () {
-      }
-    })
   }
   , questionFilter: function (event) {
     Qutria.current_page = 1;

@@ -7,11 +7,11 @@ class Question < ActiveRecord::Base
   validates :title, uniqueness: true
 
   belongs_to :user, inverse_of: :questions
-  has_many :answers, inverse_of: :question
+  has_many :answers, inverse_of: :question, dependent: :destroy
   has_many :taggables, as: :taggings
   has_many :tags, through: :taggables, source: :tag
-  has_many :comments, as: :commentable
-  has_many :votes, as: :votable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :votes, as: :votable, dependent: :destroy
   scope :unanswered, -> {
     where("id NOT IN (
       SELECT DISTINCT question_id
